@@ -1,0 +1,3060 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="At Diwizon, we are committed to empowering businesses by delivering custom digital solutions tailored to their unique needs. Our expertise spans creating optimised websites, efficient software, intuitive mobile apps, and effective eCommerce platforms that enhance productivity, streamline processes, and boost revenue."
+    />
+
+    <title>
+      Diwizon - Empowering Businesses with Custom Digital Solutions.
+    </title>
+
+    <!-- Fav Icon -->
+    <link rel="icon" type="image/x-icon" href="assets/imgs/logo/favicon.png" />
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/vendor/all.min.css" />
+    <link rel="stylesheet" href="assets/vendor/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/vendor/progressbar.css" />
+    <link rel="stylesheet" href="assets/vendor/meanmenu.min.css" />
+    <link rel="stylesheet" href="assets/vendor/magnific-popup.css" />
+    <link rel="stylesheet" href="assets/vendor/animate.min.css" />
+    <link rel="stylesheet" href="assets/vendor/nice-select.css" />
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+      .mobile-view {
+        display: none;
+      }
+
+      /* Fullscreen overlay */
+      .popup-form {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* dim background */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+
+      /* Hidden by default */
+      .popup-form.hidden {
+        display: none;
+      }
+
+      /* Actual popup box */
+      .popup-content {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 24px;
+        width: 90%;
+        max-width: 450px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        position: relative;
+        animation: fadeIn 0.3s ease;
+      }
+
+      /* Close button */
+      #closeBtn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 30px;
+        cursor: pointer;
+        color: #444;
+      }
+
+      /* Input fields */
+      .popup-content input {
+        width: 100%;
+        padding: 10px 12px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+      }
+
+      .popup-content button[type="submit"] {
+        width: 100%;
+        background: #aff42b;
+        color: #0e0f11;
+        border: 1px solid #aff42b;
+        padding: 10px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .popup-content button[type="submit"]:hover {
+        background: transparent;
+      }
+
+      /* Fade-in animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* Prevent background scroll */
+
+      body.modal-open {
+        position: fixed !important;
+        overflow: hidden !important;
+        width: 100%;
+        top: 0;
+        left: 0;
+      }
+
+      .loader {
+        border: 3px solid #f3f3f3;
+        /* Light grey */
+        border-top: 3px solid #3498db;
+        /* Blue */
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        animation: spin 1s linear infinite;
+        display: inline-block;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .modal-open {
+        overflow: hidden;
+      }
+
+      /* modal css ends */
+
+      .social-area h3 {
+        color: #fff;
+      }
+
+      .social-wrapper {
+        border-top: 1px solid #fff;
+        padding-top: 30px;
+        margin: 0 10px;
+      }
+
+      .social-wrapper a {
+        color: #fff;
+        line-height: 30px;
+      }
+
+      .platform {
+        margin-bottom: 10px;
+      }
+
+      .row.area-inner {
+        margin-bottom: 100px;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .footer-area-4 .footer-nav-list {
+          gap: 0;
+        }
+
+        .row.align-items-center.text-white {
+          gap: 30px;
+        }
+
+        .social-wrapper {
+          border-top: none;
+        }
+      }
+
+      .header-sticky.sticky {
+        position: fixed;
+        top: 20px;
+        /* instead of top: 0 */
+        left: 0;
+        right: 0;
+        margin-top: 0;
+        /* ensure no extra margin */
+        z-index: 999;
+        /* keep above other elements */
+      }
+
+      .testimonials-container {
+        /* max-width: 1400px; */
+        margin: 80px 0;
+      }
+
+      .testimonials-title {
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 600;
+        color: #1a202c;
+        margin-bottom: 80px;
+        letter-spacing: -0.5px;
+      }
+
+      .marquee-wrapper {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 30px;
+        cursor: grab;
+        display: flex; /* 👈 ensure both sets stay inline */
+      }
+
+      .marquee-wrapper:active {
+        cursor: grabbing;
+      }
+
+      .marquee-content {
+        display: flex;
+        animation: marquee 40s linear infinite;
+        width: fit-content;
+        flex-shrink: 0;
+      }
+
+      .marquee-content:hover {
+        animation-play-state: paused;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .testimonial-card {
+        background: white;
+        border-radius: 16px;
+        padding: 28px;
+        margin-right: 24px;
+        margin-top: 10px;
+        /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08); */
+        border: 1px solid #e2e8f0;
+        width: 380px;
+        flex-shrink: 0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      .testimonial-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+
+      .avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: white;
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+
+      .avatar-1 {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      .avatar-2 {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      }
+
+      .avatar-3 {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      }
+
+      .avatar-4 {
+        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      }
+
+      .avatar-5 {
+        background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      }
+
+      .avatar-6 {
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      }
+
+      .avatar-7 {
+        background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      }
+
+      .user-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .user-name {
+        font-weight: 600;
+        color: #2d3748;
+        font-size: 16px;
+        margin-bottom: 3px;
+      }
+
+      .user-handle {
+        color: #718096;
+        font-size: 14px;
+      }
+
+      .testimonial-text {
+        color: #4a5568;
+        line-height: 1.6;
+        font-size: 15px;
+      }
+
+      /* First row - moves left */
+      .row-1 .marquee-content {
+        animation: marqueeLeft 55s linear infinite;
+      }
+
+      /* Second row - moves right */
+      .row-2 .marquee-content {
+        animation: marqueeRight 45s linear infinite;
+      }
+
+      @keyframes marqueeLeft {
+        0% {
+          transform: translateX(0);
+        }
+
+        100% {
+          transform: translateX(-78%);
+        }
+      }
+
+      @keyframes marqueeRight {
+        0% {
+          transform: translateX(-50%);
+        }
+
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .testimonials-title {
+          font-size: 2.2rem;
+          margin-bottom: 50px;
+        }
+
+        .testimonial-card {
+          width: 280px;
+          padding: 24px;
+          margin-right: 20px;
+        }
+      }
+
+      .swiper-wrapper {
+        transition-timing-function: linear !important;
+      }
+
+      /* Hide tabs on mobile */
+      @media (max-width: 767px) {
+        .services-wrapper-box .nav {
+          display: none !important;
+        }
+
+        /* Make all tab panes visible in mobile */
+        .services-wrapper-box .tab-content .tab-pane {
+          display: block !important;
+          opacity: 1 !important;
+          visibility: visible !important;
+        }
+
+        /* Remove unnecessary Bootstrap fade animation on mobile */
+        .services-wrapper-box .tab-pane.fade {
+          transition: none;
+        }
+
+        /* Optional: add spacing between stacked service boxes */
+        .services-wrapper-box .tab-pane + .tab-pane {
+          margin-top: 30px;
+        }
+      }
+
+      /* Keep your desktop rule */
+      /* Only apply border color when accordion is open */
+      .accordion-wrapper-4 .accordion-item .accordion-button:not(.collapsed) {
+        border-color: var(--action);
+      }
+
+      .accordion-wrapper-4 .accordion-item .accordion-collapse.show {
+        border-color: var(--action);
+      }
+
+      @media (max-width: 990px) {
+        .desktop-view {
+          display: none;
+        }
+
+        .mobile-view {
+          display: block;
+          margin-top: 50px;
+        }
+
+        .mobile-view .title {
+          height: 50px;
+        }
+
+        .mobile-view .tag {
+          font-size: 10px;
+        }
+      }
+    </style>
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=AW-11540740935"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "AW-11540740935");
+  </script>
+
+  <body class="body-wrapper body-ai-agency">
+    <!-- Preloader -->
+    <div id="preloader">
+      <div id="container" class="container-preloader">
+        <div class="animation-preloader">
+          <div class="spinner"></div>
+        </div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+      </div>
+    </div>
+
+    <!-- Sroll to top -->
+    <div class="progress-wrap">
+      <svg
+        class="progress-circle svg-content"
+        width="100%"
+        height="100%"
+        viewBox="-1 -1 102 102"
+      >
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+      </svg>
+    </div>
+
+    <!-- side toggle start -->
+    <aside class="fix">
+      <div class="side-info">
+        <div class="side-info-content">
+          <div class="offset-widget offset-header">
+            <div class="offset-logo">
+              <a href="index.html">
+                <img src="assets/imgs/logo/logo.png" alt="site logo" />
+              </a>
+            </div>
+            <button id="side-info-close" class="side-info-close">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="mobile-menu d-xl-none fix"></div>
+          <div class="offset-info-box">
+            <h2 class="title">Hello There!</h2>
+            <p class="text">
+              Diwizon builds custom web and mobile apps to streamline operations
+              and drive growth.
+            </p>
+            <div class="t-btn-group">
+              <a class="t-btn t-btn-circle" href="contact.html">
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a class="t-btn t-btn-primary" href="#footer">Let’s Connect</a>
+              <a class="t-btn t-btn-circle" href="contact.html">
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="post-image">
+              <img src="assets/imgs/gallery/image-48.webp" alt="image" />
+              <img src="assets/imgs/gallery/image-49.webp" alt="image" />
+              <img src="assets/imgs/gallery/image-50.webp" alt="image" />
+              <img src="assets/imgs/gallery/image-51.webp" alt="image" />
+            </div>
+          </div>
+          <div class="offset-widget-box">
+            <h2 class="title">Information</h2>
+            <div class="contact-meta">
+              <div class="contact-item">
+                <span class="text"
+                  ><a href="tel:+919340421152">+91 93404 21152</a></span
+                >
+              </div>
+              <div class="contact-item">
+                <span class="text"
+                  ><a href="mailto:info@diwizon.com">info@diwizon.com</a></span
+                >
+              </div>
+              <div class="contact-item">
+                <span class="text">Vadodara, Gujarat - India</span>
+              </div>
+            </div>
+          </div>
+          <div class="offset-widget-box">
+            <h2 class="title">Connect Us On</h2>
+            <div class="social-links">
+              <a href="#">FB</a>
+              <a href="#">LN</a>
+              <a href="#">IN</a>
+              <a href="#">BE</a>
+            </div>
+          </div>
+          <div class="offset-logo-footer">
+            <img src="assets/imgs/logo/logo-6.png" alt="image" />
+          </div>
+        </div>
+      </div>
+    </aside>
+    <div class="offcanvas-overlay"></div>
+    <!-- side toggle end -->
+
+    <!-- Header area start -->
+    <header class="header-area-4">
+      <div class="header-main header-sticky">
+        <div class="container">
+          <div class="header-area-4-inner">
+            <div class="header-logo">
+              <a href="index.html">
+                <img
+                  src="assets/imgs/logo/logo.png"
+                  class="normal-logo"
+                  alt="Site Logo"
+                />
+              </a>
+            </div>
+            <div class="header-nav pos-center">
+              <nav class="main-menu">
+                <ul>
+                  <!-- Home -->
+                  <li class="menu-item-has-children">
+                    <a href="#">Home</a>
+                  </li>
+
+                  <!-- About -->
+                  <li><a href="#about-us">About</a></li>
+
+                  <!-- Service -->
+                  <li class="menu-item-has-children">
+                    <a href="#services">Our Service</a>
+                  </li>
+
+                  <!-- Products -->
+                  <!-- <li class="menu-item-has-children">
+                  <a href="#product">Products</a>
+                </li> -->
+
+                  <!-- Recent Projects -->
+                  <li class="menu-item-has-children">
+                    <a href="#recent">Recent Projects</a>
+                  </li>
+
+                  <!-- Blogs -->
+                  <!-- <li><a href="#blogs">Blogs</a></li> -->
+                </ul>
+              </nav>
+            </div>
+
+            <div class="header-button">
+              <a class="t-btn t-btn-primary bg-active" href="#footer"
+                >Let’s Connect</a
+              >
+            </div>
+            <div class="header-offcanvas d-xl-none">
+              <button class="side-toggle">
+                <img src="assets/imgs/icon/icon-4.webp" alt="image" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header area end -->
+
+    <div class="has-smooth" id="has_smooth"></div>
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <main>
+          <!-- hero area start  -->
+          <section class="hero-area-4">
+            <div class="hero-area-4-inner section-spacing-top">
+              <div class="area-bg">
+                <img src="assets/imgs/shape/shape-22.webp" alt="image" />
+              </div>
+              <div class="area-shape-1">
+                <img
+                  class="fade-anim"
+                  data-direction="left"
+                  data-delay="1.05"
+                  src="assets/imgs/shape/shape-20.webp"
+                  alt="image"
+                />
+              </div>
+              <div class="area-shape-2">
+                <img
+                  class="fade-anim"
+                  data-direction="right"
+                  data-delay="1.20"
+                  src="assets/imgs/shape/shape-21.webp"
+                  alt="image"
+                />
+              </div>
+              <div class="container">
+                <div class="section-content section-spacing-top">
+                  <div class="section-title-wrapper">
+                    <div class="title-wrapper move-anim" data-delay="0.45">
+                      <h1 class="section-title">
+                        <span>Empowering</span> Digital Growth!
+                      </h1>
+                    </div>
+                  </div>
+                  <div class="text-wrapper fade-anim" data-delay="0.60">
+                    <p class="text">
+                      Diwizon builds custom web and mobile apps to streamline
+                      operations and drive growth.
+                    </p>
+                  </div>
+                  <div class="btn-wrapper fade-anim" data-delay="0.75">
+                    <!-- <a class='t-btn t-btn-primary bg-active' href='assets/diwizon-work.pdf'>Portfolio</a> -->
+                    <a
+                      href="#"
+                      class="t-btn t-btn-primary bg-active portfolioBtn"
+                      >Portfolio</a
+                    >
+                    <a class="t-btn t-btn-primary" href="#footer">Contact Us</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Centered Popup Modal -->
+              <div id="popupForm" class="popup-form hidden">
+                <div class="popup-content">
+                  <span id="closeBtn">&times;</span>
+                  <h4>Get Instant Pricing – For Free!</h4>
+                  <p style="margin: 20px 0">
+                    Enter your details and get instant pricing, completely free.
+                  </p>
+                  <form id="userForm">
+                    <input type="text" placeholder="Your Name" required />
+
+                    <div style="display: flex; gap: 10px">
+                      <select id="countryCode" required>
+                        <option value="+91" selected>🇮🇳 +91 (India)</option>
+                        <option value="+1">🇺🇸 +1 (USA)</option>
+                        <option value="+44">🇬🇧 +44 (UK)</option>
+                        <option value="+971">🇦🇪 +971 (UAE)</option>
+                        <!-- Add more if needed -->
+                      </select>
+                      <input
+                        type="tel"
+                        id="phoneNumber"
+                        placeholder="Phone Number"
+                        required
+                      />
+                    </div>
+
+                    <input type="email" placeholder="Email ID" required />
+                    <button type="submit" id="submitBtn">
+                      <span class="btn-text">Send And Continue</span>
+                      <span class="loader hidden"></span>
+                    </button>
+                  </form>
+                </div>
+              </div>
+
+              <div class="brand-area-4">
+                <div class="container">
+                  <div class="brand-area-4-inner section-spacing">
+                    <div class="section-header">
+                      <div class="section-title-wrapper">
+                        <div class="title-wrapper fade-anim">
+                          <h2 class="section-title">
+                            100+ Trusted Clients Over Worldwide
+                          </h2>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="brands-wrapper-box">
+                      <div class="brands-wrapper fade-anim">
+                        <div class="swiper brand-slider-active">
+                          <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                              <div class="brand-item-4">
+                                <img
+                                  src="assets/imgs/brand/fci.png"
+                                  alt="image"
+                                />
+                              </div>
+                            </div>
+                            <div class="swiper-slide">
+                              <div class="brand-item-4">
+                                <img
+                                  src="assets/imgs/brand/go-charge.png"
+                                  alt="image"
+                                />
+                              </div>
+                            </div>
+                            <div class="swiper-slide">
+                              <div class="brand-item-4">
+                                <img
+                                  src="assets/imgs/brand/intralog.png"
+                                  alt="image"
+                                />
+                              </div>
+                            </div>
+                            <div class="swiper-slide">
+                              <div class="brand-item-4">
+                                <img
+                                  src="assets/imgs/brand/parul-university.png"
+                                  alt="image"
+                                />
+                              </div>
+                            </div>
+                            <div class="swiper-slide">
+                              <div class="brand-item-4">
+                                <img
+                                  src="assets/imgs/brand/speedforce.png"
+                                  alt="image"
+                                />
+                              </div>
+                            </div>
+                            <div class="swiper-slide">
+                              <div class="brand-item-4">
+                                <img
+                                  src="assets/imgs/brand/frenyz.png"
+                                  alt="image"
+                                />
+                              </div>
+                            </div>
+                            <div class="swiper-slide">
+                              <div class="brand-item-4">
+                                <img
+                                  src="assets/imgs/brand/k10-group.png"
+                                  alt="image"
+                                />
+                              </div>
+                            </div>
+                            <div class="swiper-slide">
+                              <div class="brand-item-4">
+                                <img
+                                  src="assets/imgs/brand/dabomb.png"
+                                  alt="image"
+                                />
+                              </div>
+                            </div>
+                            <div class="swiper-slide">
+                              <div class="brand-item-4">
+                                <img
+                                  src="assets/imgs/brand/kadji.png"
+                                  alt="image"
+                                />
+                              </div>
+                            </div>
+                            <div class="swiper-slide">
+                              <div class="brand-item-4">
+                                <img
+                                  src="assets/imgs/brand/well-fed.png"
+                                  alt="image"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- hero area end  -->
+
+          <!-- text slider area start  -->
+          <div class="text-slider-area-2">
+            <div class="text-slider-box">
+              <div class="text-slider fade-anim">
+                <div class="swiper text-slider-active-2">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="text-slider-item">
+                        <h2 class="title">
+                          <span class="icon">//</span>Where Artificial
+                          Intelligence Meets Bold Creativity<span class="icon"
+                            >//</span
+                          >
+                          Empowering Brands Through Intelligent Design
+                        </h2>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="text-slider-item">
+                        <h2 class="title">
+                          <span class="icon">//</span>Where Artificial
+                          Intelligence Meets Bold Creativity<span class="icon"
+                            >//</span
+                          >Empowering Brands Through Intelligent Design
+                        </h2>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="text-slider-item">
+                        <h2 class="title">
+                          <span class="icon">//</span>Where Artificial
+                          Intelligence Meets Bold Creativity<span class="icon"
+                            >//</span
+                          >Empowering Brands Through Intelligent Design
+                        </h2>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="text-slider-item">
+                        <h2 class="title">
+                          <span class="icon">//</span>Where Artificial
+                          Intelligence Meets Bold Creativity<span class="icon"
+                            >//</span
+                          >Empowering Brands Through Intelligent Design
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- text slider area end -->
+
+          <!-- about area start  -->
+          <section class="about-area-4" id="about-us">
+            <div class="container">
+              <div class="about-area-4-inner section-spacing">
+                <div class="section-content-wrapper">
+                  <div class="" data-direction="left">
+                    <img src="/assets/imgs/final-about-image.png" alt="image" />
+                  </div>
+                  <div class="section-content">
+                    <div class="section-title-wrapper fade-anim">
+                      <div class="subtitle-wrapper">
+                        <span class="section-subtitle">About Diwizon</span>
+                      </div>
+                      <div class="title-wrapper">
+                        <h2 class="section-title">
+                          Empowering Businesses with Custom Digital Solutions.
+                        </h2>
+                      </div>
+                    </div>
+                    <div class="text-wrapper fade-anim" data-direction="right">
+                      <p class="text">
+                        At Diwizon, we are committed to empowering businesses by
+                        delivering custom digital solutions tailored to their
+                        unique needs. Our expertise spans creating optimised
+                        websites, efficient software, intuitive mobile apps, and
+                        effective eCommerce platforms that enhance productivity,
+                        streamline processes, and boost revenue.
+                      </p>
+                      <p class="text">
+                        In addition to these core services, Diwizon also focuses
+                        on developing futuristic products such as IoT-enabled EV
+                        charging station apps, site management software for
+                        interior design firms, and much more. Constantly
+                        innovating to stay ahead of the curve and drive
+                        meaningful impact.
+                      </p>
+                    </div>
+                    <div class="btn-wrapper fade-anim" data-direction="right">
+                      <div class="t-btn-group">
+                        <a class="t-btn t-btn-circle" href="#services">
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a class="t-btn t-btn-primary" href="#services"
+                          >Explore Services</a
+                        >
+                        <a class="t-btn t-btn-circle" href="#services">
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- about area end  -->
+
+          <!-- services area start  -->
+          <div class="service-area-4" id="services">
+            <div class="service-area-4-inner section-spacing">
+              <div class="container">
+                <div class="section-header">
+                  <div class="section-title-wrapper fade-anim">
+                    <div class="subtitle-wrapper">
+                      <span class="section-subtitle">Our Solutions</span>
+                    </div>
+                    <div class="title-wrapper">
+                      <h2 class="section-title">Our Core Services</h2>
+                    </div>
+                  </div>
+                  <div class="btn-wrapper fade-anim">
+                    <div class="t-btn-group">
+                      <a class="t-btn t-btn-circle portfolioBtn" href="#">
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </a>
+                      <a class="t-btn t-btn-primary portfolioBtn" href="#"
+                        >Portfolio</a
+                      >
+                      <a class="t-btn t-btn-circle portfolioBtn" href="#">
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="services-wrapper-box fade-anim">
+                <div class="container desktop-view">
+                  <div class="services-wrapper">
+                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                      <li class="nav-item" role="presentation">
+                        <div
+                          class="nav-link active"
+                          id="pills-home-tab"
+                          data-bs-toggle="pill"
+                          data-bs-target="#pills-home"
+                          role="tab"
+                          aria-controls="pills-home"
+                          aria-selected="true"
+                        >
+                          <div class="service-name">
+                            <h2 class="title">Innovative Apps</h2>
+                            <!-- <p class="text">34 Projects Available</p> -->
+                          </div>
+                        </div>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <div
+                          class="nav-link"
+                          id="pills-profile-tab"
+                          data-bs-toggle="pill"
+                          data-bs-target="#pills-profile"
+                          role="tab"
+                          aria-controls="pills-profile"
+                          aria-selected="false"
+                        >
+                          <div class="service-name">
+                            <h2 class="title">Custom Softwares</h2>
+                            <!-- <p class="text">41 Projects Available</p> -->
+                          </div>
+                        </div>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <div
+                          class="nav-link"
+                          id="pills-contact-tab"
+                          data-bs-toggle="pill"
+                          data-bs-target="#pills-contact"
+                          role="tab"
+                          aria-controls="pills-contact"
+                          aria-selected="false"
+                        >
+                          <div class="service-name">
+                            <h2 class="title">Scalable eCommerce</h2>
+                            <!-- <p class="text">28 Projects Available</p> -->
+                          </div>
+                        </div>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <div
+                          class="nav-link"
+                          id="pills-disabled-tab"
+                          data-bs-toggle="pill"
+                          data-bs-target="#pills-disabled"
+                          role="tab"
+                          aria-controls="pills-disabled"
+                          aria-selected="false"
+                        >
+                          <div class="service-name">
+                            <h2 class="title">Impactful Websites</h2>
+                            <!-- <p class="text">69 Projects Available</p> -->
+                          </div>
+                        </div>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <div
+                          class="nav-link"
+                          id="pills-Strategic-tab"
+                          data-bs-toggle="pill"
+                          data-bs-target="#pills-Strategic"
+                          role="tab"
+                          aria-controls="pills-Strategic"
+                          aria-selected="false"
+                        >
+                          <div class="service-name">
+                            <h2 class="title">Strategic SEO</h2>
+                            <!-- <p class="text">69 Projects Available</p> -->
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                      <div
+                        class="tab-pane fade show active"
+                        id="pills-home"
+                        role="tabpanel"
+                        aria-labelledby="pills-home-tab"
+                        tabindex="0"
+                      >
+                        <div class="service-box-4">
+                          <div class="thumb">
+                            <!-- <div class="meta">20 Projects Done</div> -->
+                            <img
+                              src="/assets/imgs/app-banner.png"
+                              alt="image"
+                            />
+                          </div>
+                          <div class="content">
+                            <h3 class="title">Innovative Apps</h3>
+                            <p class="text">
+                              Our team of AI experts, data scientists, and
+                              creative technologists work collaboratively to
+                              develop customized AI models that solve complex
+                              challenges, streamline operations, and enhance
+                              user experiences.
+                            </p>
+                            <div class="t-btn-group">
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                              <a
+                                class="t-btn t-btn-primary"
+                                href="service-details.html"
+                                >View Details</a
+                              >
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="tab-pane fade"
+                        id="pills-profile"
+                        role="tabpanel"
+                        aria-labelledby="pills-profile-tab"
+                        tabindex="0"
+                      >
+                        <div class="service-box-4">
+                          <div class="thumb">
+                            <!-- <div class="meta">28 Projects Done</div> -->
+                            <img
+                              src="/assets/imgs/software-banner.png"
+                              alt="image"
+                            />
+                          </div>
+                          <div class="content">
+                            <h3 class="title">Custom Softwares</h3>
+                            <p class="text">
+                              Artificial Intelligence (AI) chatbots and virtual
+                              assistants have now widely revolutionize how
+                              businesses interact with customers and streamline
+                              operations.
+                            </p>
+                            <div class="t-btn-group">
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                              <a
+                                class="t-btn t-btn-primary"
+                                href="service-details.html"
+                                >View Details</a
+                              >
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="tab-pane fade"
+                        id="pills-contact"
+                        role="tabpanel"
+                        aria-labelledby="pills-contact-tab"
+                        tabindex="0"
+                      >
+                        <div class="service-box-4">
+                          <div class="thumb">
+                            <!-- <div class="meta">18 Projects Done</div> -->
+                            <img
+                              src="/assets/imgs/ecommerce-banner.png"
+                              alt="image"
+                            />
+                          </div>
+                          <div class="content">
+                            <h3 class="title">Scalable eCommerce</h3>
+                            <p class="text">
+                              Predictive AI modeling leverages advanced
+                              algorithms and machine learning techniques to
+                              analyze historical data, identify patterns, and
+                              forecast future outcomes
+                            </p>
+                            <div class="t-btn-group">
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                              <a
+                                class="t-btn t-btn-primary"
+                                href="service-details.html"
+                                >View Details</a
+                              >
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="tab-pane fade"
+                        id="pills-disabled"
+                        role="tabpanel"
+                        aria-labelledby="pills-disabled-tab"
+                        tabindex="0"
+                      >
+                        <div class="service-box-4">
+                          <div class="thumb">
+                            <!-- <div class="meta">39 Projects Done</div> -->
+                            <img
+                              src="/assets/imgs/website-banner.png"
+                              alt="image"
+                            />
+                          </div>
+                          <div class="content">
+                            <h3 class="title">Impactful Websites</h3>
+                            <p class="text">
+                              AI is transforming the field of UX/UI design,
+                              enabling designers to create user interfaces and
+                              experiences that are not only visually appealing
+                              but also highly intuitive and personalized.
+                            </p>
+                            <div class="t-btn-group">
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                              <a
+                                class="t-btn t-btn-primary"
+                                href="service-details.html"
+                                >View Details</a
+                              >
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="tab-pane fade"
+                        id="pills-Strategic"
+                        role="tabpanel"
+                        aria-labelledby="pills-Strategic-tab"
+                        tabindex="0"
+                      >
+                        <div class="service-box-4">
+                          <div class="thumb">
+                            <!-- <div class="meta">39 Projects Done</div> -->
+                            <img src="/assets/imgs/seo-image.png" alt="image" />
+                          </div>
+                          <div class="content">
+                            <h3 class="title">Strategic SEO</h3>
+                            <p class="text">
+                              Our SEO specialists combine data-driven insights,
+                              keyword strategy, and content optimization to
+                              enhance online visibility, attract the right
+                              audience, and drive sustainable organic growth for
+                              your brand.
+                            </p>
+                            <div class="t-btn-group">
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                              <a
+                                class="t-btn t-btn-primary"
+                                href="service-details.html"
+                                >View Details</a
+                              >
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container mobile-view">
+                  <div class="swiper servicesSwiper">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <div class="service-box-4">
+                          <div class="thumb">
+                            <div class="meta">20 Projects Done</div>
+                            <img
+                              src="/assets/imgs/app-banner.png"
+                              alt="image"
+                            />
+                          </div>
+                          <div class="content">
+                            <h3 class="title">Innovative Apps</h3>
+                            <p class="text">
+                              Our team of AI experts, data scientists, and
+                              creative technologists work collaboratively to
+                              develop customized AI models that solve complex
+                              challenges, streamline operations, and enhance
+                              user experiences.
+                            </p>
+                            <div class="t-btn-group">
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                              <a
+                                class="t-btn t-btn-primary"
+                                href="service-details.html"
+                                >View Details</a
+                              >
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="swiper-slide">
+                        <div class="service-box-4">
+                          <div class="thumb">
+                            <!-- <div class="meta">28 Projects Done</div> -->
+                            <img
+                              src="/assets/imgs/software-banner.png"
+                              alt="image"
+                            />
+                          </div>
+                          <div class="content">
+                            <h3 class="title">Custom Softwares</h3>
+                            <p class="text">
+                              Artificial Intelligence (AI) chatbots and virtual
+                              assistants have now widely revolutionize how
+                              businesses interact with customers and streamline
+                              operations.
+                            </p>
+                            <div class="t-btn-group">
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                              <a
+                                class="t-btn t-btn-primary"
+                                href="service-details.html"
+                                >View Details</a
+                              >
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="swiper-slide">
+                        <div class="service-box-4">
+                          <div class="thumb">
+                            <!-- <div class="meta">18 Projects Done</div> -->
+                            <img
+                              src="/assets/imgs/ecommerce-banner.png"
+                              alt="image"
+                            />
+                          </div>
+                          <div class="content">
+                            <h3 class="title">Scalable eCommerce</h3>
+                            <p class="text">
+                              Predictive AI modeling leverages advanced
+                              algorithms and machine learning techniques to
+                              analyze historical data, identify patterns, and
+                              forecast future outcomes
+                            </p>
+                            <div class="t-btn-group">
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                              <a
+                                class="t-btn t-btn-primary"
+                                href="service-details.html"
+                                >View Details</a
+                              >
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="swiper-slide">
+                        <div class="service-box-4">
+                          <div class="thumb">
+                            <div class="meta">39 Projects Done</div>
+                            <img
+                              src="/assets/imgs/website-banner.png"
+                              alt="image"
+                            />
+                          </div>
+                          <div class="content">
+                            <h3 class="title">Impactful Websites</h3>
+                            <p class="text">
+                              AI is transforming the field of UX/UI design,
+                              enabling designers to create user interfaces and
+                              experiences that are not only visually appealing
+                              but also highly intuitive and personalized.
+                            </p>
+                            <div class="t-btn-group">
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                              <a
+                                class="t-btn t-btn-primary"
+                                href="service-details.html"
+                                >View Details</a
+                              >
+                              <a
+                                class="t-btn t-btn-circle"
+                                href="service-details.html"
+                              >
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-pagination" style="display: none"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- services area end  -->
+
+          <!-- work area start  -->
+          <section class="work-area-4" id="recent">
+            <div class="container">
+              <div class="work-area-4-inner section-spacing-top">
+                <div class="section-header-wrapper">
+                  <div class="section-header">
+                    <div class="section-title-wrapper fade-anim">
+                      <div class="subtitle-wrapper">
+                        <span class="section-subtitle">Explore More</span>
+                      </div>
+                      <div class="title-wrapper">
+                        <h2 class="section-title">
+                          Portfolio of AI Excellence
+                        </h2>
+                      </div>
+                    </div>
+                    <div class="btn-wrapper fade-anim">
+                      <div class="t-btn-group">
+                        <a class="t-btn t-btn-circle portfolioBtn" href="#">
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a class="t-btn t-btn-primary portfolioBtn" href="#"
+                          >Portfolio</a
+                        >
+                        <a class="t-btn t-btn-circle portfolioBtn" href="#">
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="completed-projects move-anim">
+                    <span class="number">100+</span>
+                    <p class="text">Completed Projects</p>
+                  </div>
+                </div>
+                <div class="desktop-view">
+                  <div class="works-wrapper-box fade-anim">
+                    <div class="works-wrapper">
+                      <div class="work-box-4 work-panel">
+                        <div class="thumb">
+                          <div class="meta">
+                            <span class="tag">EV Charging App</span>
+                            <span class="tag">IoT Enabled Mobile App</span>
+                          </div>
+                          <img
+                            src="assets/imgs/project/go-charge-project.png"
+                            alt="image"
+                          />
+                        </div>
+                        <div class="content-wrapper">
+                          <div class="content">
+                            <p class="text">Go Charge</p>
+                            <h3 class="title">
+                              Mobile App for Charging Electric Vehicle
+                            </h3>
+                          </div>
+                          <div class="t-btn-group">
+                            <a
+                              class="t-btn t-btn-circle"
+                              href="gocharge-detail.html"
+                            >
+                              <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a
+                              class="t-btn t-btn-primary"
+                              href="gocharge-detail.html"
+                              >Full Project</a
+                            >
+                            <a
+                              class="t-btn t-btn-circle"
+                              href="gocharge-detail.html"
+                            >
+                              <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="work-box-4 work-panel">
+                        <div class="thumb">
+                          <div class="meta">
+                            <span class="tag">Laundry Management App</span>
+                            <span class="tag">Laundry Automation</span>
+                          </div>
+                          <img
+                            src="assets/imgs/project/laundry-project.png"
+                            alt="image"
+                          />
+                        </div>
+                        <div class="content-wrapper">
+                          <div class="content">
+                            <p class="text">Parul University</p>
+                            <h3 class="title">
+                              Mobile App for Laundry Management
+                            </h3>
+                          </div>
+                          <div class="t-btn-group">
+                            <a
+                              class="t-btn t-btn-circle"
+                              href="portfolio-details.html"
+                            >
+                              <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a
+                              class="t-btn t-btn-primary"
+                              href="portfolio-details.html"
+                              >Full Project</a
+                            >
+                            <a
+                              class="t-btn t-btn-circle"
+                              href="portfolio-details.html"
+                            >
+                              <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="work-box-4 work-panel">
+                        <div class="thumb">
+                          <div class="meta">
+                            <span class="tag">Society Management App</span>
+                            <span class="tag">Assistant</span>
+                          </div>
+                          <img
+                            src="assets/imgs/hero/sample-3.png"
+                            alt="image"
+                          />
+                        </div>
+                        <div class="content-wrapper">
+                          <div class="content">
+                            <p class="text">CP Associates</p>
+                            <h3 class="title">Task Management App</h3>
+                          </div>
+                          <div class="t-btn-group">
+                            <a
+                              class="t-btn t-btn-circle"
+                              href="portfolio-details.html"
+                            >
+                              <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a
+                              class="t-btn t-btn-primary"
+                              href="portfolio-details.html"
+                              >Full Project</a
+                            >
+                            <a
+                              class="t-btn t-btn-circle"
+                              href="portfolio-details.html"
+                            >
+                              <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="work-box-4 work-panel">
+                        <div class="thumb">
+                          <div class="meta">
+                            <span class="tag">Business</span>
+                            <span class="tag">Assistant</span>
+                          </div>
+                          <img
+                            src="assets/imgs/project/swagat-project.png"
+                            alt="image"
+                          />
+                        </div>
+                        <div class="content-wrapper">
+                          <div class="content">
+                            <p class="text">Swagat Corner</p>
+                            <h3 class="title">Mobile App for Food Delivery</h3>
+                          </div>
+                          <div class="t-btn-group">
+                            <a
+                              class="t-btn t-btn-circle"
+                              href="portfolio-details.html"
+                            >
+                              <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a
+                              class="t-btn t-btn-primary"
+                              href="portfolio-details.html"
+                              >Full Project</a
+                            >
+                            <a
+                              class="t-btn t-btn-circle"
+                              href="portfolio-details.html"
+                            >
+                              <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mobile-view">
+                  <div class="swiper portfolioSwiper">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <div class="work-box-4 work-panel">
+                          <div class="thumb">
+                            <img
+                              src="assets/imgs/hero/sample-3.png"
+                              alt="Go Charge App"
+                            />
+                          </div>
+                          <div class="content-wrapper">
+                            <div class="content">
+                              <p class="text">Go Charge</p>
+                              <h3 class="title">
+                                Mobile App for Charging Electric Vehicle
+                              </h3>
+                            </div>
+                            <div class="t-btn-group">
+                              <a class="t-btn t-btn-circle" href="#">
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                              <a class="t-btn t-btn-primary" href="#"
+                                >Full Project</a
+                              >
+                              <a class="t-btn t-btn-circle" href="#">
+                                <i class="fa-solid fa-external-link"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="swiper-slide">
+                        <div class="work-box-4 work-panel">
+                          <div class="thumb">
+                            <img
+                              src="assets/imgs/hero/sample-3.png"
+                              alt="Laundry App"
+                            />
+                          </div>
+                          <div class="content-wrapper">
+                            <div class="content">
+                              <p class="text">Parul University</p>
+                              <h3 class="title">
+                                Mobile App for Laundry Management
+                              </h3>
+                            </div>
+                            <div class="t-btn-group">
+                              <a class="t-btn t-btn-circle" href="#">
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                              <a class="t-btn t-btn-primary" href="#"
+                                >Full Project</a
+                              >
+                              <a class="t-btn t-btn-circle" href="#">
+                                <i class="fa-solid fa-external-link"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="swiper-slide">
+                        <div class="work-box-4 work-panel">
+                          <div class="thumb">
+                            <img
+                              src="assets/imgs/hero/sample-3.png"
+                              alt="Task Management App"
+                            />
+                          </div>
+                          <div class="content-wrapper">
+                            <div class="content">
+                              <p class="text">CP Associates</p>
+                              <h3 class="title">Task Management App</h3>
+                            </div>
+                            <div class="t-btn-group">
+                              <a class="t-btn t-btn-circle" href="#">
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                              <a class="t-btn t-btn-primary" href="#"
+                                >Full Project</a
+                              >
+                              <a class="t-btn t-btn-circle" href="#">
+                                <i class="fa-solid fa-external-link"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="swiper-slide">
+                        <div class="work-box-4 work-panel">
+                          <div class="thumb">
+                            <img
+                              src="assets/imgs/hero/sample-3.png"
+                              alt="Food Delivery App"
+                            />
+                          </div>
+                          <div class="content-wrapper">
+                            <div class="content">
+                              <p class="text">Swagat Corner</p>
+                              <h3 class="title">
+                                Mobile App for Food Delivery
+                              </h3>
+                            </div>
+                            <div class="t-btn-group">
+                              <a class="t-btn t-btn-circle" href="#">
+                                <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                              <a class="t-btn t-btn-primary" href="#"
+                                >Full Project</a
+                              >
+                              <a class="t-btn t-btn-circle" href="#">
+                                <i class="fa-solid fa-external-link"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-pagination" style="display: none"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- work area end  -->
+
+          <!-- team area start  -->
+          <section class="team-area-4 section-spacing" id="product">
+            <div class="container">
+              <div class="team-area-4-inner">
+                <div class="section-content move-anim">
+                  <div class="section-title-wrapper">
+                    <div class="subtitle-wrapper">
+                      <span class="section-subtitle">Web Design</span>
+                    </div>
+                    <div class="title-wrapper">
+                      <h2 class="section-title">
+                        Websites Designed to Engage, Built to Perform!
+                      </h2>
+                    </div>
+                  </div>
+                  <div class="team-members">
+                    <span class="number">100+</span>
+                    <p class="text">Completed Projects</p>
+                  </div>
+                  <div class="btn-wrapper">
+                    <div class="t-btn-group">
+                      <a class="t-btn t-btn-circle" href="team.html">
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </a>
+                      <a class="t-btn t-btn-primary" href="team.html"
+                        >Portfolio</a
+                      >
+                      <a class="t-btn t-btn-circle" href="team.html">
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="team-wrapper-box desktop-view">
+                  <div class="team-wrapper">
+                    <div
+                      class="team-box-4 fade-anim"
+                      data-direction="right"
+                      data-delay="0.30"
+                    >
+                      <div class="thumb">
+                        <a
+                          href="https://www.cpassociates.co.in/"
+                          target="_blank"
+                        >
+                          <img src="assets/imgs/tnf.png" alt="image"
+                        /></a>
+                      </div>
+                      <div class="content">
+                        <h3 class="name">CP Associates</h3>
+                        <span class="post">Interiors & Lifestyle Studio</span>
+                      </div>
+                      <div class="social-links-wrapper">
+                        <div class="links-holder">
+                          <i class="fa-solid fa-eye"></i>
+                          <div class="social-links">
+                            <a
+                              href="https://www.cpassociates.co.in/"
+                              target="_blank"
+                              >View</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="team-box-4 fade-anim"
+                      data-direction="right"
+                      data-delay="0.45"
+                    >
+                      <div class="thumb">
+                        <img src="assets/imgs/tnf.png" alt="image" />
+                      </div>
+                      <div class="content">
+                        <h3 class="name">Kadji Care</h3>
+                        <span class="post">Care & Rehabilitation Facility</span>
+                      </div>
+                      <div class="social-links-wrapper">
+                        <div class="links-holder">
+                          <i class="fa-solid fa-eye"></i>
+                          <div class="social-links">
+                            <a
+                              href="https://www.cpassociates.co.in/"
+                              target="_blank"
+                              >View</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="social-links-wrapper">
+                        <div class="links-holder">
+                          <i class="fa-solid fa-share-nodes"></i>
+                          <div class="social-links">
+                            <a href="#"
+                              ><i class="fa-brands fa-instagram"></i
+                            ></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"
+                              ><i class="fa-brands fa-facebook-f"></i
+                            ></a>
+                            <a href="#"
+                              ><i class="fa-brands fa-linkedin-in"></i
+                            ></a>
+                          </div>
+                        </div>
+                      </div> -->
+                    </div>
+                    <div
+                      class="team-box-4 fade-anim"
+                      data-direction="right"
+                      data-delay="0.30"
+                    >
+                      <div class="thumb">
+                        <img src="assets/imgs/tnf.png" alt="image" />
+                      </div>
+                      <div class="content">
+                        <h3 class="name">Leocor Fitness</h3>
+                        <span class="post">Fitness & Wellness Center</span>
+                      </div>
+                      <div class="social-links-wrapper">
+                        <div class="links-holder">
+                          <i class="fa-solid fa-eye"></i>
+                          <div class="social-links">
+                            <a
+                              href="https://www.cpassociates.co.in/"
+                              target="_blank"
+                              >View</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="social-links-wrapper">
+                        <div class="links-holder">
+                          <i class="fa-solid fa-share-nodes"></i>
+                          <div class="social-links">
+                            <a href="#"
+                              ><i class="fa-brands fa-instagram"></i
+                            ></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"
+                              ><i class="fa-brands fa-facebook-f"></i
+                            ></a>
+                            <a href="#"
+                              ><i class="fa-brands fa-linkedin-in"></i
+                            ></a>
+                          </div>
+                        </div>
+                      </div> -->
+                    </div>
+                    <div
+                      class="team-box-4 fade-anim"
+                      data-direction="right"
+                      data-delay="0.45"
+                    >
+                      <div class="thumb">
+                        <img src="assets/imgs/tnf.png" alt="image" />
+                      </div>
+                      <div class="content">
+                        <h3 class="name">Luxor Hospital</h3>
+                        <span class="post">Plastic & Aesthetic Hospital</span>
+                      </div>
+                      <div class="social-links-wrapper">
+                        <div class="links-holder">
+                          <i class="fa-solid fa-eye"></i>
+                          <div class="social-links">
+                            <a
+                              href="https://www.cpassociates.co.in/"
+                              target="_blank"
+                              >View</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="social-links-wrapper">
+                        <div class="links-holder">
+                          <i class="fa-solid fa-share-nodes"></i>
+                          <div class="social-links">
+                            <a href="#"
+                              ><i class="fa-brands fa-instagram"></i
+                            ></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"
+                              ><i class="fa-brands fa-facebook-f"></i
+                            ></a>
+                            <a href="#"
+                              ><i class="fa-brands fa-linkedin-in"></i
+                            ></a>
+                          </div>
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mobile-view">
+              <div class="swiper designsSwiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div
+                      class="team-box-4 fade-anim"
+                      data-direction="right"
+                      data-delay="0.30"
+                    >
+                      <div class="thumb">
+                        <img
+                          src="assets/imgs/hero/website-sample-5.png"
+                          alt="image"
+                        />
+                      </div>
+                      <div class="content">
+                        <h3 class="name">CP Associates</h3>
+                        <span class="post">Interiors & Lifestyle Studio</span>
+                      </div>
+                      <div class="social-links-wrapper">
+                        <div class="links-holder">
+                          <i class="fa-solid fa-eye"></i>
+                          <div class="social-links">
+                            <a
+                              href="https://www.cpassociates.co.in/"
+                              target="_blank"
+                              >View</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="social-links-wrapper">
+                        <div class="links-holder">
+                          <i class="fa-solid fa-share-nodes"></i>
+                          <div class="social-links">
+                            <a href="#"
+                              ><i class="fa-brands fa-instagram"></i
+                            ></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"
+                              ><i class="fa-brands fa-facebook-f"></i
+                            ></a>
+                            <a href="#"
+                              ><i class="fa-brands fa-linkedin-in"></i
+                            ></a>
+                          </div>
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div
+                      class="team-box-4 fade-anim"
+                      data-direction="right"
+                      data-delay="0.45"
+                    >
+                      <div class="thumb">
+                        <img
+                          src="assets/imgs/hero/website-sample-2.png"
+                          alt="image"
+                        />
+                      </div>
+                      <div class="content">
+                        <h3 class="name">Kadji Care</h3>
+                        <span class="post">Care & Rehabilitation Facility</span>
+                      </div>
+                      <div class="social-links-wrapper">
+                        <div class="links-holder">
+                          <i class="fa-solid fa-eye"></i>
+                          <div class="social-links">
+                            <a
+                              href="https://www.cpassociates.co.in/"
+                              target="_blank"
+                              >View</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="social-links-wrapper">
+                        <div class="links-holder">
+                          <i class="fa-solid fa-share-nodes"></i>
+                          <div class="social-links">
+                            <a href="#"
+                              ><i class="fa-brands fa-instagram"></i
+                            ></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"
+                              ><i class="fa-brands fa-facebook-f"></i
+                            ></a>
+                            <a href="#"
+                              ><i class="fa-brands fa-linkedin-in"></i
+                            ></a>
+                          </div>
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div
+                      class="team-box-4 fade-anim"
+                      data-direction="right"
+                      data-delay="0.30"
+                    >
+                      <div class="thumb">
+                        <img
+                          src="assets/imgs/hero/website-sample-6.png"
+                          alt="image"
+                        />
+                      </div>
+                      <div class="content">
+                        <h3 class="name">Jordan Williams</h3>
+                        <span class="post">(AI Ethics Officer)</span>
+                      </div>
+                      <div class="social-links-wrapper">
+                        <div class="links-holder">
+                          <i class="fa-solid fa-eye"></i>
+                          <div class="social-links">
+                            <a
+                              href="https://www.cpassociates.co.in/"
+                              target="_blank"
+                              >View</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="social-links-wrapper">
+                        <div class="links-holder">
+                          <i class="fa-solid fa-share-nodes"></i>
+                          <div class="social-links">
+                            <a href="#"
+                              ><i class="fa-brands fa-instagram"></i
+                            ></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"
+                              ><i class="fa-brands fa-facebook-f"></i
+                            ></a>
+                            <a href="#"
+                              ><i class="fa-brands fa-linkedin-in"></i
+                            ></a>
+                          </div>
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div
+                      class="team-box-4 fade-anim"
+                      data-direction="right"
+                      data-delay="0.45"
+                    >
+                      <div class="thumb">
+                        <img
+                          src="assets/imgs/hero/website-sample-4.png"
+                          alt="image"
+                        />
+                      </div>
+                      <div class="content">
+                        <h3 class="name">Luxor Hospital</h3>
+                        <span class="post">Plastic & Aesthetic Hospital</span>
+                      </div>
+                      <div class="social-links-wrapper">
+                        <div class="links-holder">
+                          <i class="fa-solid fa-eye"></i>
+                          <div class="social-links">
+                            <a
+                              href="https://www.cpassociates.co.in/"
+                              target="_blank"
+                              >View</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="social-links-wrapper">
+                        <div class="links-holder">
+                          <i class="fa-solid fa-share-nodes"></i>
+                          <div class="social-links">
+                            <a href="#"
+                              ><i class="fa-brands fa-instagram"></i
+                            ></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"
+                              ><i class="fa-brands fa-facebook-f"></i
+                            ></a>
+                            <a href="#"
+                              ><i class="fa-brands fa-linkedin-in"></i
+                            ></a>
+                          </div>
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-pagination" style="display: none"></div>
+              </div>
+            </div>
+          </section>
+          <!-- team area end  -->
+
+          <!-- process area start  -->
+          <section class="process-area-4">
+            <div class="container">
+              <div class="process-area-4-inner">
+                <div class="section-content section-spacing">
+                  <div class="section-title-wrapper fade-anim">
+                    <div class="subtitle-wrapper">
+                      <span class="section-subtitle">WORK PROCESS</span>
+                    </div>
+                    <div class="title-wrapper">
+                      <h2 class="section-title">How Diwizon Innovate</h2>
+                    </div>
+                  </div>
+                  <div class="accordion-wrapper-4 accordion-active">
+                    <div class="accordion" id="accordionExample">
+                      <div class="accordion-item active fade-anim">
+                        <h2 class="accordion-header">
+                          <button
+                            class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne"
+                            aria-expanded="true"
+                            aria-controls="collapseOne"
+                          >
+                            Discovery & Consultation
+                          </button>
+                        </h2>
+                        <div
+                          id="collapseOne"
+                          class="accordion-collapse collapse show"
+                          data-bs-parent="#accordionExample"
+                        >
+                          <div class="accordion-body">
+                            We begin by understanding your business
+                            requirements, challenges, and long-term vision. Our
+                            team works closely with you to explore how software,
+                            mobile solutions, and AI can create the most value,
+                            gathering the right insights to shape a tailored
+                            approach.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item fade-anim">
+                        <h2 class="accordion-header">
+                          <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo"
+                            aria-expanded="false"
+                            aria-controls="collapseTwo"
+                          >
+                            Solution Design & Ideation
+                          </button>
+                        </h2>
+                        <div
+                          id="collapseTwo"
+                          class="accordion-collapse collapse"
+                          data-bs-parent="#accordionExample"
+                        >
+                          <div class="accordion-body">
+                            We translate your ideas into structured strategies
+                            by designing intelligent, user-focused solutions.
+                            Through AI-driven insights and collaborative
+                            ideation, we craft a clear roadmap that balances
+                            innovation, practicality, and alignment with your
+                            business goals.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item fade-anim">
+                        <h2 class="accordion-header">
+                          <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree"
+                            aria-expanded="false"
+                            aria-controls="collapseThree"
+                          >
+                            Development & Integration
+                          </button>
+                        </h2>
+                        <div
+                          id="collapseThree"
+                          class="accordion-collapse collapse"
+                          data-bs-parent="#accordionExample"
+                        >
+                          <div class="accordion-body">
+                            We bring your vision to life by developing scalable
+                            software and mobile applications enhanced with AI.
+                            Our experts ensure smooth integration with your
+                            existing systems, delivering reliable, future-ready
+                            solutions that fit naturally into your operations.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="section-thumb fade-anim" data-direction="right">
+                  <video loop muted autoplay playsinline>
+                    <source
+                      src="https://feux.wprealizer.com/wp-content/uploads/2025/04/how_we_work.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- process area end -->
+
+          <!-- testimonial area start  -->
+          <section class="testimonial-area-4">
+            <div class="container">
+              <div class="testimonial-area-4-inner section-spacing-top">
+                <div class="section-content-wrapper">
+                  <div
+                    class="section-content fade-anim"
+                    data-direction="left"
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                      flex-wrap: wrap;
+                    "
+                  >
+                    <div class="section-title-wrapper">
+                      <div class="subtitle-wrapper">
+                        <span class="section-subtitle">TESTIMONIALS</span>
+                      </div>
+                      <div class="title-wrapper">
+                        <h2 class="section-title" style="max-width: 550px">
+                          The Impact of Our Digital Solutions
+                        </h2>
+                      </div>
+                    </div>
+                    <div class="testimonial-reviews">
+                      <span class="number">50+</span>
+                      <p class="text">
+                        <span class="ratings">
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-solid fa-star"></i>
+                        </span>
+                        (4.9 rating based reviews)
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="testimonials-container">
+            <div class="marquee-wrapper row-1">
+              <div class="marquee-content">
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-1">JA</div>
+                    <div class="user-info">
+                      <div class="user-name">Jayesh Agrawal</div>
+                      <div class="user-handle">Variety</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    They delivered a Shopify store that’s sleek, optimized, and
+                    effective. It makes running our business much easier. 🚀
+                  </p>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-2">CN</div>
+                    <div class="user-info">
+                      <div class="user-name">Chandresh Nathani</div>
+                      <div class="user-handle">The Bomb</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    The eCommerce platform runs perfectly.Checkout is secure,
+                    products are simple to manage, and customers enjoy the
+                    experience.💳
+                  </p>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-3">BS</div>
+                    <div class="user-info">
+                      <div class="user-name">Bakul Shah</div>
+                      <div class="user-handle">Go Charge</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    Exactly what we needed, a smooth, intuitive mobile app. The
+                    design stands out, and our users are very happy. ✨
+                  </p>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-4">DP</div>
+                    <div class="user-info">
+                      <div class="user-name">Darshan Patel</div>
+                      <div class="user-handle">Arris Group</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    Great software solution, scalable, simple to use, and
+                    integrates well with our tools. It saves us time every day.
+                    🔧
+                  </p>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-1">SP</div>
+                    <div class="user-info">
+                      <div class="user-name">Samir Patel</div>
+                      <div class="user-handle">Leocor</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    Clean design, fast loading, and easy management. The new
+                    website truly improved how we present
+                    ourselves to customers. ⚡
+                  </p>
+                </div>
+              </div>
+              <div class="marquee-content">
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-1">JA</div>
+                    <div class="user-info">
+                      <div class="user-name">Jayesh Agrawal</div>
+                      <div class="user-handle">Variety</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    They delivered a Shopify store that’s sleek, optimized, and
+                    effective. It makes running our business much easier. 🚀
+                  </p>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-2">CN</div>
+                    <div class="user-info">
+                      <div class="user-name">Chandresh Nathani</div>
+                      <div class="user-handle">The Bomb</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    The eCommerce platform runs perfectly.Checkout is secure,
+                    products are simple to manage, and customers enjoy the
+                    experience.💳
+                  </p>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-3">BS</div>
+                    <div class="user-info">
+                      <div class="user-name">Bakul Shah</div>
+                      <div class="user-handle">Go Charge</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    Exactly what we needed, a smooth, intuitive mobile app. The
+                    design stands out, and our users are very happy. ✨
+                  </p>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-4">DP</div>
+                    <div class="user-info">
+                      <div class="user-name">Darshan Patel</div>
+                      <div class="user-handle">Arris Group</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    Great software solution, scalable, simple to use, and
+                    integrates well with our tools. It saves us time every day.
+                    🔧
+                  </p>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-1">SP</div>
+                    <div class="user-info">
+                      <div class="user-name">Samir Patel</div>
+                      <div class="user-handle">Leocor</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    Clean design, fast loading, and easy management. The new
+                    website truly improved how we present
+                    ourselves to customers. ⚡
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Second Row -->
+            <div class="marquee-wrapper row-2">
+              <div class="marquee-content">
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-5">CP</div>
+                    <div class="user-info">
+                      <div class="user-name">Chirag Prajapati</div>
+                      <div class="user-handle">CP Associates</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    The website looks modern and works smoothly. Clients love
+                    the design, and it has already boosted our online
+                    visibility. 🌐
+                  </p>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-6">NC</div>
+                    <div class="user-info">
+                      <div class="user-name">Nikunj Chavda</div>
+                      <div class="user-handle">Kadji Care</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    The custom software fits our workflow perfectly. It’s
+                    reliable, user-friendly, and has made our team far more
+                    efficient. 💻
+                  </p>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-7">RB</div>
+                    <div class="user-info">
+                      <div class="user-name">Rakesh Bhatti</div>
+                      <div class="user-handle">FCI</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    The app is sleek, fast, and easy to use. Customers love it,
+                    and it works flawlessly on iOS and Android. 📱
+                  </p>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-5">DY</div>
+                    <div class="user-info">
+                      <div class="user-name">Dhiraj Yadav</div>
+                      <div class="user-handle">Frenyz</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    Our eCommerce site is easy to manage and customer-friendly.
+                    Sales have grown consistently since we launched it. 🛒
+                  </p>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-6">PS</div>
+                    <div class="user-info">
+                      <div class="user-name">Paresh Shewani</div>
+                      <div class="user-handle">Sequinze</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    Our Shopify store looks professional and performs great.
+                    Managing products and orders is now simple and hassle-free.
+                    🏬
+                  </p>
+                </div>
+              </div>
+              <div class="marquee-content">
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-5">CP</div>
+                    <div class="user-info">
+                      <div class="user-name">Chirag Prajapati</div>
+                      <div class="user-handle">CP Associates</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    The website looks modern and works smoothly. Clients love
+                    the design, and it has already boosted our online
+                    visibility. 🌐
+                  </p>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-6">NC</div>
+                    <div class="user-info">
+                      <div class="user-name">Nikunj Chavda</div>
+                      <div class="user-handle">Kadji Care</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    The custom software fits our workflow perfectly. It’s
+                    reliable, user-friendly, and has made our team far more
+                    efficient. 💻
+                  </p>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-7">RB</div>
+                    <div class="user-info">
+                      <div class="user-name">Rakesh Bhatti</div>
+                      <div class="user-handle">FCI</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    The app is sleek, fast, and easy to use. Customers love it,
+                    and it works flawlessly on iOS and Android. 📱
+                  </p>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-5">DY</div>
+                    <div class="user-info">
+                      <div class="user-name">Dhiraj Yadav</div>
+                      <div class="user-handle">Frenyz</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    Our eCommerce site is easy to manage and customer-friendly.
+                    Sales have grown consistently since we launched it. 🛒
+                  </p>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <div class="avatar avatar-6">PS</div>
+                    <div class="user-info">
+                      <div class="user-name">Paresh Shewani</div>
+                      <div class="user-handle">Sequinze</div>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    Our Shopify store looks professional and performs great.
+                    Managing products and orders is now simple and hassle-free.
+                    🏬
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- testimonial area end  -->
+
+          <!-- blog area start  -->
+          <div class="blog-area-4" id="blogs" style="display: none">
+            <div class="container">
+              <div class="blog-area-4-inner section-spacing">
+                <div class="section-header">
+                  <div class="section-title-wrapper fade-anim">
+                    <div class="subtitle-wrapper">
+                      <span class="section-subtitle">BLOGS & NEWS</span>
+                    </div>
+                    <div class="title-wrapper">
+                      <h2 class="section-title">Insights & Stories</h2>
+                    </div>
+                  </div>
+                  <div class="btn-wrapper fade-anim">
+                    <div class="t-btn-group">
+                      <a class="t-btn t-btn-circle" href="blog-grid.html">
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </a>
+                      <a class="t-btn t-btn-primary" href="blog-grid.html"
+                        >Explore More</a
+                      >
+                      <a class="t-btn t-btn-circle" href="blog-grid.html">
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="blogs-wrapper-box">
+                  <div class="blogs-wrapper">
+                    <article
+                      class="blog-4 fade-anim"
+                      data-delay="0.30"
+                      data-direction="right"
+                    >
+                      <div class="thumb">
+                        <a href="blog-details.html"
+                          ><img
+                            src="assets/imgs/blog/blog-10.webp"
+                            alt="image"
+                          />
+                        </a>
+                      </div>
+                      <div class="content">
+                        <div class="meta">
+                          <span class="tag">Marketing</span>
+                          <span class="date">October 3, 2024</span>
+                        </div>
+                        <h2 class="title">
+                          <a href="blog-details.html"
+                            >How AI is Shaping the Future of Brand Strategy</a
+                          >
+                        </h2>
+                      </div>
+                    </article>
+                    <article
+                      class="blog-4 fade-anim"
+                      data-delay="0.45"
+                      data-direction="right"
+                    >
+                      <div class="thumb">
+                        <a href="blog-details.html"
+                          ><img
+                            src="assets/imgs/blog/blog-11.webp"
+                            alt="image"
+                          />
+                        </a>
+                      </div>
+                      <div class="content">
+                        <div class="meta">
+                          <span class="tag">Branding</span>
+                          <span class="date">October 3, 2024</span>
+                        </div>
+                        <h2 class="title">
+                          <a href="blog-details.html"
+                            >Why Every Brand Needs an AI Strategy</a
+                          >
+                        </h2>
+                      </div>
+                    </article>
+                    <article
+                      class="blog-4 fade-anim"
+                      data-delay="0.60"
+                      data-direction="right"
+                    >
+                      <div class="thumb">
+                        <a href="blog-details.html"
+                          ><img
+                            src="assets/imgs/blog/blog-12.webp"
+                            alt="image"
+                          />
+                        </a>
+                      </div>
+                      <div class="content">
+                        <div class="meta">
+                          <span class="tag">Design</span>
+                          <span class="date">October 3, 2024</span>
+                        </div>
+                        <h2 class="title">
+                          <a href="blog-details.html"
+                            >How AI Helps Brands Stay Ahead in Competitive
+                            Markets</a
+                          >
+                        </h2>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- blog area ene  -->
+        </main>
+
+        <!-- footer area start  -->
+        <footer class="footer-area-4" id="footer">
+          <div class="area-bg">
+            <img src="assets/imgs/shape/shape-46.webp" alt="image" />
+          </div>
+          <div class="cta-area-3 fade-anim">
+            <div class="container">
+              <div class="cta-area-3-inner section-spacing-top">
+                <div class="section-header">
+                  <div class="section-title-wrapper">
+                    <div class="title-wrapper">
+                      <h2 class="section-title">Got a Project in Mind?</h2>
+                    </div>
+                  </div>
+                  <div class="btn-wrapper">
+                    <div class="t-btn-group">
+                      <a
+                        class="t-btn t-btn-circle"
+                        href="#footer"
+                        style="background-color: #aff42b"
+                      >
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </a>
+                      <a
+                        class="t-btn t-btn-primary"
+                        href="#footer"
+                        style="background-color: #aff42b"
+                        >Let’s Talk</a
+                      >
+                      <a
+                        class="t-btn t-btn-circle"
+                        href="#footer"
+                        style="background-color: #aff42b"
+                      >
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="social-area">
+            <div class="container">
+              <div class="row area-inner">
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                  <div class="social-wrapper">
+                    <div class="content">
+                      <h3 class="platform">Phone</h3>
+                      <a href="tel:+91 93404 21152" class="link"
+                        >+91 93404 21152</a
+                      >
+                      <br />
+                      <a href="tel:+91 63538 17704" class="link"
+                        >+91 63538 17704</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                  <div class="social-wrapper">
+                    <div class="content">
+                      <h3 class="platform">Email</h3>
+                      <a href="mailto:info@diwizon.com" class="link"
+                        >info@diwizon.com</a
+                      >
+                      <br />
+                      <a href="mailto:support@diwizon.com" class="link"
+                        >support@diwizon.com</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                  <div class="social-wrapper">
+                    <div class="content">
+                      <h3 class="platform">Address</h3>
+                      <a href="https://g.co/kgs/hKaMctD" class="link"
+                        >702, Landmark Prime, Near. Vasna Bhayli Road, Beside
+                        Times Square, Vadodara, Gujarat&nbsp;-&nbsp;390012</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                  <div class="social-wrapper">
+                    <div class="content">
+                      <h3 class="platform">Social Media</h3>
+                      <div class="social-links">
+                        <a
+                          href="https://www.instagram.com/diwizon/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          ><i class="fa-brands fa-instagram"></i
+                        ></a>
+                        <a
+                          href="https://www.linkedin.com/company/diwizon/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          ><i class="fa-brands fa-linkedin-in"></i
+                        ></a>
+                        <a
+                          href="https://www.facebook.com/diwizondynamics/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          ><i class="fa-brands fa-facebook-f"></i
+                        ></a>
+                        <a
+                          href="https://wa.me/919340421152/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          ><i class="fa-brands fa-whatsapp"></i
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="copyright-area">
+            <div class="container">
+              <div class="copyright-area-inner">
+                <div class="copyright-text">
+                  <p class="text">
+                    Powered by <a href="index.html">Diwizon</a>
+                  </p>
+                </div>
+                <div class="right-side">
+                  <a href="#" style="color: #fff">Privacy Policy</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- footer area end  -->
+      </div>
+    </div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/jquery-3.7.1.min.js"></script>
+    <script src="assets/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.magnific-popup.min.js"></script>
+    <script src="assets/vendor/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/counter.js"></script>
+    <script src="assets/vendor/progressbar.js"></script>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/vendor/scrollsmoother.min.js"></script>
+    <script src="assets/vendor/scrolltrigger.min.js"></script>
+    <script src="assets/vendor/splittext.min.js"></script>
+    <script src="assets/vendor/jquery.meanmenu.min.js"></script>
+    <script src="assets/vendor/jquery.nice-select.min.js"></script>
+    <script src="assets/vendor/backtotop.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/form.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.innerWidth < 768) {
+          // Close all accordions
+          document
+            .querySelectorAll(".accordion .accordion-collapse")
+            .forEach((el) => {
+              el.classList.remove("show");
+            });
+
+          // Reset buttons
+          document.querySelectorAll(".accordion-button").forEach((btn) => {
+            btn.classList.add("collapsed");
+            btn.setAttribute("aria-expanded", "false");
+          });
+
+          // Remove 'active' class from accordion items
+          document
+            .querySelectorAll(".accordion .accordion-item")
+            .forEach((item) => {
+              item.classList.remove("active");
+            });
+        }
+
+        document
+          .querySelectorAll(".accordion-item .accordion-header")
+          .forEach((el) => {
+            el.addEventListener("click", function () {
+              document
+                .querySelectorAll(".accordion .accordion-collapse")
+                .forEach((ele) => {
+                  ele.classList.remove("show");
+                });
+
+              // Reset buttons
+              document.querySelectorAll(".accordion-button").forEach((btn) => {
+                btn.classList.add("collapsed");
+                btn.setAttribute("aria-expanded", "false");
+              });
+
+              // Remove 'active' class from accordion items
+              document
+                .querySelectorAll(".accordion .accordion-item")
+                .forEach((item) => {
+                  item.classList.remove("active");
+                });
+            });
+          });
+      });
+    </script>
+    <script>
+      document.querySelectorAll(".marquee-wrapper").forEach((wrapper) => {
+        const contents = wrapper.querySelectorAll(".marquee-content");
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        const pauseAnimation = () => {
+          contents.forEach((content) => {
+            content.style.animationPlayState = "paused";
+          });
+        };
+
+        const resumeAnimation = () => {
+          contents.forEach((content) => {
+            content.style.animationPlayState = "running";
+          });
+        };
+
+        wrapper.addEventListener("mousedown", (e) => {
+          isDown = true;
+          wrapper.classList.add("active");
+          startX = e.pageX - wrapper.offsetLeft;
+          scrollLeft = wrapper.scrollLeft;
+          pauseAnimation();
+        });
+
+        wrapper.addEventListener("mouseleave", () => {
+          isDown = false;
+          wrapper.classList.remove("active");
+          resumeAnimation();
+        });
+
+        wrapper.addEventListener("mouseup", () => {
+          isDown = false;
+          wrapper.classList.remove("active");
+          resumeAnimation();
+        });
+
+        wrapper.addEventListener("mousemove", (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - wrapper.offsetLeft;
+          const walk = (x - startX) * 1.5; // drag speed
+          wrapper.scrollLeft = scrollLeft - walk;
+        });
+
+        // Touch support
+        wrapper.addEventListener("touchstart", (e) => {
+          isDown = true;
+          startX = e.touches[0].pageX - wrapper.offsetLeft;
+          scrollLeft = wrapper.scrollLeft;
+          pauseAnimation();
+        });
+
+        wrapper.addEventListener("touchend", () => {
+          isDown = false;
+          resumeAnimation();
+        });
+
+        wrapper.addEventListener("touchmove", (e) => {
+          if (!isDown) return;
+          const x = e.touches[0].pageX - wrapper.offsetLeft;
+          const walk = (x - startX) * 1.5;
+          wrapper.scrollLeft = scrollLeft - walk;
+        });
+      });
+    </script>
+
+    <script>
+      // Add touch feedback
+      document.querySelectorAll(".t-btn").forEach((btn) => {
+        btn.addEventListener("touchstart", function () {
+          this.style.transform = "scale(0.95)";
+        });
+
+        btn.addEventListener("touchend", function () {
+          this.style.transform = "";
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Check if there’s a section anchor in the URL (e.g. index.html#about-us)
+        const hash = window.location.hash;
+        if (hash) {
+          const target = document.querySelector(hash);
+          if (target) {
+            // Delay ensures content and layout are fully ready before scrolling
+            setTimeout(() => {
+              const headerOffset =
+                document.querySelector("header")?.offsetHeight || 0;
+              const elementPosition =
+                target.getBoundingClientRect().top + window.scrollY;
+              const offsetPosition = elementPosition - headerOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+              });
+            }, 400);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

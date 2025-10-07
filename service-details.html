@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from feux-html.netlify.app/service-details by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Apr 2025 12:43:49 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="At Diwizon, we are committed to empowering businesses by delivering custom digital solutions tailored to their unique needs. Our expertise spans creating optimised websites, efficient software, intuitive mobile apps, and effective eCommerce platforms that enhance productivity, streamline processes, and boost revenue.">
+
+  <title>Diwizon - Empowering Businesses with Custom Digital Solutions.</title>
+
+  <!-- Fav Icon -->
+  <link rel="icon" type="image/x-icon" href="assets/imgs/logo/favicon.png">
+
+
+
+
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/vendor/all.min.css">
+  <link rel="stylesheet" href="assets/vendor/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/vendor/progressbar.css">
+  <link rel="stylesheet" href="assets/vendor/meanmenu.min.css">
+  <link rel="stylesheet" href="assets/vendor/magnific-popup.css">
+  <link rel="stylesheet" href="assets/vendor/animate.min.css">
+  <link rel="stylesheet" href="assets/vendor/nice-select.css">
+
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    /* .menu-item-has-children {
+      position: relative;
+     
+    }
+
+    .dp-menu.card-dropdown {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 16px;
+      background: white;
+      min-width: 700px;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      z-index: 10;
+    }
+
+    .dp-menu.card-dropdown li {
+      width: 300px;
+      list-style: none;
+    }
+
+
+    .dp-menu.card-dropdown a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #000;
+      gap: 12px;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      transition: background 0.2s ease;
+      height: 100%;
+    }
+
+    .dp-menu.card-dropdown a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .dp-menu.card-dropdown img {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .dp-menu.card-dropdown .text-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .dp-menu.card-dropdown .text-info strong {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .dp-menu.card-dropdown .text-info span {
+      font-size: 12px;
+      color: #777;
+    }
+
+    @media only screen and (max-width: 1199px) {
+      .dp-menu.card-dropdown {
+        display: block;
+        min-width: auto;
+      }
+    } */
+    /* Fullscreen overlay */
+    /* Fullscreen overlay */
+    .popup-form {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* dim background */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    /* Hidden by default */
+    .popup-form.hidden {
+      display: none;
+    }
+
+    /* Actual popup box */
+    .popup-content {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      width: 90%;
+      max-width: 450px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      position: relative;
+      animation: fadeIn 0.3s ease;
+    }
+
+    /* Close button */
+    #closeBtn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 30px;
+      cursor: pointer;
+      color: #444;
+    }
+
+    /* Input fields */
+    .popup-content input {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .popup-content button[type="submit"] {
+      width: 100%;
+      background: #aff42b;
+      color: #0e0f11;
+      border: 1px solid #aff42b;
+      padding: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .popup-content button[type="submit"]:hover {
+      background: transparent;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Prevent background scroll */
+
+    body.modal-open {
+      position: fixed !important;
+      overflow: hidden !important;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
+
+
+
+
+    .loader {
+      border: 3px solid #f3f3f3;
+      /* Light grey */
+      border-top: 3px solid #3498db;
+      /* Blue */
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .modal-open {
+      overflow: hidden;
+    }
+
+    /* modal css ends */
+
+
+    .social-area h3 {
+      color: #fff;
+    }
+
+    .social-wrapper {
+      border-top: 1px solid #fff;
+      padding-top: 30px;
+      margin: 0 10px;
+    }
+
+    .social-wrapper a {
+      color: #fff;
+      line-height: 30px;
+    }
+
+    .platform {
+      margin-bottom: 10px;
+    }
+
+    .row.area-inner {
+      margin-bottom: 100px;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (max-width:768px) {
+      .footer-area-4 .footer-nav-list {
+        gap: 0;
+      }
+
+      .row.align-items-center.text-white {
+        gap: 30px;
+      }
+
+      .social-wrapper {
+        border-top: none;
+      }
+    }
+
+    .contact-formfield {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-formfield .title {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .phone-input-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    .phone-input-wrapper select {
+      padding: 8px;
+      border: 1px solid #0e0f111a;
+      background: transparent;
+      font-size: 14px;
+    }
+
+    .phone-input-wrapper input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+
+      font-size: 14px;
+    }
+
+    .phone-input-wrapper select option {
+      color: #000;
+      /* dropdown option text */
+      background: #f9f9f9;
+      /* dropdown option background */
+    }
+
+    span.current {
+      color: #c6c6c6;
+    }
+  </style>
+</head>
+
+
+<body class="body-wrapper body-inner-page">
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div id="container" class="container-preloader">
+      <div class="animation-preloader">
+        <div class="spinner"></div>
+
+      </div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
+  </div>
+
+
+
+  <!-- Sroll to top -->
+  <div class="progress-wrap">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
+    </svg>
+  </div>
+
+  <!-- side toggle start -->
+  <aside class="fix">
+    <div class="side-info">
+      <div class="side-info-content">
+        <div class="offset-widget offset-header">
+          <div class="offset-logo">
+            <a href='index.html'>
+              <img src="assets/imgs/logo/logo.png" alt="site logo">
+            </a>
+          </div>
+          <button id="side-info-close" class="side-info-close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="mobile-menu d-xl-none fix"></div>
+        <div class="offset-info-box">
+          <h2 class="title">Hello There!</h2>
+          <p class="text">Diwizon builds custom web and mobile apps to streamline operations and drive growth.</p>
+          <div class="t-btn-group">
+            <a class='t-btn t-btn-circle' href='contact.html'>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a class='t-btn t-btn-primary' href='contact.html'>Let’s Connect</a>
+            <a class='t-btn t-btn-circle' href='contact.html'>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+          <div class="post-image">
+            <img src="assets/imgs/gallery/image-48.webp" alt="image">
+            <img src="assets/imgs/gallery/image-49.webp" alt="image">
+            <img src="assets/imgs/gallery/image-50.webp" alt="image">
+            <img src="assets/imgs/gallery/image-51.webp" alt="image">
+          </div>
+        </div>
+        <div class="offset-widget-box">
+          <h2 class="title">Information</h2>
+          <div class="contact-meta">
+            <div class="contact-item">
+              <span class="text"><a href="tel:+919340421152">+91 93404 21152</a></span>
+            </div>
+            <div class="contact-item">
+              <span class="text"><a href="mailto:info@diwizon.com">info@diwizon.com</a></span>
+            </div>
+            <div class="contact-item">
+              <span class="text">Vadodara, Gujarat - India</span>
+            </div>
+          </div>
+        </div>
+        <div class="offset-widget-box">
+          <h2 class="title">Connect Us On</h2>
+          <div class="social-links">
+            <a href="#">FB</a>
+            <a href="#">LN</a>
+            <a href="#">IN</a>
+            <a href="#">BE</a>
+          </div>
+        </div>
+        <div class="offset-logo-footer">
+          <img src="assets/imgs/logo/logo-6.png" alt="image">
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="offcanvas-overlay"></div>
+  <!-- side toggle end -->
+
+
+
+  <!-- Header area start -->
+  <!-- <header class="header-area-2">
+    <div class="header-main header-sticky">
+      <div class="container large">
+        <div class="header-area-2-inner">
+          <div class="header-logo">
+            <a href='index.html'>
+              <img src="assets/imgs/logo/logo.png" class="normal-logo" alt="Site Logo">
+            </a>
+          </div>
+          <div class="header-nav pos-center">
+            <nav class="main-menu">
+              <ul>
+                <li class="menu-item-has-children">
+                  <a href="#">Home</a>
+                  <ul class="dp-menu">
+                    <li><a href='creative-agency.html'>Creative Agency</a></li>
+                    <li><a href='design-agency.html'>Design Agency</a></li>
+                    <li><a href='digital-agency.html'>Digital Agency</a></li>
+                    <li><a href='ai-agency-2.html'>AI Agency</a></li>
+                    <li><a href='marketing-agency.html'>Marketing Agency</a></li>
+                  </ul>
+                </li>
+                <li><a href='about.html'>About Us</a></li>
+                <li class="menu-item-has-children">
+                  <a href="#">Service</a>
+                  <ul class="dp-menu">
+                    <li><a href='services.html'>Services</a></li>
+                    <li><a href='service-details.html'>Service Details</a></li>
+                  </ul>
+                </li>
+                <li class="menu-item-has-children">
+                  <a href="#">Pages</a>
+                  <ul class="dp-menu">
+                    <li><a href='about.html'>About Us</a></li>
+                    <li class="menu-item-has-children">
+                      <a href="#">Service</a>
+                      <ul>
+                        <li><a href='services.html'>Services</a></li>
+                        <li><a href='service-details.html'>Service Details</a></li>
+                      </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                      <a href="#">Portfolio Pages</a>
+                      <ul>
+                        <li><a href='portfolio.html'>Portfolio</a></li>
+                        <li><a href='portfolio-02.html'>Portfolio 02</a></li>
+                        <li><a href='portfolio-03.html'>Portfolio 03</a></li>
+                        <li><a href='portfolio-details.html'>Portfolio Details</a></li>
+                      </ul>
+                    </li>
+                    <li><a href='team.html'>Team</a></li>
+                    <li class="menu-item-has-children">
+                      <a href="#">Blog Pages</a>
+                      <ul>
+                        <li><a href='blog.html'>Blog</a></li>
+                        <li><a href='blog-grid.html'>Blog Grid</a></li>
+                        <li><a href='blog-details.html'>Blog Details</a></li>
+                      </ul>
+                    </li>
+                    <li><a href='faq.html'>FAQ</a></li>
+                    <li><a href='contact.html'>Contact</a></li>
+                  </ul>
+                </li>
+                <li class="menu-item-has-children">
+                  <a href="#">Blog</a>
+                  <ul class="dp-menu">
+                    <li><a href='blog.html'>Blog</a></li>
+                    <li><a href='blog-grid.html'>Blog Grid</a></li>
+                    <li><a href='blog-details.html'>Blog Details</a></li>
+                  </ul>
+                </li>
+                <li><a href='contact.html'>Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="header-button">
+            <div class="t-btn-group">
+              <a class='t-btn t-btn-circle' href='contact.html'>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a class='t-btn t-btn-primary' href='contact.html'>Let’s Connect</a>
+              <a class='t-btn t-btn-circle' href='contact.html'>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="header-offcanvas d-xl-none">
+            <button class="side-toggle">
+              <i class="fa-solid fa-bars"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header> -->
+  <!-- Header area end -->
+
+  <!-- <div class="has-smooth" id="has_smooth"></div>
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+
+
+
+      <main> -->
+
+  <!-- page title area start  -->
+  <!-- <section class="page-title-area">
+          <div class="container">
+            <div class="page-title-area-inner section-spacing-top">
+              <div class="area-lines">
+                <div class="line-1"></div>
+                <div class="line-2"></div>
+                <div class="line-3"></div>
+                <div class="line-4"></div>
+                <div class="line-5"></div>
+                <div class="line-6"></div>
+                <div class="line-7"></div>
+                <div class="line-8"></div>
+              </div>
+              <div class="section-content-wrapper">
+                <div class="content-shape-1 fade-anim" data-direction="top" data-ease="bounce" data-delay="0.60"
+                  data-offset="100">
+                  <img src="assets/imgs/shape/shape-36.webp" alt="image">
+                </div>
+                <div class="section-content">
+                  <div class="section-title-wrapper">
+                    <div class="title-wrapper">
+                      <h1 class="section-title char-anim">SERVICE</h1>
+                    </div>
+                    <div class="subtitle-wrapper">
+                      <span class="section-subtitle char-anim" data-delay="0.75">Details</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="breadcrumb-wrapper fade-anim" data-direction="left" data-offset="100" data-delay="0.90">
+                  <ul class="breadcrumb">
+                    <li><a href='index.html'>HOME</a></li>
+                    <li>AGENCY SERVICES</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> -->
+  <!-- page title area end  -->
+
+  <!-- Header area start -->
+  <header class="header-area-4">
+    <div class="header-main header-sticky">
+      <div class="container">
+        <div class="header-area-4-inner">
+          <div class="header-logo">
+            <a href='index.html'>
+              <img src="assets/imgs/logo/logo.png" class="normal-logo" alt="Site Logo">
+            </a>
+          </div>
+          <div class="header-nav pos-center">
+            <nav class="main-menu">
+              <ul>
+                <!-- Home -->
+                <li class="menu-item-has-children">
+                  <a href="#">Home</a>
+                  <!-- <ul class="dp-menu card-dropdown">
+                    <li>
+                      <a href="creative-agency.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Creative Agency">
+                        <div class="text-info">
+                          <strong>Creative Agency</strong>
+                          <span>Modern and minimal design</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="design-agency.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Design Agency">
+                        <div class="text-info">
+                          <strong>Design Agency</strong>
+                          <span>Visual branding experts</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="digital-agency.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Digital Agency">
+                        <div class="text-info">
+                          <strong>Digital Agency</strong>
+                          <span>Online growth solutions</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="ai-agency-2.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="AI Agency">
+                        <div class="text-info">
+                          <strong>AI Agency</strong>
+                          <span>Smart & automated solutions</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="marketing-agency.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Marketing Agency">
+                        <div class="text-info">
+                          <strong>Marketing Agency</strong>
+                          <span>Targeted campaigns & ROI</span>
+                        </div>
+                      </a>
+                    </li>
+                  </ul> -->
+                </li>
+
+                <!-- About -->
+                <li><a href="#about-us">About</a></li>
+
+                <!-- Service -->
+                <li class="menu-item-has-children">
+                  <a href="#services">Service</a>
+                  <!-- <ul class="dp-menu card-dropdown">
+                    <li>
+                      <a href="services.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Services">
+                        <div class="text-info">
+                          <strong>Services</strong>
+                          <span>What we offer</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="service-details.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Service Details">
+                        <div class="text-info">
+                          <strong>Service Details</strong>
+                          <span>Deep dive into our work</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="services.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Services">
+                        <div class="text-info">
+                          <strong>Services</strong>
+                          <span>What we offer</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="service-details.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Service Details">
+                        <div class="text-info">
+                          <strong>Service Details</strong>
+                          <span>Deep dive into our work</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="services.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Services">
+                        <div class="text-info">
+                          <strong>Services</strong>
+                          <span>What we offer</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="service-details.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Service Details">
+                        <div class="text-info">
+                          <strong>Service Details</strong>
+                          <span>Deep dive into our work</span>
+                        </div>
+                      </a>
+                    </li>
+                  </ul> -->
+                </li>
+
+                <!-- Products -->
+                <li class="menu-item-has-children">
+                  <a href="#product">Products</a>
+                  <!-- <ul class="dp-menu card-dropdown">
+                    <li>
+                      <a href="about.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="About Us">
+                        <div class="text-info">
+                          <strong>About Us</strong>
+                          <span>Who we are</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="services.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Services">
+                        <div class="text-info">
+                          <strong>Services</strong>
+                          <span>All our services</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="portfolio.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Portfolio">
+                        <div class="text-info">
+                          <strong>Portfolio</strong>
+                          <span>Our latest projects</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="team.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Team">
+                        <div class="text-info">
+                          <strong>Team</strong>
+                          <span>Meet our people</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="blog.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Blog">
+                        <div class="text-info">
+                          <strong>Blog</strong>
+                          <span>Latest articles</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="faq.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="FAQ">
+                        <div class="text-info">
+                          <strong>FAQ</strong>
+                          <span>Common questions</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="contact.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Contact">
+                        <div class="text-info">
+                          <strong>Contact</strong>
+                          <span>Get in touch</span>
+                        </div>
+                      </a>
+                    </li>
+                  </ul> -->
+                </li>
+
+                <!-- Recent Projects -->
+                <li class="menu-item-has-children">
+                  <a href="#recent">Recent Projects</a>
+                  <!-- <ul class="dp-menu card-dropdown">
+                    <li>
+                      <a href="blog.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Blog">
+                        <div class="text-info">
+                          <strong>Blog</strong>
+                          <span>Industry insights</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="blog-grid.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Blog Grid">
+                        <div class="text-info">
+                          <strong>Blog Grid</strong>
+                          <span>All posts</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="blog-details.html">
+                        <img src="/assets/imgs/menu-artists-img1.png" alt="Blog Details">
+                        <div class="text-info">
+                          <strong>Blog Details</strong>
+                          <span>Post breakdown</span>
+                        </div>
+                      </a>
+                    </li>
+                  </ul> -->
+                </li>
+
+                <!-- Blogs -->
+                <li><a href="#blogs">Blogs</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="header-button">
+            <a class='t-btn t-btn-primary bg-active' href='contact.html'>Let’s Connect</a>
+          </div>
+          <div class="header-offcanvas d-xl-none">
+            <button class="side-toggle">
+              <img src="assets/imgs/icon/icon-4.webp" alt="image"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Header area end -->
+
+  <div class="has-smooth" id="has_smooth"></div>
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+
+
+
+      <main>
+
+        <!-- hero area start  -->
+        <section class="hero-area-4" style="border-bottom: 14px solid var(--theme);">
+          <div class="hero-area-4-inner section-spacing-top">
+            <div class="area-bg">
+              <img src="assets/imgs/shape/shape-22.webp" alt="image">
+            </div>
+            <div class="area-shape-1">
+              <img class="fade-anim" data-direction="left" data-delay="1.05" src="assets/imgs/shape/shape-20.webp"
+                alt="image">
+            </div>
+            <div class="area-shape-2">
+              <img class="fade-anim" data-direction="right" data-delay="1.20" src="assets/imgs/shape/shape-21.webp"
+                alt="image">
+            </div>
+            <div class="container">
+              <div class="section-content section-spacing-top">
+                <div class="section-title-wrapper">
+                  <div class="title-wrapper move-anim" data-delay="0.45">
+                    <h1 class="section-title"><span>Empowering</span> Digital Growth!</h1>
+                  </div>
+                </div>
+                <div class="text-wrapper fade-anim" data-delay="0.60">
+                  <p class="text">Diwizon builds custom web and mobile apps to streamline operations and drive growth.
+                  </p>
+                </div>
+                <div class="btn-wrapper fade-anim" data-delay="0.75">
+                  <!-- <a class='t-btn t-btn-primary bg-active' href='assets/diwizon-work.pdf'>Portfolio</a> -->
+                  <a href="#" id="portfolioBtn" class="t-btn t-btn-primary ">Portfolio</a>
+                  <a class='t-btn t-btn-primary bg-active' href='contact.html'>Contact Us</a>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Centered Popup Modal -->
+            <div id="popupForm" class="popup-form hidden">
+              <div class="popup-content">
+                <span id="closeBtn">&times;</span>
+                <h4>Get Instant Pricing – For Free!</h4>
+                <p style="margin: 20px 0;">Enter your details and get instant pricing, completely free.</p>
+                <form id="userForm">
+                  <input type="text" placeholder="Your Name" required />
+
+                  <div style="display: flex; gap: 10px;">
+                    <select id="countryCode" required>
+                      <option value="+91" selected>🇮🇳 +91 (India)</option>
+                      <option value="+1">🇺🇸 +1 (USA)</option>
+                      <option value="+44">🇬🇧 +44 (UK)</option>
+                      <option value="+971">🇦🇪 +971 (UAE)</option>
+                      <!-- Add more if needed -->
+                    </select>
+                    <input type="tel" id="phoneNumber" placeholder="Phone Number" required />
+                  </div>
+
+                  <input type="email" placeholder="Email ID" required />
+                  <button type="submit" id="submitBtn">
+                    <span class="btn-text">Send And Continue</span>
+                    <span class="loader hidden"></span>
+                  </button>
+
+                </form>
+              </div>
+            </div>
+
+            <div class="brand-area-4">
+              <div class="container">
+                <div class="brand-area-4-inner section-spacing">
+                  <div class="section-header">
+                    <div class="section-title-wrapper">
+                      <div class="title-wrapper fade-anim">
+                        <h2 class="section-title">100+ Trusted Clients Over Worldwide</h2>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="brands-wrapper-box">
+                    <div class="brands-wrapper fade-anim">
+                      <div class="swiper brand-slider-active">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="brand-item-4">
+                              <img src="assets/imgs/brand/fci.png" alt="image">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="brand-item-4">
+                              <img src="assets/imgs/brand/go-charge.png" alt="image">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="brand-item-4">
+                              <img src="assets/imgs/brand/intralog.png" alt="image">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="brand-item-4">
+                              <img src="assets/imgs/brand/parul-university.png" alt="image">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="brand-item-4">
+                              <img src="assets/imgs/brand/speedforce.png" alt="image">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="brand-item-4">
+                              <img src="assets/imgs/brand/frenyz.png" alt="image">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="brand-item-4">
+                              <img src="assets/imgs/brand/k10-group.png" alt="image">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="brand-item-4">
+                              <img src="assets/imgs/brand/dabomb.png" alt="image">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="brand-item-4">
+                              <img src="assets/imgs/brand/kadji.png" alt="image">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="brand-item-4">
+                              <img src="assets/imgs/brand/well-fed.png" alt="image">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- hero area end  -->
+
+        <!-- service area start  -->
+        <section class="service-area-6">
+          <div class="container">
+            <div class="service-area-6-inner section-spacing-top">
+              <div class="section-content-wrapper">
+                <div class="section-content fade-anim" data-direction="left">
+                  <div class="section-title-wrapper">
+                    <div class="subtitle-wrapper">
+                      <span class="section-subtitle">Our Services</span>
+                    </div>
+                    <div class="title-wrapper">
+                      <h2 class="section-title">Overview of Web design and improvements</h2>
+                    </div>
+                  </div>
+                  <div class="btn-wrapper">
+                    <div class="t-btn-group">
+                      <a class='t-btn t-btn-circle' href='contact.html'>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </a>
+                      <a class='t-btn t-btn-primary' href='contact.html'>Get Started</a>
+                      <a class='t-btn t-btn-circle' href='contact.html'>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="services-wrapper-box fade-anim" data-direction="right">
+                  <div class="text-wrapper">
+                    <p class="text">Feux, a digital agency crafted by a dedicated team of creatives champions the
+                      essence of simplicity and elegance.</p>
+                  </div>
+                  <div class="services-wrapper">
+                    <ul>
+                      <li>UI/UX Design</li>
+                      <li>Branding</li>
+                      <li>Content Production</li>
+                      <li>User Interface Design</li>
+                      <li>Modern Animation</li>
+                      <li>Brand Identity</li>
+                      <li>User Interface</li>
+                      <li>User Experience</li>
+                      <li>Responsive Design</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="gallery-wrapper">
+                <img class="fade-anim" src="assets/imgs/gallery/image-52.webp" alt="image">
+                <img class="fade-anim" src="assets/imgs/gallery/image-53.webp" alt="image">
+              </div> -->
+            </div>
+          </div>
+        </section>
+        <!-- service area end  -->
+        <section class="work-area-4" id="recent">
+          <div class="container">
+            <div class="work-area-4-inner section-spacing-top">
+              <div class="section-header-wrapper">
+                <div class="section-header">
+                  <div class="section-title-wrapper fade-anim">
+                    <div class="subtitle-wrapper">
+                      <span class="section-subtitle">Explore More</span>
+                    </div>
+                    <div class="title-wrapper">
+                      <h2 class="section-title">Portfolio of AI Excellence</h2>
+                    </div>
+                  </div>
+                  <div class="btn-wrapper fade-anim">
+                    <div class="t-btn-group">
+                      <a class='t-btn t-btn-circle' href='portfolio.html'>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </a>
+                      <a class='t-btn t-btn-primary' href='portfolio.html'>Portfolio</a>
+                      <a class='t-btn t-btn-circle' href='portfolio.html'>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="completed-projects move-anim">
+                  <span class="number">100+</span>
+                  <p class="text">Completed Projects</p>
+                </div>
+              </div>
+              <div class="works-wrapper-box fade-anim">
+                <div class="works-wrapper">
+                  <div class="work-box-4 work-panel">
+                    <div class="thumb">
+                      <div class="meta">
+                        <span class="tag">EV Charging App</span>
+                        <span class="tag">IoT Enabled Mobile App</span>
+                      </div>
+                      <img src="assets/imgs/project/go-charge.png" alt="image">
+                    </div>
+                    <div class="content-wrapper">
+                      <div class="content">
+                        <p class="text">Go Charge</p>
+                        <h3 class="title">Mobile App for Charging Electric Vehicle</h3>
+                      </div>
+                      <div class="t-btn-group">
+                        <a class='t-btn t-btn-circle' href='portfolio-details.html'>
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a class='t-btn t-btn-primary' href='portfolio-details.html'>Full Project</a>
+                        <a class='t-btn t-btn-circle' href='portfolio-details.html'>
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="work-box-4 work-panel">
+                    <div class="thumb">
+                      <div class="meta">
+                        <span class="tag">Laundry Management App</span>
+                        <span class="tag">Laundry Automation</span>
+                      </div>
+                      <img src="assets/imgs/project/project-20.webp" alt="image">
+                    </div>
+                    <div class="content-wrapper">
+                      <div class="content">
+                        <p class="text">Parul University</p>
+                        <h3 class="title">Mobile App for Laundry Management</h3>
+                      </div>
+                      <div class="t-btn-group">
+                        <a class='t-btn t-btn-circle' href='portfolio-details.html'>
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a class='t-btn t-btn-primary' href='portfolio-details.html'>Full Project</a>
+                        <a class='t-btn t-btn-circle' href='portfolio-details.html'>
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="work-box-4 work-panel">
+                    <div class="thumb">
+                      <div class="meta">
+                        <span class="tag">Society Management App</span>
+                        <span class="tag">Assistant</span>
+                      </div>
+                      <img src="assets/imgs/project/project-21.webp" alt="image">
+                    </div>
+                    <div class="content-wrapper">
+                      <div class="content">
+                        <p class="text">Food Corporation of India</p>
+                        <h3 class="title">Society Funds Management App</h3>
+                      </div>
+                      <div class="t-btn-group">
+                        <a class='t-btn t-btn-circle' href='portfolio-details.html'>
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a class='t-btn t-btn-primary' href='portfolio-details.html'>Full Project</a>
+                        <a class='t-btn t-btn-circle' href='portfolio-details.html'>
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="work-box-4 work-panel">
+                    <div class="thumb">
+                      <div class="meta">
+                        <span class="tag">Business</span>
+                        <span class="tag">Assistant</span>
+                      </div>
+                      <img src="assets/imgs/project/project-22.webp" alt="image">
+                    </div>
+                    <div class="content-wrapper">
+                      <div class="content">
+                        <p class="text">Swagat Corner</p>
+                        <h3 class="title">Mobile App for Food Delivery</h3>
+                      </div>
+                      <div class="t-btn-group">
+                        <a class='t-btn t-btn-circle' href='portfolio-details.html'>
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a class='t-btn t-btn-primary' href='portfolio-details.html'>Full Project</a>
+                        <a class='t-btn t-btn-circle' href='portfolio-details.html'>
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div> -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="about-area page-about">
+          <div class="container">
+            <div class="about-area-inner section-spacing">
+              <!-- <div class="section-content-wrapper btn-move">
+                <div class="section-content">
+                  <div class="section-title-wrapper">
+                    <div class="subtitle-wrapper">
+                      <span class="section-subtitle fade-anim">About Us</span>
+                    </div>
+                    <div class="title-wrapper">
+                      <h2 class="section-title fade-anim">We ignite brands with bold creativity and innovative
+                        strategies.</h2>
+                    </div>
+                  </div>
+                  <div class="text-wrapper">
+                    <p class="text fade-anim">Our professional team is dedicated to helping you achieve your digital
+                      goals. From
+                      website design and development to branding.</p>
+                  </div>
+                  <div class="btn-wrapper">
+                    <div class="t-btn-group fade-anim">
+                      <a class='t-btn t-btn-circle' href='about.html'>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </a>
+                      <a class='t-btn t-btn-primary' href='about.html'>Know more</a>
+                      <a class='t-btn t-btn-circle' href='about.html'>
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="about-thumb fade-anim">
+                  <div class="btn-wrapper">
+                    <a href="#awards" class="circle-text btn-item">
+                      <img src="assets/imgs/shape/shape-2.webp" alt="image" class="text">
+                      <img src="assets/imgs/shape/shape-3.webp" alt="image" class="icon">
+                    </a>
+                  </div>
+                  <div class="image img_anim_reveal">
+                    <img src="assets/imgs/gallery/image-2.webp" alt="image">
+                  </div>
+                </div>
+              </div> -->
+              <div class="counter-wrapper-box" style="margin-top: 0; margin-bottom: 0;">
+                <div class="counter-wrapper">
+                  <div class="counter-item fade-anim" data-delay="0.30">
+                    <span class="number t-counter">3.5k</span>
+                    <p class="text">Completed Projects</p>
+                  </div>
+                  <div class="counter-item fade-anim" data-delay="0.45">
+                    <span class="number t-counter">25+</span>
+                    <p class="text">Years Of Experience</p>
+                  </div>
+                  <div class="counter-item fade-anim" data-delay="0.60">
+                    <span class="number t-counter">1.6k</span>
+                    <p class="text">World Wide Clients</p>
+                  </div>
+                  <div class="counter-item fade-anim" data-delay="0.75">
+                    <span class="number t-counter">22+</span>
+                    <p class="text">Trusted Companies</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- process area start  -->
+        <section class="process-area page-services">
+          <div class="process-area-inner">
+            <div class="container">
+              <div class="section-header">
+                <div class="section-title-wrapper">
+                  <div class="subtitle-wrapper fade-anim">
+                    <span class="section-subtitle">Our Strategy</span>
+                  </div>
+                  <div class="title-wrapper fade-anim">
+                    <h2 class="section-title">Our work process</h2>
+                  </div>
+                </div>
+                <div class="btn-wrapper fade-anim">
+                  <div class="t-btn-group">
+                    <a class='t-btn t-btn-circle' href='contact.html'>
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a class='t-btn t-btn-primary' href='contact.html'>Contact Us</a>
+                    <a class='t-btn t-btn-circle' href='contact.html'>
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="process-wrapper-box fade-anim">
+              <div class="container">
+                <div class="process-wrapper">
+                  <div class="process-box-1 fade-anim">
+                    <span class="number">01</span>
+                    <div class="thumb">
+                      <img src="assets/imgs/icon/icon-1.webp" alt="image">
+                    </div>
+                    <div class="content">
+                      <h3 class="title">Discovery & Research</h3>
+                      <p class="text">We start by understanding your business goals, target market, and competitors.
+                        We create a customized roadmap</p>
+                    </div>
+                  </div>
+                  <div class="process-box-1 fade-anim">
+                    <span class="number">02</span>
+                    <div class="thumb">
+                      <img src="assets/imgs/icon/icon-2.webp" alt="image">
+                    </div>
+                    <div class="content">
+                      <h3 class="title">Design & Development</h3>
+                      <p class="text">Our creative team brings your brand to life with innovative design concepts. We
+                        bring the designs to life with development</p>
+                    </div>
+                  </div>
+                  <div class="process-box-1 fade-anim">
+                    <span class="number">03</span>
+                    <div class="thumb">
+                      <img src="assets/imgs/icon/icon-3.webp" alt="image">
+                    </div>
+                    <div class="content">
+                      <h3 class="title">Launch & Support</h3>
+                      <p class="text">We continue to provide supports, monitor performance, & make necessary change to
+                        ensure ongoing success</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- process area end  -->
+
+        <!-- service details area start  -->
+        <!-- <section class="service-details-area">
+          <div class="service-details-area-inner section-spacing-bottom">
+            <div class="container">
+              <div class="section-header">
+                <div class="section-title-wrapper">
+                  <div class="subtitle-wrapper fade-anim">
+                    <span class="section-subtitle">Solution Approach</span>
+                  </div>
+                  <div class="title-wrapper fade-anim">
+                    <h2 class="section-title">We give you the best of solutions</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="video-box fade-anim">
+              <video loop muted autoplay playsinline>
+                <source
+                  src="https://feux.wprealizer.com/wp-content/uploads/2025/04/2488684_Business_People_1920x1080.mp4"
+                  type="video/mp4">
+              </video>
+            </div>
+            <div class="container">
+              <div class="section-content">
+                <div class="title-wrapper fade-anim">
+                  <h2 class="title">We Design Solution</h2>
+                </div>
+                <div class="text-wrapper fade-anim">
+                  <p class="text">Our creative team brings your brand to life with innovative design concepts. We bring
+                    the designs to life with development</p>
+                </div>
+                <div class="text-wrapper fade-anim">
+                  <p class="text">Our creative team brings your brand to life with innovative design concepts. We bring
+                    the designs to life with development</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> -->
+        <!-- service details area end  -->
+
+
+        <!-- text slider area start  -->
+        <!-- <div class="text-slider-area">
+          <div class="text-slider-box">
+            <div class="text-slider fade-anim">
+              <div class="swiper text-slider-active">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="text-slider-item">
+                      <h2 class="title"><img src="assets/imgs/shape/shape-10.webp" alt="image"><a
+                          href='contact.html'>LET’S CONNECT</a></h2>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="text-slider-item">
+                      <h2 class="title"><img src="assets/imgs/shape/shape-10.webp" alt="image"><a
+                          href='contact.html'>LET’S CONNECT</a></h2>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="text-slider-item">
+                      <h2 class="title"><img src="assets/imgs/shape/shape-10.webp" alt="image"><a
+                          href='contact.html'>LET’S CONNECT</a></h2>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="text-slider-item">
+                      <h2 class="title"><img src="assets/imgs/shape/shape-10.webp" alt="image"><a
+                          href='contact.html'>LET’S CONNECT</a></h2>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="text-slider-item">
+                      <h2 class="title"><img src="assets/imgs/shape/shape-10.webp" alt="image"><a
+                          href='contact.html'>LET’S CONNECT</a></h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- text slider area end -->
+
+        <!-- faq area start  -->
+        <!-- <section class="faq-area-2">
+          <div class="container">
+            <div class="faq-area-2-inner section-spacing">
+              <div class="section-content-wrapper">
+                <div class="section-content fade-anim" data-direction="left">
+                  <div class="section-title-wrapper">
+                    <div class="subtitle-wrapper">
+                      <span class="section-subtitle">Have any questions?</span>
+                    </div>
+                    <div class="title-wrapper">
+                      <h2 class="section-title">Discover answers in FAQ’s</h2>
+                    </div>
+                  </div>
+                  <div class="accordion-wrapper-2">
+                    <div class="accordion" id="accordionExample">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            What services does Feux offer you?
+                          </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show"
+                          data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            People know what an FAQ is, so make that your page title. Don’t over complicate thing have
+                            calling it’s good to know or more info.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            How can I get started with Feux?
+                          </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            People know what an FAQ is, so make that your page title. Don’t over complicate thing have
+                            calling it’s good to know or more info.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Do you offer ongoing support after project completion?
+                          </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            People know what an FAQ is, so make that your page title. Don’t over complicate thing have
+                            calling it’s good to know or more info.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="faq-thumb fade-anim" data-direction="right">
+                  <img src="assets/imgs/gallery/image-21.webp" alt="image">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> -->
+        <section class="process-area-4" style="margin-top: 80px;">
+          <div class="container">
+            <div class="process-area-4-inner">
+              <div class="section-content section-spacing">
+                <div class="section-title-wrapper fade-anim">
+                  <div class="subtitle-wrapper">
+                    <span class="section-subtitle">WORK PROCESS</span>
+                  </div>
+                  <div class="title-wrapper">
+                    <h2 class="section-title">How Feux Innovate</h2>
+                  </div>
+                </div>
+                <div class="accordion-wrapper-4 accordion-active">
+                  <div class="accordion" id="accordionExample">
+                    <div class="accordion-item active fade-anim">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Discovery & Consultation
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          We start by understanding your business needs, challenges, and goals. Our team collaborates
+                          with you to identify opportunities where AI can drive the most impact and gather all the
+                          necessary information to develop a tailored solution.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item fade-anim">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Solution Design & Ideation
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          We start by understanding your business needs, challenges, and goals. Our team collaborates
+                          with you to identify opportunities where AI can drive the most impact and gather all the
+                          necessary information to develop a tailored solution.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item fade-anim">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          Development & Integration
+                        </button>
+                      </h2>
+                      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          We start by understanding your business needs, challenges, and goals. Our team collaborates
+                          with you to identify opportunities where AI can drive the most impact and gather all the
+                          necessary information to develop a tailored solution.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="section-thumb fade-anim" data-direction="right">
+                <video loop muted autoplay playsinline>
+                  <source src="https://feux.wprealizer.com/wp-content/uploads/2025/04/how_we_work.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- faq area end  -->
+        <section class="contact-area">
+          <div class="container">
+            <div class="contact-area-inner section-spacing">
+              <div class="section-content-wrapper">
+                <div class="section-content fade-anim" data-direction="right">
+                  <div class="section-title-wrapper">
+                    <div class="subtitle-wrapper">
+                      <span class="section-subtitle">Let’s connect</span>
+                    </div>
+                    <div class="title-wrapper">
+                      <h2 class="section-title">Let’s work together</h2>
+                    </div>
+                  </div>
+                  <div class="text-wrapper">
+                    <p class="text">People know what an FAQ is, so make that your page title. Don’t over complicate
+                      thing have calling it’s good to know or more info. </p>
+                  </div>
+                  <div class="contact-list">
+                    <ul>
+                      <li><img src="assets/imgs/icon/icon-17.webp" alt="icon image">
+                        <a href="mailto:example@feuxgmail.com">example@feuxgmail.com</a>
+                      </li>
+                      <li><img src="assets/imgs/icon/icon-18.webp" alt="icon image">
+                        <a href="tel:+1287366566">+1 287-366-566</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="social-links-wrapper">
+                    <p class="title">Follow us:</p>
+                    <div class="social-links">
+                      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                      <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                      <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="contact-wrap fade-anim" data-direction="left">
+                  <form action="#">
+                    <div class="contact-formwrap">
+                      <div class="contact-formfield">
+                        <img class="input-icon" src="assets/imgs/icon/icon-19.webp" alt="image">
+                        <h3 class="title">What’s your name?</h3>
+                        <input type="text" name="Name" id="Name" placeholder="Full name here">
+                      </div>
+                      <div class="contact-formfield">
+                        <img class="input-icon" src="assets/imgs/icon/icon-20.webp" alt="image">
+                        <h3 class="title">What’s your e-mail?</h3>
+                        <input type="text" name="Email" id="Email" placeholder="Enter your mail here">
+                      </div>
+                      <!-- <div class="contact-formfield messages">
+                        <img class="input-icon" src="assets/imgs/icon/icon-21.webp" alt="image">
+                        <h3 class="title">Have any message?</h3>
+                        <input type="text" name="Messages" id="Messages" placeholder="Write your message here">
+                      </div> -->
+                      <div class="contact-formfield phone-field">
+                        <img class="input-icon" src="assets/imgs/icon/icon-18.webp" alt="image">
+                        <h3 class="title">Phone Number</h3>
+
+                        <div class="phone-input-wrapper">
+                          <select name="countryCode" id="countryCode">
+                            <option value="+91" data-flag="🇮🇳">🇮🇳 +91</option>
+                            <option value="+1" data-flag="🇺🇸">🇺🇸 +1</option>
+                            <option value="+44" data-flag="🇬🇧">🇬🇧 +44</option>
+                            <option value="+971" data-flag="🇦🇪">🇦🇪 +971</option>
+                          </select>
+                          <input type="tel" name="phone" id="phone" placeholder="Enter phone number">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="submit-btn">
+                      <button type="submit" class="t-btn t-btn-group">
+                        <span class="t-btn t-btn-circle">
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                        <span class="t-btn t-btn-primary">Contact Us</span>
+                        <span class="t-btn t-btn-circle">
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </span>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- footer area start  -->
+      <footer class="footer-area-4">
+        <div class="area-bg">
+          <img src="assets/imgs/shape/shape-46.webp" alt="image">
+        </div>
+        <div class="cta-area-3 fade-anim">
+          <div class="container">
+            <div class="cta-area-3-inner section-spacing-top">
+              <div class="section-header">
+                <div class="section-title-wrapper">
+                  <div class="title-wrapper">
+                    <h2 class="section-title">Got a Project in Mind?</h2>
+                  </div>
+                </div>
+                <div class="btn-wrapper">
+                  <div class="t-btn-group">
+                    <a class='t-btn t-btn-circle' href='contact.html'>
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a class='t-btn t-btn-primary' href='contact.html'>Let’s Talk</a>
+                    <a class='t-btn t-btn-circle' href='contact.html'>
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="social-area">
+          <div class="container">
+            <div class="row area-inner">
+              <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="social-wrapper">
+                  <div class="content">
+                    <h3 class="platform">Phone</h3>
+                    <a href="tel:+91 93404 21152" class="link">+91 93404 21152</a> <br>
+                    <a href="tel:+91 63538 17704" class="link">+91 63538 17704</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="social-wrapper">
+                  <div class="content">
+                    <h3 class="platform">Email</h3>
+                    <a href="mailto:info@diwizon.com" class="link">info@diwizon.com</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="social-wrapper">
+                  <div class="content">
+                    <h3 class="platform">Address</h3>
+                    <a href="https://g.co/kgs/hKaMctD" class="link">702, Landmark Prime, Near. Vasna Bhayli Road, Beside
+                      Times Square, Vadodara, Gujarat&nbsp;-&nbsp;390012</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="social-wrapper">
+                  <div class="content">
+                    <h3 class="platform">Social Media</h3>
+                    <div class="social-links">
+                      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                      <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                      <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="copyright-area">
+          <div class="container">
+            <div class="copyright-area-inner">
+              <div class="copyright-text">
+                <p class="text">Powered by <a href="index.html">Diwizon</a></p>
+              </div>
+              <div class="right-side">
+                <a href="#" style="color: #fff;">Privacy Policy</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- footer area end  -->
+
+    </div>
+  </div>
+
+
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery-3.7.1.min.js"></script>
+  <script src="assets/vendor/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.magnific-popup.min.js"></script>
+  <script src="assets/vendor/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/counter.js"></script>
+  <script src="assets/vendor/progressbar.js"></script>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollSmoother.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/SplitText.min.js"></script>
+  <script src="assets/vendor/jquery.meanmenu.min.js"></script>
+  <script src="assets/vendor/jquery.nice-select.min.js"></script>
+  <script src="assets/vendor/backToTop.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script src="assets/js/form.js"></script>
+
+
+</body>
+
+
+<!-- Mirrored from feux-html.netlify.app/ai-agency.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Apr 2025 12:42:01 GMT -->
+
+</html>
