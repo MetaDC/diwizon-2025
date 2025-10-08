@@ -37,35 +37,31 @@
       }
 
       /* Fullscreen overlay */
+      /* Modal overlay */
       .popup-form {
         position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100vw;
-        background-color: rgba(0, 0, 0, 0.5);
-        /* dim background */
+        inset: 0; /* shorthand for top, right, bottom, left = 0 */
         display: flex;
-        align-items: center;
         justify-content: center;
-        z-index: 1000;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
       }
 
-      /* Hidden by default */
+      /* Hide modal */
       .popup-form.hidden {
         display: none;
       }
 
-      /* Actual popup box */
+      /* Modal box */
       .popup-content {
-        background-color: #fff;
+        background: #fff;
         border-radius: 12px;
         padding: 24px;
         width: 90%;
         max-width: 450px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
         position: relative;
-        animation: fadeIn 0.3s ease;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
       }
 
       /* Close button */
@@ -73,11 +69,15 @@
         position: absolute;
         top: 10px;
         right: 15px;
-        font-size: 30px;
+        font-size: 24px;
         cursor: pointer;
-        color: #444;
       }
 
+      /* Prevent scroll on body */
+      body.modal-open {
+        height: 100%;
+        overflow: hidden;
+      }
       /* Input fields */
       .popup-content input {
         width: 100%;
@@ -676,40 +676,7 @@
               </div>
 
               <!-- Centered Popup Modal -->
-              <div id="popupForm" class="popup-form hidden">
-                <div class="popup-content">
-                  <span id="closeBtn">&times;</span>
-                  <h4>Get Instant Pricing – For Free!</h4>
-                  <p style="margin: 20px 0">
-                    Enter your details and get instant pricing, completely free.
-                  </p>
-                  <form id="userForm">
-                    <input type="text" placeholder="Your Name" required />
-
-                    <div style="display: flex; gap: 10px">
-                      <select id="countryCode" required>
-                        <option value="+91" selected>🇮🇳 +91 (India)</option>
-                        <option value="+1">🇺🇸 +1 (USA)</option>
-                        <option value="+44">🇬🇧 +44 (UK)</option>
-                        <option value="+971">🇦🇪 +971 (UAE)</option>
-                        <!-- Add more if needed -->
-                      </select>
-                      <input
-                        type="tel"
-                        id="phoneNumber"
-                        placeholder="Phone Number"
-                        required
-                      />
-                    </div>
-
-                    <input type="email" placeholder="Email ID" required />
-                    <button type="submit" id="submitBtn">
-                      <span class="btn-text">Send And Continue</span>
-                      <span class="loader hidden"></span>
-                    </button>
-                  </form>
-                </div>
-              </div>
+              <!-- Popup form outside of any containers -->
 
               <div class="brand-area-4">
                 <div class="container">
@@ -817,7 +784,7 @@
             </div>
           </section>
           <!-- hero area end  -->
-
+          <!-- <div id="popupTarget" style="position: relative; height: 1px"></div> -->
           <!-- text slider area start  -->
           <div class="text-slider-area-2">
             <div class="text-slider-box">
@@ -944,13 +911,11 @@
                   </div>
                   <div class="btn-wrapper fade-anim">
                     <div class="t-btn-group">
-                      <a class="t-btn t-btn-circle portfolioBtn" href="#">
+                      <a class="t-btn t-btn-circle portfolioBtn">
                         <i class="fa-solid fa-arrow-right"></i>
                       </a>
-                      <a class="t-btn t-btn-primary portfolioBtn" href="#"
-                        >Portfolio</a
-                      >
-                      <a class="t-btn t-btn-circle portfolioBtn" href="#">
+                      <a class="t-btn t-btn-primary portfolioBtn">Portfolio</a>
+                      <a class="t-btn t-btn-circle portfolioBtn">
                         <i class="fa-solid fa-arrow-right"></i>
                       </a>
                     </div>
@@ -1069,21 +1034,20 @@
                             </p>
                             <div class="t-btn-group">
                               <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
+                                class="t-btn t-btn-circle portfolioBtn"
+                                href="#"
                               >
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
                               <a
-                                class="t-btn t-btn-primary"
-                                href="service-details.html"
-                                >View Details</a
+                                class="t-btn t-btn-primary portfolioBtn"
+                                href="#"
+                                >Portfolio</a
                               >
-                              <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
-                              >
-                                <i class="fa-solid fa-arrow-right"></i>
+                              <a class="t-btn t-btn-circle" href="#">
+                                <i
+                                  class="fa-solid fa-arrow-right portfolioBtn"
+                                ></i>
                               </a>
                             </div>
                           </div>
@@ -1113,20 +1077,19 @@
                               operations.
                             </p>
                             <div class="t-btn-group">
-                              <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
-                              >
-                                <i class="fa-solid fa-arrow-right"></i>
+                              <a class="t-btn t-btn-circle" href="#">
+                                <i
+                                  class="fa-solid fa-arrow-right portfolioBtn"
+                                ></i>
                               </a>
                               <a
-                                class="t-btn t-btn-primary"
-                                href="service-details.html"
-                                >View Details</a
+                                class="t-btn t-btn-primary portfolioBtn"
+                                href="#"
+                                >Portfolio</a
                               >
                               <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
+                                class="t-btn t-btn-circle portfolioBtn"
+                                href="#"
                               >
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
@@ -1159,19 +1122,19 @@
                             </p>
                             <div class="t-btn-group">
                               <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
+                                class="t-btn t-btn-circle portfolioBtn"
+                                href="#"
                               >
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
                               <a
-                                class="t-btn t-btn-primary"
-                                href="service-details.html"
-                                >View Details</a
+                                class="t-btn t-btn-primary portfolioBtn"
+                                href="#"
+                                >Portfolio</a
                               >
                               <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
+                                class="t-btn t-btn-circle portfolioBtn"
+                                href="#"
                               >
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
@@ -1204,19 +1167,19 @@
                             </p>
                             <div class="t-btn-group">
                               <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
+                                class="t-btn t-btn-circle portfolioBtn"
+                                href="#"
                               >
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
                               <a
-                                class="t-btn t-btn-primary"
-                                href="service-details.html"
-                                >View Details</a
+                                class="t-btn t-btn-primary portfolioBtn"
+                                href="#"
+                                >Portfolio</a
                               >
                               <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
+                                class="t-btn t-btn-circle portfolioBtn"
+                                href="#"
                               >
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
@@ -1247,19 +1210,19 @@
                             </p>
                             <div class="t-btn-group">
                               <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
+                                class="t-btn t-btn-circle portfolioBtn"
+                                href="#"
                               >
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
                               <a
-                                class="t-btn t-btn-primary"
-                                href="service-details.html"
-                                >View Details</a
+                                class="t-btn t-btn-primary portfolioBtn"
+                                href="#"
+                                >Portfolio</a
                               >
                               <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
+                                class="t-btn t-btn-circle portfolioBtn"
+                                href="#"
                               >
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
@@ -1292,21 +1255,13 @@
                               user experiences.
                             </p>
                             <div class="t-btn-group">
-                              <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
-                              >
+                              <a class="t-btn t-btn-circle" href="#">
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
-                              <a
-                                class="t-btn t-btn-primary"
-                                href="service-details.html"
-                                >View Details</a
+                              <a class="t-btn t-btn-primary" href="#"
+                                >Portfolio</a
                               >
-                              <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
-                              >
+                              <a class="t-btn t-btn-circle" href="#">
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
                             </div>
@@ -1332,21 +1287,13 @@
                               operations.
                             </p>
                             <div class="t-btn-group">
-                              <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
-                              >
+                              <a class="t-btn t-btn-circle" href="#">
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
-                              <a
-                                class="t-btn t-btn-primary"
-                                href="service-details.html"
-                                >View Details</a
+                              <a class="t-btn t-btn-primary" href="#"
+                                >Portfolio</a
                               >
-                              <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
-                              >
+                              <a class="t-btn t-btn-circle" href="#">
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
                             </div>
@@ -1372,21 +1319,13 @@
                               forecast future outcomes
                             </p>
                             <div class="t-btn-group">
-                              <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
-                              >
+                              <a class="t-btn t-btn-circle" href="#">
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
-                              <a
-                                class="t-btn t-btn-primary"
-                                href="service-details.html"
-                                >View Details</a
+                              <a class="t-btn t-btn-primary" href="#"
+                                >Portfolio</a
                               >
-                              <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
-                              >
+                              <a class="t-btn t-btn-circle" href="#">
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
                             </div>
@@ -1412,21 +1351,13 @@
                               but also highly intuitive and personalized.
                             </p>
                             <div class="t-btn-group">
-                              <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
-                              >
+                              <a class="t-btn t-btn-circle" href="#">
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
-                              <a
-                                class="t-btn t-btn-primary"
-                                href="service-details.html"
-                                >View Details</a
+                              <a class="t-btn t-btn-primary" href="#"
+                                >Portfolio</a
                               >
-                              <a
-                                class="t-btn t-btn-circle"
-                                href="service-details.html"
-                              >
+                              <a class="t-btn t-btn-circle" href="#">
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
                             </div>
@@ -1508,7 +1439,7 @@
                             <a
                               class="t-btn t-btn-primary"
                               href="gocharge-detail.html"
-                              >Full Project</a
+                              >Full Portfolio</a
                             >
                             <a
                               class="t-btn t-btn-circle"
@@ -1547,7 +1478,7 @@
                             <a
                               class="t-btn t-btn-primary"
                               href="portfolio-details.html"
-                              >Full Project</a
+                              >Full Portfolio</a
                             >
                             <a
                               class="t-btn t-btn-circle"
@@ -1584,7 +1515,7 @@
                             <a
                               class="t-btn t-btn-primary"
                               href="portfolio-details.html"
-                              >Full Project</a
+                              >Full Portfolio</a
                             >
                             <a
                               class="t-btn t-btn-circle"
@@ -1621,7 +1552,7 @@
                             <a
                               class="t-btn t-btn-primary"
                               href="portfolio-details.html"
-                              >Full Project</a
+                              >Full Portfolio</a
                             >
                             <a
                               class="t-btn t-btn-circle"
@@ -1659,7 +1590,7 @@
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
                               <a class="t-btn t-btn-primary" href="#"
-                                >Full Project</a
+                                >Full Portfolio</a
                               >
                               <a class="t-btn t-btn-circle" href="#">
                                 <i class="fa-solid fa-external-link"></i>
@@ -1689,7 +1620,7 @@
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
                               <a class="t-btn t-btn-primary" href="#"
-                                >Full Project</a
+                                >Full Portfolio</a
                               >
                               <a class="t-btn t-btn-circle" href="#">
                                 <i class="fa-solid fa-external-link"></i>
@@ -1717,7 +1648,7 @@
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
                               <a class="t-btn t-btn-primary" href="#"
-                                >Full Project</a
+                                >Full Portfolio</a
                               >
                               <a class="t-btn t-btn-circle" href="#">
                                 <i class="fa-solid fa-external-link"></i>
@@ -1747,7 +1678,7 @@
                                 <i class="fa-solid fa-arrow-right"></i>
                               </a>
                               <a class="t-btn t-btn-primary" href="#"
-                                >Full Project</a
+                                >Full Portfolio</a
                               >
                               <a class="t-btn t-btn-circle" href="#">
                                 <i class="fa-solid fa-external-link"></i>
@@ -1846,9 +1777,7 @@
                         <div class="links-holder">
                           <i class="fa-solid fa-eye"></i>
                           <div class="social-links">
-                            <a
-                              href="https://www.cpassociates.co.in/"
-                              target="_blank"
+                            <a href="http://www.kadji.co.in" target="_blank"
                               >View</a
                             >
                           </div>
@@ -1888,9 +1817,7 @@
                         <div class="links-holder">
                           <i class="fa-solid fa-eye"></i>
                           <div class="social-links">
-                            <a
-                              href="https://www.cpassociates.co.in/"
-                              target="_blank"
+                            <a href="http://www.leocorgym.com" target="_blank"
                               >View</a
                             >
                           </div>
@@ -1930,9 +1857,7 @@
                         <div class="links-holder">
                           <i class="fa-solid fa-eye"></i>
                           <div class="social-links">
-                            <a
-                              href="https://www.cpassociates.co.in/"
-                              target="_blank"
+                            <a href="https://luxorhospital.com/" target="_blank"
                               >View</a
                             >
                           </div>
@@ -1971,10 +1896,7 @@
                       data-delay="0.30"
                     >
                       <div class="thumb">
-                        <img
-                          src="assets/imgs/hero/website-sample-5.png"
-                          alt="image"
-                        />
+                        <img src="assets/imgs/tnf.png" alt="image" />
                       </div>
                       <div class="content">
                         <h3 class="name">CP Associates</h3>
@@ -2019,10 +1941,7 @@
                       data-delay="0.45"
                     >
                       <div class="thumb">
-                        <img
-                          src="assets/imgs/hero/website-sample-2.png"
-                          alt="image"
-                        />
+                        <img src="assets/imgs/tnf.png" alt="image" />
                       </div>
                       <div class="content">
                         <h3 class="name">Kadji Care</h3>
@@ -2032,9 +1951,7 @@
                         <div class="links-holder">
                           <i class="fa-solid fa-eye"></i>
                           <div class="social-links">
-                            <a
-                              href="https://www.cpassociates.co.in/"
-                              target="_blank"
+                            <a href="http://www.kadji.co.in" target="_blank"
                               >View</a
                             >
                           </div>
@@ -2067,22 +1984,17 @@
                       data-delay="0.30"
                     >
                       <div class="thumb">
-                        <img
-                          src="assets/imgs/hero/website-sample-6.png"
-                          alt="image"
-                        />
+                        <img src="assets/imgs/tnf.png" alt="image" />
                       </div>
                       <div class="content">
-                        <h3 class="name">Jordan Williams</h3>
-                        <span class="post">(AI Ethics Officer)</span>
+                        <h3 class="name">Leocor Fitness</h3>
+                        <span class="post">Fitness & Wellness Center</span>
                       </div>
                       <div class="social-links-wrapper">
                         <div class="links-holder">
                           <i class="fa-solid fa-eye"></i>
                           <div class="social-links">
-                            <a
-                              href="https://www.cpassociates.co.in/"
-                              target="_blank"
+                            <a href="http://www.leocorgym.com" target="_blank"
                               >View</a
                             >
                           </div>
@@ -2115,10 +2027,7 @@
                       data-delay="0.45"
                     >
                       <div class="thumb">
-                        <img
-                          src="assets/imgs/hero/website-sample-4.png"
-                          alt="image"
-                        />
+                        <img src="assets/imgs/tnf.png" alt="image" />
                       </div>
                       <div class="content">
                         <h3 class="name">Luxor Hospital</h3>
@@ -2128,9 +2037,7 @@
                         <div class="links-holder">
                           <i class="fa-solid fa-eye"></i>
                           <div class="social-links">
-                            <a
-                              href="https://www.cpassociates.co.in/"
-                              target="_blank"
+                            <a href="https://luxorhospital.com/" target="_blank"
                               >View</a
                             >
                           </div>
@@ -2877,7 +2784,37 @@
         <!-- footer area end  -->
       </div>
     </div>
-
+    <div id="popupForm" class="popup-form hidden">
+      <div class="popup-content">
+        <span id="closeBtn">&times;</span>
+        <h4>Get Instant Pricing – For Free!</h4>
+        <p style="margin: 20px 0">
+          Enter your details and get instant pricing, completely free.
+        </p>
+        <form id="userForm">
+          <input type="text" placeholder="Your Name" required />
+          <div style="display: flex; gap: 10px">
+            <select id="countryCode" required>
+              <option value="+91" selected>🇮🇳 +91 (India)</option>
+              <option value="+1">🇺🇸 +1 (USA)</option>
+              <option value="+44">🇬🇧 +44 (UK)</option>
+              <option value="+971">🇦🇪 +971 (UAE)</option>
+            </select>
+            <input
+              type="tel"
+              id="phoneNumber"
+              placeholder="Phone Number"
+              required
+            />
+          </div>
+          <input type="email" placeholder="Email ID" required />
+          <button type="submit" id="submitBtn">
+            <span class="btn-text">Send And Continue</span>
+            <span class="loader hidden"></span>
+          </button>
+        </form>
+      </div>
+    </div>
     <!-- Vendor JS Files -->
     <script src="assets/vendor/jquery-3.7.1.min.js"></script>
     <script src="assets/vendor/bootstrap.bundle.min.js"></script>

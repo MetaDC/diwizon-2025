@@ -7,18 +7,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnText = submitBtn.querySelector(".btn-text");
   const loader = submitBtn.querySelector(".loader");
 
-  // ✅ FIX: Loop through all buttons
+  let scrollPosition = 0;
+
+  // ✅ Open popup without scroll or jump
   portfolioBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      e.preventDefault();
+      e.preventDefault(); // stops anchor jump
+      e.stopPropagation();
+
+      // store current scroll position
+      scrollPosition = window.scrollY;
+
+      // lock scroll
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollPosition}px`;
+      document.body.style.width = "100%";
+
       popupForm.classList.remove("hidden");
       document.body.classList.add("modal-open");
     });
   });
 
+  // ✅ Close popup
   function closeModal() {
     popupForm.classList.add("hidden");
     document.body.classList.remove("modal-open");
+
+    // unlock scroll
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.width = "";
+
+    window.scrollTo(0, scrollPosition);
   }
 
   closeBtn.addEventListener("click", closeModal);
@@ -29,10 +49,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // ✅ Form submit
   userForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // Show loader and disable button
     loader.classList.remove("hidden");
     btnText.style.display = "none";
     submitBtn.disabled = true;
@@ -63,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const data = {
-      emails: ["aadil18122001@gmail.com"], // your email
+      emails: ["aadil18122001@gmail.com"],
       subject: "New form submitted.",
       message: `
         <strong>Name:</strong> ${name}<br/>
@@ -83,8 +103,8 @@ document.addEventListener("DOMContentLoaded", () => {
       window.open("assets/diwizon-work.pdf", "_blank");
       userForm.reset();
     } catch (error) {
-      console.error("Form submission failed:", error);
       alert("Something went wrong. Please try again.");
+      console.error(error);
     } finally {
       resetButton();
     }
