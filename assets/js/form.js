@@ -8,40 +8,88 @@ document.addEventListener("DOMContentLoaded", () => {
   const loader = submitBtn.querySelector(".loader");
 
   let scrollPosition = 0;
+  let smoother = null;
 
-  // ✅ Open popup without scroll or jump
+  // 🎯 Get ScrollSmoother instance after it initializes
+  setTimeout(() => {
+    if (window.ScrollSmoother) {
+      smoother = ScrollSmoother.get();
+      console.log("ScrollSmoother detected:", smoother);
+    }
+  }, 500);
+
+  // ✅ Open popup WITHOUT scroll jump
   portfolioBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      e.preventDefault(); // stops anchor jump
+      e.preventDefault();
       e.stopPropagation();
 
-      // store current scroll position
-      scrollPosition = window.scrollY;
+      // Store current scroll position
+      if (smoother) {
+        scrollPosition = smoother.scrollTop();
+        console.log("Stored ScrollSmoother position:", scrollPosition);
+        smoother.paused(true);
+      } else {
+        scrollPosition = window.scrollY;
+        console.log("Stored window scroll position:", scrollPosition);
+      }
 
-      // lock scroll
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollPosition}px`;
-      document.body.style.width = "100%";
-
+      // Show modal
       popupForm.classList.remove("hidden");
       document.body.classList.add("modal-open");
+
+      // Prevent scroll
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+      document.body.style.height = "100vh";
+      document.body.style.position = "fixed";
+      // lock at the current scroll position
+      document.body.style.top = `-${scrollPosition}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
     });
   });
 
-  // ✅ Close popup
-  function closeModal() {
+  function closeModal(shouldRefresh = false) {
     popupForm.classList.add("hidden");
     document.body.classList.remove("modal-open");
 
-    // unlock scroll
+    // Remove fixed styles first
+    const topPx = document.body.style.top;
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
+    document.body.style.height = "";
     document.body.style.position = "";
-    document.body.style.top = "";
     document.body.style.width = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    // also clear any html overflow just in case
+    document.documentElement.style.overflow = "";
 
-    window.scrollTo(0, scrollPosition);
+    // Delay restoring scroll to allow layout to settle
+    setTimeout(() => {
+      if (!smoother) {
+        const lockedOffset = topPx
+          ? Math.abs(parseInt(topPx, 10))
+          : scrollPosition;
+        window.scrollTo(0, lockedOffset || 0);
+      } else {
+        smoother.paused(false);
+        smoother.scrollTo(scrollPosition, false);
+      }
+    }, 50);
+
+    if (shouldRefresh) {
+      setTimeout(() => {
+        location.reload();
+      }, 1000);
+    }
   }
 
-  closeBtn.addEventListener("click", closeModal);
+  // Manual close events (refresh after close)
+  closeBtn.addEventListener("click", () => closeModal(true));
 
   window.addEventListener("click", (e) => {
     if (e.target === popupForm) {
@@ -49,7 +97,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ✅ Form submit
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !popupForm.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
+
+  // ✅ Form submit with validation
   userForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -68,7 +122,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const fullPhone = countryCode + phone;
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phonePattern = /^\+?\d{10,15}$/;
+    const phonePattern = /^\d{10,15}$/;
+
+    if (!name) {
+      alert("Please enter your name.");
+      resetButton();
+      return;
+    }
 
     if (!emailPattern.test(email)) {
       alert("Please enter a valid email address.");
@@ -76,35 +136,47 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    if (!phonePattern.test(fullPhone)) {
-      alert("Please enter a valid phone number with country code.");
+    if (!phonePattern.test(phone)) {
+      alert("Please enter a valid phone number (10-15 digits).");
       resetButton();
       return;
     }
 
     const data = {
       emails: ["aadil18122001@gmail.com"],
-      subject: "New form submitted.",
+      subject: "New Portfolio Request - Diwizon",
       message: `
-        <strong>Name:</strong> ${name}<br/>
-        <strong>Phone Number:</strong> ${fullPhone}<br/>
-        <strong>Email:</strong> ${email}<br/>
+        <h2>New Portfolio Download Request</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Phone Number:</strong> ${fullPhone}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <hr>
+        <p><small>Submitted on: ${new Date().toLocaleString()}</small></p>
       `,
     };
 
     try {
-      await fetch("https://mailer-5x4h33dpla-uc.a.run.app/", {
+      const response = await fetch("https://mailer-5x4h33dpla-uc.a.run.app/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
 
-      closeModal();
-      window.open("assets/diwizon-work.pdf", "_blank");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // ✅ Success: close modal and open PDF
+      closeModal(true); // Triggers page refresh after closing
+
+      setTimeout(() => {
+        window.open("assets/diwizon-work.pdf", "_blank");
+      }, 300);
+
       userForm.reset();
     } catch (error) {
-      alert("Something went wrong. Please try again.");
-      console.error(error);
+      console.error("Form submission error:", error);
+      alert("Something went wrong. Please try again or contact us directly.");
     } finally {
       resetButton();
     }
@@ -115,4 +187,43 @@ document.addEventListener("DOMContentLoaded", () => {
     btnText.style.display = "inline";
     submitBtn.disabled = false;
   }
+
+  // 🔒 Prevent scroll while modal is open on mobile
+  let touchStartY = 0;
+
+  document.addEventListener(
+    "touchstart",
+    (e) => {
+      if (!popupForm.classList.contains("hidden")) {
+        touchStartY = e.touches[0].clientY;
+      }
+    },
+    { passive: false }
+  );
+
+  document.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!popupForm.classList.contains("hidden")) {
+        const modalContent = document.querySelector(".popup-content");
+        if (!modalContent.contains(e.target)) {
+          e.preventDefault();
+        }
+      }
+    },
+    { passive: false }
+  );
+
+  document.addEventListener(
+    "wheel",
+    (e) => {
+      if (!popupForm.classList.contains("hidden")) {
+        const modalContent = document.querySelector(".popup-content");
+        if (!modalContent.contains(e.target)) {
+          e.preventDefault();
+        }
+      }
+    },
+    { passive: false }
+  );
 });
