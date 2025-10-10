@@ -185,13 +185,13 @@ document.addEventListener("DOMContentLoaded", () => {
       emails: ["aadil18122001@gmail.com"],
       subject: "New Portfolio Request - Diwizon",
       message: `
-        <h2>New Portfolio Download Request</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Phone Number:</strong> ${fullPhone}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <hr>
-        <p><small>Submitted on: ${new Date().toLocaleString()}</small></p>
-      `,
+      <h2>New Portfolio Download Request</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Phone Number:</strong> ${fullPhone}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <hr>
+      <p><small>Submitted on: ${new Date().toLocaleString()}</small></p>
+    `,
     };
 
     try {
@@ -205,13 +205,14 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      // ✅ Success: close modal and open PDF
+      // ✅ Close modal
       closeModal();
 
-      // Open PDF in new tab after modal closes
-      setTimeout(() => {
-        window.open("assets/diwizon-work.pdf", "_blank");
-      }, 400);
+      // ✅ Store flag so thankyou.html knows to open the PDF
+      sessionStorage.setItem("openPDF", "true");
+
+      // ✅ Open thankyou page in a new tab
+      window.open("thankyou.html", "_blank");
 
       // Reset form
       userForm.reset();

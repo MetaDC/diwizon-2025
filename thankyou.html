@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You - Diwizon</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 600px;
+        animation: fadeIn 0.6s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .checkmark {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 2rem;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: scaleIn 0.5s ease-out 0.3s both;
+      }
+
+      @keyframes scaleIn {
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+      .checkmark svg {
+        width: 50px;
+        height: 50px;
+        stroke: #667eea;
+        stroke-width: 3;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        opacity: 0.95;
+      }
+
+      .note {
+        font-size: 0.95rem;
+        opacity: 0.8;
+        margin-bottom: 2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 14px 32px;
+        background: white;
+        color: #667eea;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+        p {
+          font-size: 1rem;
+        }
+        .checkmark {
+          width: 60px;
+          height: 60px;
+        }
+        .checkmark svg {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    </style>
+    <script>
+      if (sessionStorage.getItem("openPDF") === "true") {
+        sessionStorage.removeItem("openPDF");
+
+        // ⏳ Wait 3 seconds, then open PDF in same tab
+        setTimeout(() => {
+          window.location.href = "assets/diwizon-work.pdf";
+        }, 3000);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="checkmark">
+        <svg viewBox="0 0 52 52">
+          <polyline points="14 27 22 35 38 19" />
+        </svg>
+      </div>
+      <h1>🎉 Thank You!</h1>
+      <p>Your request has been submitted successfully.</p>
+      <p class="note">Your portfolio PDF is opening in a new tab...</p>
+    </div>
+  </body>
+</html>
