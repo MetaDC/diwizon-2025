@@ -118,9 +118,16 @@
     $(".side-info").removeClass("info-open");
     $(".offcanvas-overlay").removeClass("overlay-open");
   });
+
   $(".side-toggle").on("click", function () {
     $(".side-info").addClass("info-open");
     $(".offcanvas-overlay").addClass("overlay-open");
+  });
+
+  // ✅ Close side menu when menu items are clicked
+  $(".side-info").on("click", "a:not(.side-toggle)", function () {
+    $(".side-info").removeClass("info-open");
+    $(".offcanvas-overlay").removeClass("overlay-open");
   });
 
   // meanmenu activation

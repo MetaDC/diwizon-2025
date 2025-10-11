@@ -1,16 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const portfolioBtns = document.querySelectorAll(".portfolioBtn");
-  const popupForm = document.getElementById("popupForm");
-  const closeBtn = document.getElementById("closeBtn");
-  const userForm = document.getElementById("userForm");
-  const submitBtn = document.getElementById("submitBtn");
-  const btnText = submitBtn.querySelector(".btn-text");
-  const loader = submitBtn.querySelector(".loader");
-
   let scrollPosition = 0;
   let smoother = null;
 
-  // 🎯 Get ScrollSmoother instance after it initializes
+  const GOOGLE_SHEETS_URL =
+    "https://script.google.com/macros/s/AKfycbybknwJnAnQT57SLH_lNNylvThxOLo1sz8vL_dzN51vKs8AZJEKHzwrgSkZSnIpePJw/exec";
+
   setTimeout(() => {
     if (window.ScrollSmoother && window.ScrollSmoother.get) {
       smoother = window.ScrollSmoother.get();
@@ -20,178 +14,142 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, 1000);
 
-  // ✅ Open popup WITHOUT scroll jump
-  portfolioBtns.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
+  // === SHARED FUNCTIONS ===
+  function openModal(modalElement) {
+    // Store EXACT scroll position before ANY changes
+    if (smoother) {
+      scrollPosition = smoother.scrollTop();
+    } else {
+      scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    }
 
-      // Store current scroll position BEFORE any changes
-      if (smoother) {
-        // Get current scroll position from ScrollSmoother
-        scrollPosition = smoother.scrollTop();
-        console.log("📍 Stored ScrollSmoother position:", scrollPosition);
+    console.log("🔓 Opening modal, saving position:", scrollPosition);
 
-        // Pause ScrollSmoother
-        smoother.paused(true);
-      } else {
-        // Fallback to regular scroll
-        scrollPosition =
-          window.pageYOffset || document.documentElement.scrollTop;
-        console.log("📍 Stored window scroll position:", scrollPosition);
-      }
+    // Pause smoother
+    if (smoother) {
+      smoother.paused(true);
+    }
 
-      // Show modal
-      popupForm.classList.remove("hidden");
-      document.body.classList.add("modal-open");
+    // Show modal
+    modalElement.classList.remove("hidden");
+    document.body.classList.add("modal-open");
 
-      // Lock body scroll
-      document.documentElement.style.overflow = "hidden";
-      document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollPosition}px`;
-      document.body.style.left = "0";
-      document.body.style.right = "0";
-      document.body.style.width = "100%";
-    });
-  });
+    // Lock body scroll
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
+  }
 
-  // ✅ Close modal function - CRITICAL FIX FOR SCROLLSMOOTHER
-  function closeModal() {
-    console.log("🔄 Closing modal, will restore scroll to:", scrollPosition);
+  function closeModal(modalElement) {
+    console.log("🔒 Closing modal, will restore to:", scrollPosition);
 
-    // Hide modal
-    popupForm.classList.add("hidden");
-    document.body.classList.remove("modal-open");
-
-    // Get the stored scroll value from body.style.top as backup
-    const topValue = document.body.style.top;
-    const savedScrollPosition = topValue
-      ? Math.abs(parseInt(topValue, 10))
+    // Get saved position from body top as backup
+    const bodyTop = document.body.style.top;
+    const savedPosition = bodyTop
+      ? Math.abs(parseInt(bodyTop, 10))
       : scrollPosition;
 
-    console.log("💾 Saved scroll position:", savedScrollPosition);
+    console.log("💾 Final restore position:", savedPosition);
 
-    // Remove ALL fixed positioning styles
-    document.documentElement.style.overflow = "";
-    document.body.style.overflow = "";
+    // STEP 1: Remove all body styles FIRST
     document.body.style.position = "";
     document.body.style.top = "";
     document.body.style.left = "";
     document.body.style.right = "";
     document.body.style.width = "";
 
-    // CRITICAL FIX: Different approach for ScrollSmoother
+    // STEP 2: Hide modal
+    modalElement.classList.add("hidden");
+    document.body.classList.remove("modal-open");
+
+    // STEP 3: IMMEDIATELY restore scroll BEFORE browser can reflow
     if (smoother) {
-      console.log("🔧 Using ScrollSmoother restoration");
-
-      // Resume smoother FIRST
+      console.log("📍 Using ScrollSmoother restore");
       smoother.paused(false);
+      smoother.scrollTo(savedPosition, false);
 
-      // IMPORTANT: Use scrollTo() not scrollTop() for setting position
-      // scrollTo() has different parameters than scrollTop()
-      requestAnimationFrame(() => {
-        // Method 1: Direct scrollTo with instant flag
-        smoother.scrollTo(savedScrollPosition, false);
-
-        console.log(
-          "✅ ScrollSmoother scroll restored to:",
-          savedScrollPosition
-        );
-
-        // Verify restoration
-        setTimeout(() => {
-          const currentPos = smoother.scrollTop();
-          console.log("🔍 Current position after restore:", currentPos);
-
-          // If position didn't restore correctly, force it
-          if (Math.abs(currentPos - savedScrollPosition) > 10) {
-            console.warn("⚠️ Position mismatch, forcing restore");
-            smoother.scrollTo(savedScrollPosition, false);
-          }
-        }, 100);
-      });
+      // Force multiple updates
+      setTimeout(() => smoother.scrollTo(savedPosition, false), 0);
+      setTimeout(() => smoother.scrollTo(savedPosition, false), 10);
+      setTimeout(() => smoother.scrollTo(savedPosition, false), 50);
+      setTimeout(() => smoother.scrollTo(savedPosition, false), 100);
     } else {
-      console.log("🔧 Using window scroll restoration");
-      // For regular scroll, restore immediately
-      requestAnimationFrame(() => {
-        window.scrollTo(0, savedScrollPosition);
-        console.log("✅ Window scroll restored to:", savedScrollPosition);
+      console.log("📍 Using window scroll restore");
+
+      // CRITICAL: Set scroll position MULTIPLE ways immediately
+      window.scrollTo(0, savedPosition);
+      document.documentElement.scrollTop = savedPosition;
+      document.body.scrollTop = savedPosition;
+
+      // Force updates at different intervals
+      setTimeout(() => {
+        window.scrollTo(0, savedPosition);
+        document.documentElement.scrollTop = savedPosition;
+      }, 0);
+
+      setTimeout(() => {
+        window.scrollTo(0, savedPosition);
+        document.documentElement.scrollTop = savedPosition;
+      }, 10);
+
+      setTimeout(() => {
+        window.scrollTo(0, savedPosition);
+      }, 50);
+
+      setTimeout(() => {
+        window.scrollTo(0, savedPosition);
+      }, 100);
+
+      // Final verification after 200ms
+      setTimeout(() => {
+        const current =
+          window.pageYOffset || document.documentElement.scrollTop;
+        if (Math.abs(current - savedPosition) > 10) {
+          console.warn("⚠️ FORCING final restore:", savedPosition);
+          window.scrollTo(0, savedPosition);
+          document.documentElement.scrollTop = savedPosition;
+        }
+      }, 200);
+    }
+
+    console.log("✅ Modal closed");
+  }
+
+  async function submitToGoogleSheets(formData, sheetType) {
+    try {
+      const response = await fetch(GOOGLE_SHEETS_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          sheetType: sheetType,
+        }),
       });
+      console.log("✅ Data sent to Google Sheets");
+      return true;
+    } catch (error) {
+      console.error("❌ Google Sheets submission error:", error);
+      return false;
     }
   }
 
-  // ✅ Close button
-  closeBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    closeModal();
-  });
-
-  // ✅ Click outside to close
-  window.addEventListener("click", (e) => {
-    if (e.target === popupForm) {
-      closeModal();
-    }
-  });
-
-  // ✅ ESC key to close
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !popupForm.classList.contains("hidden")) {
-      closeModal();
-    }
-  });
-
-  // ✅ Form submit with validation
-  userForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    loader.classList.remove("hidden");
-    btnText.style.display = "none";
-    submitBtn.disabled = true;
-
-    const name = userForm
-      .querySelector('input[placeholder="Your Name"]')
-      .value.trim();
-    const email = userForm
-      .querySelector('input[placeholder="Email ID"]')
-      .value.trim();
-    const phone = document.getElementById("phoneNumber").value.trim();
-    const countryCode = document.getElementById("countryCode").value;
-    const fullPhone = countryCode + phone;
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phonePattern = /^\d{10,15}$/;
-
-    if (!name) {
-      alert("Please enter your name.");
-      resetButton();
-      return;
-    }
-
-    if (!emailPattern.test(email)) {
-      alert("Please enter a valid email address.");
-      resetButton();
-      return;
-    }
-
-    if (!phonePattern.test(phone)) {
-      alert("Please enter a valid phone number (10-15 digits).");
-      resetButton();
-      return;
-    }
-
+  async function sendEmail(name, email, phone, subject, type) {
     const data = {
       emails: ["aadil18122001@gmail.com"],
-      subject: "New Portfolio Request - Diwizon",
+      subject: subject,
       message: `
-      <h2>New Portfolio Download Request</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Phone Number:</strong> ${fullPhone}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <hr>
-      <p><small>Submitted on: ${new Date().toLocaleString()}</small></p>
-    `,
+        <h2>${type}</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Phone Number:</strong> ${phone}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <hr>
+        <p><small>Submitted on: ${new Date().toLocaleString()}</small></p>
+      `,
     };
 
     try {
@@ -204,42 +162,280 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
-      // ✅ Close modal
-      closeModal();
-
-      // ✅ Store flag so thankyou.html knows to open the PDF
-      sessionStorage.setItem("openPDF", "true");
-
-      // ✅ Open thankyou page in a new tab
-      window.open("thankyou.html", "_blank");
-
-      // Reset form
-      userForm.reset();
+      console.log("✅ Email sent successfully");
+      return true;
     } catch (error) {
-      console.error("Form submission error:", error);
-      alert("Something went wrong. Please try again or contact us directly.");
-    } finally {
-      resetButton();
+      console.error("❌ Email sending error:", error);
+      return false;
+    }
+  }
+
+  // === PORTFOLIO FORM ===
+  const portfolioBtns = document.querySelectorAll(".portfolioBtn");
+  const popupForm = document.getElementById("popupForm");
+  const portfolioCloseBtn = document.querySelector(".portfolio-close");
+  const userForm = document.getElementById("userForm");
+  const portfolioSubmitBtn = document.getElementById("portfolioSubmitBtn");
+
+  if (portfolioBtns.length > 0 && popupForm) {
+    portfolioBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal(popupForm);
+      });
+    });
+  }
+
+  if (portfolioCloseBtn && popupForm) {
+    // Click event
+    portfolioCloseBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      closeModal(popupForm);
+      return false;
+    });
+
+    // Touch event - MORE IMPORTANT for mobile
+    portfolioCloseBtn.addEventListener(
+      "touchstart",
+      (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        closeModal(popupForm);
+        return false;
+      },
+      { passive: false }
+    );
+  }
+
+  if (popupForm) {
+    popupForm.addEventListener("click", (e) => {
+      if (e.target === popupForm) {
+        e.preventDefault();
+        closeModal(popupForm);
+      }
+    });
+  }
+
+  if (userForm && portfolioSubmitBtn) {
+    userForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const btnText = portfolioSubmitBtn.querySelector(".btn-text");
+      const loader = portfolioSubmitBtn.querySelector(".loader");
+
+      loader.classList.remove("hidden");
+      btnText.style.display = "none";
+      portfolioSubmitBtn.disabled = true;
+
+      const name = userForm
+        .querySelector('input[placeholder="Your Name"]')
+        .value.trim();
+      const email = userForm
+        .querySelector('input[placeholder="Email ID"]')
+        .value.trim();
+      const phone = document
+        .getElementById("portfolioPhoneNumber")
+        .value.trim();
+      const countryCode = document.getElementById("portfolioCountryCode").value;
+      const fullPhone = countryCode + phone;
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phonePattern = /^\d{10,15}$/;
+
+      if (!name || !emailPattern.test(email) || !phonePattern.test(phone)) {
+        alert("Please fill all fields correctly.");
+        loader.classList.add("hidden");
+        btnText.style.display = "inline";
+        portfolioSubmitBtn.disabled = false;
+        return;
+      }
+
+      try {
+        const formData = {
+          name: name,
+          email: email,
+          phone: fullPhone,
+          timestamp: new Date().toLocaleString(),
+        };
+
+        await Promise.allSettled([
+          submitToGoogleSheets(formData, "portfolio"),
+          sendEmail(
+            name,
+            email,
+            fullPhone,
+            "New Portfolio Request - Diwizon",
+            "Portfolio Download Request"
+          ),
+        ]);
+
+        closeModal(popupForm);
+        sessionStorage.setItem("openPDF", "true");
+        window.open("thankyou.html", "_blank");
+        userForm.reset();
+      } catch (error) {
+        alert("Something went wrong. Please try again.");
+      } finally {
+        loader.classList.add("hidden");
+        btnText.style.display = "inline";
+        portfolioSubmitBtn.disabled = false;
+      }
+    });
+  }
+
+  // === GET QUOTE FORM ===
+  const quoteBtns = document.querySelectorAll(".getQuoteBtn");
+  const getQuotePopupForm = document.getElementById("getQuotepopupForm");
+  const quoteCloseBtn = document.querySelector(".quote-close");
+  const getQuoteUserForm = document.getElementById("getQuoteuserForm");
+  const quoteSubmitBtn = document.getElementById("quoteSubmitBtn");
+
+  if (quoteBtns.length > 0 && getQuotePopupForm) {
+    quoteBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal(getQuotePopupForm);
+      });
+    });
+  }
+
+  if (quoteCloseBtn && getQuotePopupForm) {
+    // Click event
+    quoteCloseBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      closeModal(getQuotePopupForm);
+      return false;
+    });
+
+    // Touch event - MORE IMPORTANT for mobile
+    quoteCloseBtn.addEventListener(
+      "touchstart",
+      (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        closeModal(getQuotePopupForm);
+        return false;
+      },
+      { passive: false }
+    );
+  }
+
+  if (getQuotePopupForm) {
+    getQuotePopupForm.addEventListener("click", (e) => {
+      if (e.target === getQuotePopupForm) {
+        e.preventDefault();
+        closeModal(getQuotePopupForm);
+      }
+    });
+  }
+
+  if (getQuoteUserForm && quoteSubmitBtn) {
+    getQuoteUserForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const btnText = quoteSubmitBtn.querySelector(".btn-text");
+      const loader = quoteSubmitBtn.querySelector(".loader");
+
+      loader.classList.remove("hidden");
+      btnText.style.display = "none";
+      quoteSubmitBtn.disabled = true;
+
+      const name = getQuoteUserForm
+        .querySelector('input[placeholder="Your Name"]')
+        .value.trim();
+      const email = getQuoteUserForm
+        .querySelector('input[placeholder="Email ID"]')
+        .value.trim();
+      const phone = document.getElementById("quotePhoneNumber").value.trim();
+      const countryCode = document.getElementById("quoteCountryCode").value;
+      const fullPhone = countryCode + phone;
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phonePattern = /^\d{10,15}$/;
+
+      if (!name || !emailPattern.test(email) || !phonePattern.test(phone)) {
+        alert("Please fill all fields correctly.");
+        loader.classList.add("hidden");
+        btnText.style.display = "inline";
+        quoteSubmitBtn.disabled = false;
+        return;
+      }
+
+      try {
+        const formData = {
+          name: name,
+          email: email,
+          phone: fullPhone,
+          timestamp: new Date().toLocaleString(),
+        };
+
+        await Promise.allSettled([
+          submitToGoogleSheets(formData, "quote"),
+          sendEmail(
+            name,
+            email,
+            fullPhone,
+            "New Get Quote Request - Diwizon",
+            "Get Quote Request"
+          ),
+        ]);
+
+        closeModal(getQuotePopupForm);
+
+        // Redirect to thank you page after successful submission
+        setTimeout(() => {
+          window.location.href = "getthankyou.html";
+        }, 300);
+
+        getQuoteUserForm.reset();
+      } catch (error) {
+        alert("Something went wrong. Please try again.");
+      } finally {
+        loader.classList.add("hidden");
+        btnText.style.display = "inline";
+        quoteSubmitBtn.disabled = false;
+      }
+    });
+  }
+
+  // === ESC KEY TO CLOSE ===
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      if (popupForm && !popupForm.classList.contains("hidden")) {
+        e.preventDefault();
+        closeModal(popupForm);
+      }
+      if (
+        getQuotePopupForm &&
+        !getQuotePopupForm.classList.contains("hidden")
+      ) {
+        e.preventDefault();
+        closeModal(getQuotePopupForm);
+      }
     }
   });
 
-  function resetButton() {
-    loader.classList.add("hidden");
-    btnText.style.display = "inline";
-    submitBtn.disabled = false;
-  }
-
-  // 🔒 Prevent background scroll while modal is open
+  // === PREVENT BACKGROUND SCROLL ===
   document.addEventListener(
     "touchmove",
     (e) => {
-      if (!popupForm.classList.contains("hidden")) {
+      const isPortfolioOpen =
+        popupForm && !popupForm.classList.contains("hidden");
+      const isQuoteOpen =
+        getQuotePopupForm && !getQuotePopupForm.classList.contains("hidden");
+
+      if (isPortfolioOpen || isQuoteOpen) {
         const modalContent = document.querySelector(".popup-content");
-        // Only prevent if touching outside modal content
-        if (modalContent && !modalContent.contains(e.target)) {
-          e.preventDefault();
+        if (modalContent && modalContent.contains(e.target)) {
+          return; // Allow scrolling inside modal
         }
+        e.preventDefault(); // Prevent background scroll
       }
     },
     { passive: false }
@@ -248,9 +444,13 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener(
     "wheel",
     (e) => {
-      if (!popupForm.classList.contains("hidden")) {
+      const isPortfolioOpen =
+        popupForm && !popupForm.classList.contains("hidden");
+      const isQuoteOpen =
+        getQuotePopupForm && !getQuotePopupForm.classList.contains("hidden");
+
+      if (isPortfolioOpen || isQuoteOpen) {
         const modalContent = document.querySelector(".popup-content");
-        // Only prevent if scrolling outside modal content
         if (modalContent && !modalContent.contains(e.target)) {
           e.preventDefault();
         }

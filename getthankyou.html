@@ -68,6 +68,15 @@
         fill: none;
         stroke-linecap: round;
         stroke-linejoin: round;
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        animation: drawCheck 0.8s ease-out 0.5s forwards;
+      }
+
+      @keyframes drawCheck {
+        to {
+          stroke-dashoffset: 0;
+        }
       }
 
       h1 {
@@ -99,6 +108,7 @@
         font-size: 1rem;
         transition: transform 0.2s, box-shadow 0.2s;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        margin-top: 1rem;
       }
 
       .btn:hover {
@@ -123,16 +133,6 @@
         }
       }
     </style>
-    <script>
-      if (sessionStorage.getItem("openPDF") === "true") {
-        sessionStorage.removeItem("openPDF");
-
-        // ⏳ Wait 3 seconds, then open PDF in same tab
-        setTimeout(() => {
-          window.location.href = "assets/diwizon-work.pdf";
-        }, 3000);
-      }
-    </script>
   </head>
   <script>
     gtag("event", "conversion", {
@@ -147,8 +147,9 @@
         </svg>
       </div>
       <h1>🎉 Thank You!</h1>
-      <p>Your request has been submitted successfully.</p>
-      <p class="note">Your portfolio PDF is opening in a new tab...</p>
+      <p>Your Get Quote request has been submitted successfully.</p>
+      <p class="note">We will get back to you soon with pricing details.</p>
+      <a href="index.html" class="btn">Back to Home</a>
     </div>
   </body>
 </html>

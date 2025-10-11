@@ -675,7 +675,9 @@
                       class="t-btn t-btn-primary bg-active portfolioBtn"
                       >Portfolio</a
                     >
-                    <a class="t-btn t-btn-primary" href="#footer">Contact Us</a>
+                    <a class="t-btn t-btn-primary getQuoteBtn" href="#"
+                      >Get Quote</a
+                    >
                   </div>
                 </div>
               </div>
@@ -2879,7 +2881,87 @@
         <!-- footer area end  -->
       </div>
     </div>
+    <!-- Portfolio Form -->
     <div id="popupForm" class="popup-form hidden">
+      <div class="popup-content">
+        <span class="closeBtn portfolio-close" style=" position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;"
+          >&times;</span>
+        <h4>Download Our Portfolio</h4>
+        <p style="margin: 20px 0">
+          Enter your details to download our portfolio.
+        </p>
+        <form id="userForm">
+          <input type="text" placeholder="Your Name" required />
+          <div style="display: flex; gap: 10px">
+            <select id="portfolioCountryCode" required>
+              <option value="+91" selected>🇮🇳 +91 (India)</option>
+              <option value="+1">🇺🇸 +1 (USA)</option>
+              <option value="+44">🇬🇧 +44 (UK)</option>
+              <option value="+971">🇦🇪 +971 (UAE)</option>
+            </select>
+            <input
+              type="tel"
+              id="portfolioPhoneNumber"
+              placeholder="Phone Number"
+              required
+            />
+          </div>
+          <input type="email" placeholder="Email ID" required />
+          <button type="submit" id="portfolioSubmitBtn">
+            <span class="btn-text">Send And Continue</span>
+            <span class="loader hidden"></span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Get Quote Form -->
+    <div id="getQuotepopupForm" class="popup-form hidden">
+      <div class="popup-content">
+        <span
+          class="closeBtn quote-close"
+          style="
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+          "
+          >&times;</span
+        >
+        <h4>Get Instant Pricing – For Free!</h4>
+        <p style="margin: 20px 0">
+          Enter your details and get instant pricing, completely free.
+        </p>
+        <form id="getQuoteuserForm">
+          <input type="text" placeholder="Your Name" required />
+          <div style="display: flex; gap: 10px">
+            <select id="quoteCountryCode" required>
+              <option value="+91" selected>🇮🇳 +91 (India)</option>
+              <option value="+1">🇺🇸 +1 (USA)</option>
+              <option value="+44">🇬🇧 +44 (UK)</option>
+              <option value="+971">🇦🇪 +971 (UAE)</option>
+            </select>
+            <input
+              type="tel"
+              id="quotePhoneNumber"
+              placeholder="Phone Number"
+              required
+            />
+          </div>
+          <input type="email" placeholder="Email ID" required />
+          <button type="submit" id="quoteSubmitBtn">
+            <span class="btn-text">Send And Continue</span>
+            <span class="loader hidden"></span>
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- <div id="popupForm" class="popup-form hidden">
       <div class="popup-content">
         <span id="closeBtn">&times;</span>
         <h4>Get Instant Pricing – For Free!</h4>
@@ -2910,6 +2992,37 @@
         </form>
       </div>
     </div>
+    <div id="getQuotepopupForm" class="popup-form hidden">
+      <div class="popup-content">
+        <span id="closeBtn">&times;</span>
+        <h4>Get Instant Pricing – For Free!</h4>
+        <p style="margin: 20px 0">
+          Enter your details and get instant pricing, completely free.
+        </p>
+        <form id="getQuoteuserForm">
+          <input type="text" placeholder="Your Name" required />
+          <div style="display: flex; gap: 10px">
+            <select id="countryCode" required>
+              <option value="+91" selected>🇮🇳 +91 (India)</option>
+              <option value="+1">🇺🇸 +1 (USA)</option>
+              <option value="+44">🇬🇧 +44 (UK)</option>
+              <option value="+971">🇦🇪 +971 (UAE)</option>
+            </select>
+            <input
+              type="tel"
+              id="phoneNumber"
+              placeholder="Phone Number"
+              required
+            />
+          </div>
+          <input type="email" placeholder="Email ID" required />
+          <button type="submit" id="submitBtn">
+            <span class="btn-text">Send And Continue</span>
+            <span class="loader hidden"></span>
+          </button>
+        </form>
+      </div>
+    </div> -->
     <!-- Vendor JS Files -->
     <script src="assets/vendor/jquery-3.7.1.min.js"></script>
     <script src="assets/vendor/bootstrap.bundle.min.js"></script>
