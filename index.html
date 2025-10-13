@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="At Diwizon, we are committed to empowering businesses by delivering custom digital solutions tailored to their unique needs. Our expertise spans creating optimised websites, efficient software, intuitive mobile apps, and effective eCommerce platforms that enhance productivity, streamline processes, and boost revenue."
+      content="Diwizon - India’s premier digital solutions agency: building custom web & mobile apps, scalable eCommerce platforms, AI-powered tools, and SEO strategies to drive growth."
     />
+    <link rel="canonical" href="https://diwizon.com/" />
 
     <title>
       Diwizon - Empowering Businesses with Custom Digital Solutions.
@@ -17,6 +18,21 @@
 
     <!-- Fav Icon -->
     <link rel="icon" type="image/x-icon" href="assets/imgs/logo/favicon.png" />
+
+    <meta
+      property="og:title"
+      content="Diwizon - Empowering Businesses with Custom Digital Solutions."
+    />
+    <meta
+      property="og:description"
+      content="Diwizon - India’s premier digital solutions agency: building custom web & mobile apps, scalable eCommerce platforms, AI-powered tools, and SEO strategies to drive growth."
+    />
+    <meta
+      property="og:image"
+      content="https://diwizon.com/assets/imgs/logo/logo.png"
+    />
+    <meta property="og:url" content="https://diwizon.com" />
+    <meta property="og:type" content="website" />
 
     <!-- Vendor CSS Files -->
     <link rel="stylesheet" href="assets/vendor/bootstrap.min.css" />
@@ -449,6 +465,156 @@
           font-size: 10px;
         }
       }
+
+      /* Remove padding/margin from services slider wrapper */
+      .services-slider-wrapper {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      /* Swiper container spacing */
+      .servicesSwiper {
+        padding-bottom: 50px;
+        position: relative;
+      }
+
+      /* Pagination positioning */
+      .servicesSwiper .swiper-pagination {
+        bottom: 10px;
+        left: 0;
+        right: 0;
+      }
+
+      /* Unselected pagination bullets - light blue */
+      .servicesSwiper .swiper-pagination-bullet {
+        background: #93c5fd; /* Light blue */
+        opacity: 1;
+        width: 10px;
+        height: 10px;
+        transition: all 0.3s ease;
+      }
+
+      /* Selected pagination bullet - blue */
+      .servicesSwiper .swiper-pagination-bullet-active {
+        background: #3b82f6; /* Blue */
+        opacity: 1;
+        transform: scale(1.2);
+      }
+
+      /* Hover effect - optional */
+      .servicesSwiper .swiper-pagination-bullet:hover {
+        background: #60a5fa;
+      }
+
+      /* Swiper container spacing */
+      .portfolioSwiper {
+        padding-bottom: 50px;
+        position: relative;
+      }
+
+      /* Pagination positioning */
+      .portfolioSwiper .swiper-pagination {
+        bottom: 10px;
+        left: 0;
+        right: 0;
+      }
+
+      /* Unselected pagination bullets - light blue */
+      .portfolioSwiper .swiper-pagination-bullet {
+        background: #93c5fd; /* Light blue */
+        opacity: 1;
+        width: 10px;
+        height: 10px;
+        transition: all 0.3s ease;
+      }
+
+      /* Selected pagination bullet - blue */
+      .portfolioSwiper .swiper-pagination-bullet-active {
+        background: #3b82f6; /* Blue */
+        opacity: 1;
+        transform: scale(1.2);
+      }
+
+      /* Hover effect - optional */
+      .portfolioSwiper .swiper-pagination-bullet:hover {
+        background: #60a5fa;
+      }
+      /* Remove padding from brand slider container on mobile */
+      @media (max-width: 767px) {
+        .brand-slider-container {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+      }
+
+      /* Remove padding from containers on mobile */
+      @media (max-width: 767px) {
+        .services-slider-wrapper,
+        .brand-slider-container,
+        .portfolio-container {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+      }
+      @media (max-width: 767px) {
+        .portfolio-header {
+          padding-left: 15px !important;
+          padding-right: 15px !important;
+        }
+      }
+      .view-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: #111;
+        color: white;
+        text-decoration: none;
+        border-radius: 20px;
+        border: 2px solid #111;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Smooth slide background effect */
+      .view-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(144, 238, 144, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .view-btn:hover::before {
+        left: 100%;
+      }
+
+      .view-btn:hover {
+        color: lightgreen;
+        /* border-color: lightgreen; */
+        transform: translateY(-0.5px);
+        /* box-shadow: 0 5px 15px rgba(144, 238, 144, 0.3); */
+      }
+
+      .view-btn i {
+        font-size: 16px;
+        transition: transform 0.3s ease;
+      }
+
+      .view-btn:hover i {
+        transform: scale(1.2) rotate(5deg);
+      }
     </style>
   </head>
   <!-- Google tag (gtag.js) -->
@@ -616,7 +782,11 @@
             </div>
             <div class="header-offcanvas d-xl-none">
               <button class="side-toggle">
-                <img src="assets/imgs/icon/icon-4.webp" alt="image" />
+                <img
+                  src="assets/imgs/icon/menu-icon.png"
+                  alt="image"
+                  width="40"
+                />
               </button>
             </div>
           </div>
@@ -686,7 +856,7 @@
               <!-- Popup form outside of any containers -->
 
               <div class="brand-area-4">
-                <div class="container">
+                <div class="container brand-slider-container">
                   <div class="brand-area-4-inner section-spacing">
                     <div class="section-header">
                       <div class="section-title-wrapper">
@@ -706,7 +876,7 @@
                             <div class="swiper-slide">
                               <div class="brand-item-4">
                                 <img
-                                  src="assets/imgs/brand/fci.png"
+                                  src="assets/imgs/brand/fci.webp"
                                   alt="image"
                                 />
                               </div>
@@ -714,7 +884,7 @@
                             <div class="swiper-slide">
                               <div class="brand-item-4">
                                 <img
-                                  src="assets/imgs/brand/go-charge.png"
+                                  src="assets/imgs/brand/go-charge.webp"
                                   alt="image"
                                 />
                               </div>
@@ -730,7 +900,7 @@
                             <div class="swiper-slide">
                               <div class="brand-item-4">
                                 <img
-                                  src="assets/imgs/brand/parul-university.png"
+                                  src="assets/imgs/brand/parul-university.webp"
                                   alt="image"
                                 />
                               </div>
@@ -738,7 +908,7 @@
                             <div class="swiper-slide">
                               <div class="brand-item-4">
                                 <img
-                                  src="assets/imgs/brand/speedforce.png"
+                                  src="assets/imgs/brand/speedforce.webp"
                                   alt="image"
                                 />
                               </div>
@@ -746,7 +916,7 @@
                             <div class="swiper-slide">
                               <div class="brand-item-4">
                                 <img
-                                  src="assets/imgs/brand/frenyz.png"
+                                  src="assets/imgs/brand/frenyz.webp"
                                   alt="image"
                                 />
                               </div>
@@ -754,7 +924,7 @@
                             <div class="swiper-slide">
                               <div class="brand-item-4">
                                 <img
-                                  src="assets/imgs/brand/k10-group.png"
+                                  src="assets/imgs/brand/k10-group.webp"
                                   alt="image"
                                 />
                               </div>
@@ -762,7 +932,7 @@
                             <div class="swiper-slide">
                               <div class="brand-item-4">
                                 <img
-                                  src="assets/imgs/brand/dabomb.png"
+                                  src="assets/imgs/brand/dabomb.webp"
                                   alt="image"
                                 />
                               </div>
@@ -770,7 +940,7 @@
                             <div class="swiper-slide">
                               <div class="brand-item-4">
                                 <img
-                                  src="assets/imgs/brand/kadji.png"
+                                  src="assets/imgs/brand/kadji.webp"
                                   alt="image"
                                 />
                               </div>
@@ -778,7 +948,7 @@
                             <div class="swiper-slide">
                               <div class="brand-item-4">
                                 <img
-                                  src="assets/imgs/brand/well-fed.png"
+                                  src="assets/imgs/brand/well-fed.webp"
                                   alt="image"
                                 />
                               </div>
@@ -1031,7 +1201,7 @@
                           <div class="thumb">
                             <!-- <div class="meta">20 Projects Done</div> -->
                             <img
-                              src="/assets/imgs/app-banner.png"
+                              src="/assets/imgs/app-banner.webp"
                               alt="image"
                             />
                           </div>
@@ -1076,7 +1246,7 @@
                           <div class="thumb">
                             <!-- <div class="meta">28 Projects Done</div> -->
                             <img
-                              src="/assets/imgs/software-banner.png"
+                              src="/assets/imgs/software-banner.webp"
                               alt="image"
                             />
                           </div>
@@ -1120,7 +1290,7 @@
                           <div class="thumb">
                             <!-- <div class="meta">18 Projects Done</div> -->
                             <img
-                              src="/assets/imgs/ecommerce-banner.png"
+                              src="/assets/imgs/ecommerce-banner.webp"
                               alt="image"
                             />
                           </div>
@@ -1165,7 +1335,7 @@
                           <div class="thumb">
                             <!-- <div class="meta">39 Projects Done</div> -->
                             <img
-                              src="/assets/imgs/website-banner.png"
+                              src="/assets/imgs/website-banner.webp"
                               alt="image"
                             />
                           </div>
@@ -1245,7 +1415,10 @@
                     </div>
                   </div>
                 </div>
-                <div class="container mobile-view">
+                <div
+                  class="services-slider-wrapper container-fluid mobile-view"
+                >
+                  <!-- <div class="mobile-view"> -->
                   <div class="swiper servicesSwiper">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide">
@@ -1253,7 +1426,7 @@
                           <div class="thumb">
                             <!-- <div class="meta">20 Projects Done</div> -->
                             <img
-                              src="/assets/imgs/app-banner.png"
+                              src="/assets/imgs/app-banner.webp"
                               alt="image"
                             />
                           </div>
@@ -1294,7 +1467,7 @@
                           <div class="thumb">
                             <!-- <div class="meta">28 Projects Done</div> -->
                             <img
-                              src="/assets/imgs/software-banner.png"
+                              src="/assets/imgs/software-banner.webp"
                               alt="image"
                             />
                           </div>
@@ -1334,7 +1507,7 @@
                           <div class="thumb">
                             <!-- <div class="meta">18 Projects Done</div> -->
                             <img
-                              src="/assets/imgs/ecommerce-banner.png"
+                              src="/assets/imgs/ecommerce-banner.webp"
                               alt="image"
                             />
                           </div>
@@ -1374,7 +1547,7 @@
                           <div class="thumb">
                             <!-- <div class="meta">39 Projects Done</div> -->
                             <img
-                              src="/assets/imgs/website-banner.png"
+                              src="/assets/imgs/website-banner.webp"
                               alt="image"
                             />
                           </div>
@@ -1456,9 +1629,9 @@
 
           <!-- work area start  -->
           <section class="work-area-4" id="recent">
-            <div class="container">
+            <div class="container portfolio-container">
               <div class="work-area-4-inner section-spacing-top">
-                <div class="section-header-wrapper">
+                <div class="section-header-wrapper portfolio-header">
                   <div class="section-header">
                     <div class="section-title-wrapper fade-anim">
                       <div class="subtitle-wrapper">
@@ -1622,7 +1795,7 @@
                         <div class="work-box-4 work-panel">
                           <div class="thumb">
                             <img
-                              src="assets/imgs/hero/sample-3.png"
+                              src="assets/imgs/project/go-charge-project.webp"
                               alt="Go Charge App"
                             />
                           </div>
@@ -1660,7 +1833,7 @@
                         <div class="work-box-4 work-panel">
                           <div class="thumb">
                             <img
-                              src="assets/imgs/hero/sample-3.png"
+                              src="assets/imgs/project/boss.webp"
                               alt="Laundry App"
                             />
                           </div>
@@ -1698,7 +1871,7 @@
                         <div class="work-box-4 work-panel">
                           <div class="thumb">
                             <img
-                              src="assets/imgs/hero/sample-3.png"
+                              src="assets/imgs/project/cpa.webp"
                               alt="Task Management App"
                             />
                           </div>
@@ -1734,7 +1907,7 @@
                         <div class="work-box-4 work-panel">
                           <div class="thumb">
                             <img
-                              src="assets/imgs/hero/sample-3.png"
+                              src="assets/imgs/project/swagat.webp"
                               alt="Food Delivery App"
                             />
                           </div>
@@ -1768,7 +1941,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="swiper-pagination" style="display: none"></div>
+                    <div class="swiper-pagination"></div>
                   </div>
                 </div>
               </div>
@@ -1821,7 +1994,9 @@
                           href="https://www.cpassociates.co.in/"
                           target="_blank"
                         >
-                          <img src="assets/imgs/tnf.png" alt="image"
+                          <img
+                            src="assets/imgs/websites/cpa-website.webp"
+                            alt="image"
                         /></a>
                       </div>
                       <div class="content">
@@ -1829,16 +2004,13 @@
                         <span class="post">Interiors & Lifestyle Studio</span>
                       </div>
                       <div class="social-links-wrapper">
-                        <div class="links-holder">
-                          <i class="fa-solid fa-eye"></i>
-                          <div class="social-links">
-                            <a
-                              href="https://www.cpassociates.co.in/"
-                              target="_blank"
-                              >View</a
-                            >
-                          </div>
-                        </div>
+                        <a
+                          href="https://www.cpassociates.co.in/"
+                          target="_blank"
+                          class="view-btn"
+                        >
+                          <i class="fa-solid fa-eye"></i> View
+                        </a>
                       </div>
                     </div>
                     <div
@@ -1848,7 +2020,10 @@
                     >
                       <div class="thumb">
                         <a href="https://www.kadji.co.in/" target="_blank">
-                          <img src="assets/imgs/tnf.png" alt="image" />
+                          <img
+                            src="assets/imgs/websites/kadji-website.webp"
+                            alt="image"
+                          />
                         </a>
                       </div>
                       <div class="content">
@@ -1856,6 +2031,15 @@
                         <span class="post">Care & Rehabilitation Facility</span>
                       </div>
                       <div class="social-links-wrapper">
+                        <a
+                          href="https://www.cpassociates.co.in/"
+                          target="_blank"
+                          class="view-btn"
+                        >
+                          <i class="fa-solid fa-eye"></i> View
+                        </a>
+                      </div>
+                      <!-- <div class="social-links-wrapper">
                         <div class="links-holder">
                           <i class="fa-solid fa-eye"></i>
                           <div class="social-links">
@@ -1864,7 +2048,7 @@
                             >
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                       <!-- <div class="social-links-wrapper">
                         <div class="links-holder">
                           <i class="fa-solid fa-share-nodes"></i>
@@ -1890,7 +2074,10 @@
                     >
                       <div class="thumb">
                         <a href="http://www.leocorgym.com" target="_blank">
-                          <img src="assets/imgs/tnf.png" alt="image" />
+                          <img
+                            src="assets/imgs/websites/leocor-website.webp"
+                            alt="image"
+                          />
                         </a>
                       </div>
                       <div class="content">
@@ -1898,6 +2085,15 @@
                         <span class="post">Fitness & Wellness Center</span>
                       </div>
                       <div class="social-links-wrapper">
+                        <a
+                          href="https://www.cpassociates.co.in/"
+                          target="_blank"
+                          class="view-btn"
+                        >
+                          <i class="fa-solid fa-eye"></i> View
+                        </a>
+                      </div>
+                      <!-- <div class="social-links-wrapper">
                         <div class="links-holder">
                           <i class="fa-solid fa-eye"></i>
                           <div class="social-links">
@@ -1906,7 +2102,7 @@
                             >
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                       <!-- <div class="social-links-wrapper">
                         <div class="links-holder">
                           <i class="fa-solid fa-share-nodes"></i>
@@ -1932,14 +2128,17 @@
                     >
                       <div class="thumb">
                         <a href="https://luxorhospital.com/" target="_blank">
-                          <img src="assets/imgs/tnf.png" alt="image" />
+                          <img
+                            src="assets/imgs/websites/luxor-website.webp"
+                            alt="image"
+                          />
                         </a>
                       </div>
                       <div class="content">
                         <h3 class="name">Luxor Hospital</h3>
                         <span class="post">Plastic & Aesthetic Hospital</span>
                       </div>
-                      <div class="social-links-wrapper">
+                      <!-- <div class="social-links-wrapper">
                         <div class="links-holder">
                           <i class="fa-solid fa-eye"></i>
                           <div class="social-links">
@@ -1948,6 +2147,15 @@
                             >
                           </div>
                         </div>
+                      </div> -->
+                      <div class="social-links-wrapper">
+                        <a
+                          href="https://www.cpassociates.co.in/"
+                          target="_blank"
+                          class="view-btn"
+                        >
+                          <i class="fa-solid fa-eye"></i> View
+                        </a>
                       </div>
                       <!-- <div class="social-links-wrapper">
                         <div class="links-holder">
@@ -1986,7 +2194,9 @@
                           href="https://www.cpassociates.co.in/"
                           target="_blank"
                         >
-                          <img src="assets/imgs/tnf.png" alt="image"
+                          <img
+                            src="assets/imgs/websites/cpa-website.webp"
+                            alt="image"
                         /></a>
                       </div>
                       <div class="content">
@@ -1994,6 +2204,15 @@
                         <span class="post">Interiors & Lifestyle Studio</span>
                       </div>
                       <div class="social-links-wrapper">
+                        <a
+                          href="https://www.cpassociates.co.in/"
+                          target="_blank"
+                          class="view-btn"
+                        >
+                          <i class="fa-solid fa-eye"></i> View
+                        </a>
+                      </div>
+                      <!-- <div class="social-links-wrapper">
                         <div class="links-holder">
                           <i class="fa-solid fa-eye"></i>
                           <div class="social-links">
@@ -2004,7 +2223,7 @@
                             >
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                       <!-- <div class="social-links-wrapper">
                         <div class="links-holder">
                           <i class="fa-solid fa-share-nodes"></i>
@@ -2033,7 +2252,10 @@
                     >
                       <div class="thumb">
                         <a href="https://www.kadji.co.in/" target="_blank">
-                          <img src="assets/imgs/tnf.png" alt="image" />
+                          <img
+                            src="assets/imgs/websites/kadji-website.webp"
+                            alt="image"
+                          />
                         </a>
                       </div>
                       <div class="content">
@@ -2041,6 +2263,15 @@
                         <span class="post">Care & Rehabilitation Facility</span>
                       </div>
                       <div class="social-links-wrapper">
+                        <a
+                          href="https://www.cpassociates.co.in/"
+                          target="_blank"
+                          class="view-btn"
+                        >
+                          <i class="fa-solid fa-eye"></i> View
+                        </a>
+                      </div>
+                      <!-- <div class="social-links-wrapper">
                         <div class="links-holder">
                           <i class="fa-solid fa-eye"></i>
                           <div class="social-links">
@@ -2049,7 +2280,7 @@
                             >
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                       <!-- <div class="social-links-wrapper">
                         <div class="links-holder">
                           <i class="fa-solid fa-share-nodes"></i>
@@ -2078,7 +2309,10 @@
                     >
                       <div class="thumb">
                         <a href="http://www.leocorgym.com" target="_blank">
-                          <img src="assets/imgs/tnf.png" alt="image" />
+                          <img
+                            src="assets/imgs/websites/leocor-website.webp"
+                            alt="image"
+                          />
                         </a>
                       </div>
                       <div class="content">
@@ -2086,6 +2320,15 @@
                         <span class="post">Fitness & Wellness Center</span>
                       </div>
                       <div class="social-links-wrapper">
+                        <a
+                          href="https://www.cpassociates.co.in/"
+                          target="_blank"
+                          class="view-btn"
+                        >
+                          <i class="fa-solid fa-eye"></i> View
+                        </a>
+                      </div>
+                      <!-- <div class="social-links-wrapper">
                         <div class="links-holder">
                           <i class="fa-solid fa-eye"></i>
                           <div class="social-links">
@@ -2094,7 +2337,7 @@
                             >
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                       <!-- <div class="social-links-wrapper">
                         <div class="links-holder">
                           <i class="fa-solid fa-share-nodes"></i>
@@ -2123,7 +2366,10 @@
                     >
                       <div class="thumb">
                         <a href="https://luxorhospital.com/" target="_blank">
-                          <img src="assets/imgs/tnf.png" alt="image" />
+                          <img
+                            src="assets/imgs/websites/luxor-website.webp"
+                            alt="image"
+                          />
                         </a>
                       </div>
                       <div class="content">
@@ -2131,6 +2377,15 @@
                         <span class="post">Plastic & Aesthetic Hospital</span>
                       </div>
                       <div class="social-links-wrapper">
+                        <a
+                          href="https://www.cpassociates.co.in/"
+                          target="_blank"
+                          class="view-btn"
+                        >
+                          <i class="fa-solid fa-eye"></i> View
+                        </a>
+                      </div>
+                      <!-- <div class="social-links-wrapper">
                         <div class="links-holder">
                           <i class="fa-solid fa-eye"></i>
                           <div class="social-links">
@@ -2139,7 +2394,7 @@
                             >
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                       <!-- <div class="social-links-wrapper">
                         <div class="links-holder">
                           <i class="fa-solid fa-share-nodes"></i>
