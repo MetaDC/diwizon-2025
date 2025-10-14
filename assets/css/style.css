@@ -7770,13 +7770,13 @@ btn-text-flip
 }
 
 .brand-item-4 img {
-  filter: grayscale(100%) brightness(1.2) contrast(0.9);
-  opacity: 0.6;
-  transition: all 0.3s ease;
+  filter: grayscale(100%) brightness(1.2) contrast(0.9) !important;
+  opacity: 0.6 !important;
+  transition: all 0.3s ease !important;
 }
 .brand-item-4 img:hover {
-  filter: grayscale(0%) brightness(1) contrast(1);
-  opacity: 1;
+  filter: grayscale(0%) brightness(1) contrast(1) !important;
+  opacity: 1 !important;
 }
 /* brand area 5 style  */
 .brand-area-5 .section-title {

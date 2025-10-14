@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let smoother = null;
 
   const GOOGLE_SHEETS_URL =
-    "https://script.google.com/macros/s/AKfycbybknwJnAnQT57SLH_lNNylvThxOLo1sz8vL_dzN51vKs8AZJEKHzwrgSkZSnIpePJw/exec";
+    "https://script.google.com/macros/s/AKfycbwdbyWQWs8jYenLyma990c92gZ0QPuQEph8bOUeyLi4-s3Zd367kKBKC4syKbPUAcYB/exec";
 
   setTimeout(() => {
     if (window.ScrollSmoother && window.ScrollSmoother.get) {

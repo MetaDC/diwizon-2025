@@ -102,11 +102,9 @@
 
       container.addClass("loaded");
 
-      setTimeout(() => {
-        preloader.fadeOut(300, function () {
-          $(this).remove();
-        });
-      }, 300);
+      preloader.fadeOut(300, function () {
+        $(this).remove();
+      });
     });
   });
 
