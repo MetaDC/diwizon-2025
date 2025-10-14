@@ -1,0 +1,15 @@
+# Diwizon - Digital Solutions Agency
+User-agent: *
+Allow: /
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+
+# Allow important assets
+Allow: /assets/
+Allow: /thankyou.html
+Allow: /getthankyou.html
+
+# Sitemap location
+Sitemap: https://www.diwizon.com/sitemap.xml

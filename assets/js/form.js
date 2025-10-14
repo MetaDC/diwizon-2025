@@ -34,59 +34,63 @@ document.addEventListener("DOMContentLoaded", () => {
     modalElement.classList.remove("hidden");
     document.body.classList.add("modal-open");
 
-    // Lock body scroll
+    // Lock body scroll - CRITICAL: Use the EXACT position
     document.body.style.position = "fixed";
     document.body.style.top = `-${scrollPosition}px`;
     document.body.style.left = "0";
     document.body.style.right = "0";
     document.body.style.width = "100%";
+    document.body.style.overflow = "hidden";
   }
 
   function closeModal(modalElement) {
     console.log("🔒 Closing modal, will restore to:", scrollPosition);
 
-    // Get saved position from body top as backup
-    const bodyTop = document.body.style.top;
-    const savedPosition = bodyTop
-      ? Math.abs(parseInt(bodyTop, 10))
-      : scrollPosition;
+    // CRITICAL: Get the saved scroll position BEFORE any DOM changes
+    const savedPosition = scrollPosition;
 
-    console.log("💾 Final restore position:", savedPosition);
+    console.log("💾 Restoring to position:", savedPosition);
 
-    // STEP 1: Remove all body styles FIRST
+    // Hide modal FIRST
+    modalElement.classList.add("hidden");
+    document.body.classList.remove("modal-open");
+
+    // Remove body lock styles
     document.body.style.position = "";
     document.body.style.top = "";
     document.body.style.left = "";
     document.body.style.right = "";
     document.body.style.width = "";
+    document.body.style.overflow = "";
 
-    // STEP 2: Hide modal
-    modalElement.classList.add("hidden");
-    document.body.classList.remove("modal-open");
-
-    // STEP 3: IMMEDIATELY restore scroll BEFORE browser can reflow
+    // IMMEDIATELY restore scroll position
     if (smoother) {
       console.log("📍 Using ScrollSmoother restore");
       smoother.paused(false);
-      smoother.scrollTo(savedPosition, false);
 
-      // Force multiple updates
-      setTimeout(() => smoother.scrollTo(savedPosition, false), 0);
+      // Use requestAnimationFrame for smooth restoration
+      requestAnimationFrame(() => {
+        smoother.scrollTo(savedPosition, false);
+      });
+
+      // Backup restoration
       setTimeout(() => smoother.scrollTo(savedPosition, false), 10);
       setTimeout(() => smoother.scrollTo(savedPosition, false), 50);
-      setTimeout(() => smoother.scrollTo(savedPosition, false), 100);
     } else {
       console.log("📍 Using window scroll restore");
 
-      // CRITICAL: Set scroll position MULTIPLE ways immediately
-      window.scrollTo(0, savedPosition);
-      document.documentElement.scrollTop = savedPosition;
-      document.body.scrollTop = savedPosition;
+      // MOBILE FIX: Force immediate scroll restoration
+      requestAnimationFrame(() => {
+        window.scrollTo(0, savedPosition);
+        document.documentElement.scrollTop = savedPosition;
+        document.body.scrollTop = savedPosition;
+      });
 
-      // Force updates at different intervals
+      // Multiple attempts to ensure it sticks
       setTimeout(() => {
         window.scrollTo(0, savedPosition);
         document.documentElement.scrollTop = savedPosition;
+        document.body.scrollTop = savedPosition;
       }, 0);
 
       setTimeout(() => {
@@ -96,25 +100,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setTimeout(() => {
         window.scrollTo(0, savedPosition);
+        document.documentElement.scrollTop = savedPosition;
       }, 50);
 
-      setTimeout(() => {
-        window.scrollTo(0, savedPosition);
-      }, 100);
-
-      // Final verification after 200ms
+      // Final verification for mobile
       setTimeout(() => {
         const current =
           window.pageYOffset || document.documentElement.scrollTop;
-        if (Math.abs(current - savedPosition) > 10) {
-          console.warn("⚠️ FORCING final restore:", savedPosition);
-          window.scrollTo(0, savedPosition);
-          document.documentElement.scrollTop = savedPosition;
+        if (Math.abs(current - savedPosition) > 5) {
+          console.warn("⚠️ FORCING final mobile restore:", savedPosition);
+          window.scrollTo({ top: savedPosition, behavior: "instant" });
         }
-      }, 200);
+      }, 100);
     }
 
-    console.log("✅ Modal closed");
+    console.log("✅ Modal closed, scroll restored to:", savedPosition);
   }
 
   async function submitToGoogleSheets(formData, sheetType) {
@@ -197,12 +197,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     });
 
-    // Touch event - MORE IMPORTANT for mobile
+    // Touch event - CRITICAL for mobile
     portfolioCloseBtn.addEventListener(
-      "touchstart",
+      "touchend",
       (e) => {
         e.preventDefault();
         e.stopPropagation();
+        e.stopImmediatePropagation();
         closeModal(popupForm);
         return false;
       },
@@ -313,12 +314,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     });
 
-    // Touch event - MORE IMPORTANT for mobile
+    // Touch event - CRITICAL for mobile
     quoteCloseBtn.addEventListener(
-      "touchstart",
+      "touchend",
       (e) => {
         e.preventDefault();
         e.stopPropagation();
+        e.stopImmediatePropagation();
         closeModal(getQuotePopupForm);
         return false;
       },

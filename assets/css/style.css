@@ -12444,7 +12444,7 @@ btn-text-flip
 
 @media only screen and (max-width: 767px) {
   .work-box-4 .thumb img {
-    aspect-ratio: 100/50;
+    aspect-ratio: 67/50;
     -o-object-fit: cover;
     object-fit: cover;
   }

@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+   
+   <!-- Homepage -->
    <url>
       <loc>https://www.diwizon.com/</loc>
       <priority>1.0</priority>
       <changefreq>weekly</changefreq>
-      <lastmod>2025-10-13</lastmod>
+      <lastmod>2025-10-14</lastmod>
+      <image:image>
+         <image:loc>https://www.diwizon.com/assets/imgs/logo/logo.png</image:loc>
+         <image:title>Diwizon Logo</image:title>
+      </image:image>
    </url>
+
+   <!-- Thank You Pages -->
+   <url>
+      <loc>https://www.diwizon.com/thankyou.html</loc>
+      <priority>0.3</priority>
+      <changefreq>yearly</changefreq>
+      <lastmod>2025-10-14</lastmod>
+   </url>
+
+   <url>
+      <loc>https://www.diwizon.com/getthankyou.html</loc>
+      <priority>0.3</priority>
+      <changefreq>yearly</changefreq>
+      <lastmod>2025-10-14</lastmod>
+   </url>
+
 </urlset>
