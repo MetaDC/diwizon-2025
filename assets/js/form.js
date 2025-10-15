@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   let scrollPosition = 0;
   let smoother = null;
+  let stickyHeader = null;
+  let hideHeaderTemporarily = false;
 
   const GOOGLE_SHEETS_URL =
     "https://script.google.com/macros/s/AKfycbwdbyWQWs8jYenLyma990c92gZ0QPuQEph8bOUeyLi4-s3Zd367kKBKC4syKbPUAcYB/exec";
@@ -12,11 +14,50 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       console.log("⚠️ ScrollSmoother not found");
     }
+
+    // Find sticky header (adjust selector to match your header)
+    stickyHeader =
+      document.querySelector(".sticky-header") ||
+      document.querySelector("header.sticky") ||
+      document.querySelector("nav.sticky") ||
+      document.querySelector('[class*="sticky"]');
+
+    if (stickyHeader) {
+      console.log("✅ Sticky header found:", stickyHeader);
+    }
   }, 1000);
 
-  // === SHARED FUNCTIONS ===
+  // === SCROLL LISTENER TO SHOW HEADER AGAIN ===
+  let lastScrollPosition = 0;
+
+  function handleScroll() {
+    if (!hideHeaderTemporarily || !stickyHeader) return;
+
+    const currentScroll = smoother ? smoother.scrollTop() : window.pageYOffset;
+
+    // If user scrolls (in any direction), show header again
+    if (Math.abs(currentScroll - lastScrollPosition) > 50) {
+      console.log("🔄 User scrolled, showing header again");
+      stickyHeader.style.transform = "";
+      stickyHeader.style.opacity = "";
+      stickyHeader.style.transition = "transform 0.3s ease, opacity 0.3s ease";
+      hideHeaderTemporarily = false;
+    }
+
+    lastScrollPosition = currentScroll;
+  }
+
+  // Add scroll listener
+  if (smoother) {
+    // For ScrollSmoother
+    window.addEventListener("scroll", handleScroll);
+  } else {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+  }
+
+  // === IMPROVED SHARED FUNCTIONS ===
   function openModal(modalElement) {
-    // Store EXACT scroll position before ANY changes
+    // Store scroll position
     if (smoother) {
       scrollPosition = smoother.scrollTop();
     } else {
@@ -25,94 +66,92 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log("🔓 Opening modal, saving position:", scrollPosition);
 
-    // Pause smoother
+    // Pause smoother first
     if (smoother) {
       smoother.paused(true);
     }
 
-    // Show modal
-    modalElement.classList.remove("hidden");
-    document.body.classList.add("modal-open");
-
-    // Lock body scroll - CRITICAL: Use the EXACT position
+    // Lock body scroll BEFORE showing modal
     document.body.style.position = "fixed";
     document.body.style.top = `-${scrollPosition}px`;
     document.body.style.left = "0";
     document.body.style.right = "0";
     document.body.style.width = "100%";
     document.body.style.overflow = "hidden";
+
+    // Then show modal
+    requestAnimationFrame(() => {
+      modalElement.classList.remove("hidden");
+      document.body.classList.add("modal-open");
+    });
   }
 
   function closeModal(modalElement) {
     console.log("🔒 Closing modal, will restore to:", scrollPosition);
 
-    // CRITICAL: Get the saved scroll position BEFORE any DOM changes
     const savedPosition = scrollPosition;
 
-    console.log("💾 Restoring to position:", savedPosition);
+    // Hide sticky header temporarily when modal closes
+    if (stickyHeader) {
+      console.log("👻 Hiding sticky header temporarily");
+      stickyHeader.style.transition = "none";
+      stickyHeader.style.transform = "translateY(-100%)";
+      stickyHeader.style.opacity = "0";
+      hideHeaderTemporarily = true;
+      lastScrollPosition = savedPosition;
+    }
 
-    // Hide modal FIRST
+    // Step 1: Hide modal immediately but keep body locked
     modalElement.classList.add("hidden");
     document.body.classList.remove("modal-open");
 
-    // Remove body lock styles
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.left = "";
-    document.body.style.right = "";
-    document.body.style.width = "";
-    document.body.style.overflow = "";
-
-    // IMMEDIATELY restore scroll position
-    if (smoother) {
-      console.log("📍 Using ScrollSmoother restore");
-      smoother.paused(false);
-
-      // Use requestAnimationFrame for smooth restoration
+    // Step 2: Use double rAF for smooth transition
+    requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        smoother.scrollTo(savedPosition, false);
-      });
+        // Remove body lock
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.left = "";
+        document.body.style.right = "";
+        document.body.style.width = "";
+        document.body.style.overflow = "";
 
-      // Backup restoration
-      setTimeout(() => smoother.scrollTo(savedPosition, false), 10);
-      setTimeout(() => smoother.scrollTo(savedPosition, false), 50);
-    } else {
-      console.log("📍 Using window scroll restore");
-
-      // MOBILE FIX: Force immediate scroll restoration
-      requestAnimationFrame(() => {
-        window.scrollTo(0, savedPosition);
-        document.documentElement.scrollTop = savedPosition;
-        document.body.scrollTop = savedPosition;
-      });
-
-      // Multiple attempts to ensure it sticks
-      setTimeout(() => {
-        window.scrollTo(0, savedPosition);
-        document.documentElement.scrollTop = savedPosition;
-        document.body.scrollTop = savedPosition;
-      }, 0);
-
-      setTimeout(() => {
-        window.scrollTo(0, savedPosition);
-        document.documentElement.scrollTop = savedPosition;
-      }, 10);
-
-      setTimeout(() => {
-        window.scrollTo(0, savedPosition);
-        document.documentElement.scrollTop = savedPosition;
-      }, 50);
-
-      // Final verification for mobile
-      setTimeout(() => {
-        const current =
-          window.pageYOffset || document.documentElement.scrollTop;
-        if (Math.abs(current - savedPosition) > 5) {
-          console.warn("⚠️ FORCING final mobile restore:", savedPosition);
-          window.scrollTo({ top: savedPosition, behavior: "instant" });
+        // Step 3: Restore scroll
+        if (smoother) {
+          console.log("📍 Using ScrollSmoother restore");
+          smoother.paused(false);
+          smoother.scrollTo(savedPosition, false);
+        } else {
+          console.log("📍 Using window scroll restore");
+          window.scrollTo({
+            top: savedPosition,
+            left: 0,
+            behavior: "instant",
+          });
         }
-      }, 100);
-    }
+
+        // Verification after a tick
+        setTimeout(() => {
+          if (smoother) {
+            const current = smoother.scrollTop();
+            if (Math.abs(current - savedPosition) > 5) {
+              smoother.scrollTo(savedPosition, false);
+            }
+          } else {
+            const current =
+              window.pageYOffset || document.documentElement.scrollTop;
+            if (Math.abs(current - savedPosition) > 5) {
+              window.scrollTo({
+                top: savedPosition,
+                left: 0,
+                behavior: "instant",
+              });
+            }
+          }
+          console.log("✅ Scroll position verified");
+        }, 50);
+      });
+    });
 
     console.log("✅ Modal closed, scroll restored to:", savedPosition);
   }
@@ -188,27 +227,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (portfolioCloseBtn && popupForm) {
-    // Click event
-    portfolioCloseBtn.addEventListener("click", (e) => {
+    const handleClose = (e) => {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
       closeModal(popupForm);
       return false;
-    });
+    };
 
-    // Touch event - CRITICAL for mobile
-    portfolioCloseBtn.addEventListener(
-      "touchend",
-      (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        closeModal(popupForm);
-        return false;
-      },
-      { passive: false }
-    );
+    portfolioCloseBtn.addEventListener("click", handleClose);
+    portfolioCloseBtn.addEventListener("touchend", handleClose, {
+      passive: false,
+    });
   }
 
   if (popupForm) {
@@ -305,27 +335,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (quoteCloseBtn && getQuotePopupForm) {
-    // Click event
-    quoteCloseBtn.addEventListener("click", (e) => {
+    const handleClose = (e) => {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
       closeModal(getQuotePopupForm);
       return false;
-    });
+    };
 
-    // Touch event - CRITICAL for mobile
-    quoteCloseBtn.addEventListener(
-      "touchend",
-      (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        closeModal(getQuotePopupForm);
-        return false;
-      },
-      { passive: false }
-    );
+    quoteCloseBtn.addEventListener("click", handleClose);
+    quoteCloseBtn.addEventListener("touchend", handleClose, { passive: false });
   }
 
   if (getQuotePopupForm) {
@@ -390,7 +409,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         closeModal(getQuotePopupForm);
 
-        // Redirect to thank you page after successful submission
         setTimeout(() => {
           window.location.href = "getthankyou.html";
         }, 300);
@@ -435,9 +453,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (isPortfolioOpen || isQuoteOpen) {
         const modalContent = document.querySelector(".popup-content");
         if (modalContent && modalContent.contains(e.target)) {
-          return; // Allow scrolling inside modal
+          return;
         }
-        e.preventDefault(); // Prevent background scroll
+        e.preventDefault();
       }
     },
     { passive: false }
