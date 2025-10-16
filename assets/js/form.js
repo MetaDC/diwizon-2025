@@ -10,9 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     if (window.ScrollSmoother && window.ScrollSmoother.get) {
       smoother = window.ScrollSmoother.get();
-      console.log("✅ ScrollSmoother detected:", smoother);
+      // console.log("✅ ScrollSmoother detected:", smoother);
     } else {
-      console.log("⚠️ ScrollSmoother not found");
+      // console.log("⚠️ ScrollSmoother not found");
     }
 
     // Find sticky header (adjust selector to match your header)
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector('[class*="sticky"]');
 
     if (stickyHeader) {
-      console.log("✅ Sticky header found:", stickyHeader);
+      // console.log("✅ Sticky header found:", stickyHeader);
     }
   }, 1000);
 
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
       scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
     }
 
-    console.log("🔓 Opening modal, saving position:", scrollPosition);
+    // console.log("🔓 Opening modal, saving position:", scrollPosition);
 
     // Pause smoother first
     if (smoother) {
@@ -87,13 +87,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function closeModal(modalElement) {
-    console.log("🔒 Closing modal, will restore to:", scrollPosition);
+    // console.log("🔒 Closing modal, will restore to:", scrollPosition);
 
     const savedPosition = scrollPosition;
 
     // Hide sticky header temporarily when modal closes
     if (stickyHeader) {
-      console.log("👻 Hiding sticky header temporarily");
+      // console.log("👻 Hiding sticky header temporarily");
       stickyHeader.style.transition = "none";
       stickyHeader.style.transform = "translateY(-100%)";
       stickyHeader.style.opacity = "0";
@@ -118,11 +118,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Step 3: Restore scroll
         if (smoother) {
-          console.log("📍 Using ScrollSmoother restore");
+          // console.log("📍 Using ScrollSmoother restore");
           smoother.paused(false);
           smoother.scrollTo(savedPosition, false);
         } else {
-          console.log("📍 Using window scroll restore");
+          // console.log("📍 Using window scroll restore");
           window.scrollTo({
             top: savedPosition,
             left: 0,
@@ -148,12 +148,12 @@ document.addEventListener("DOMContentLoaded", () => {
               });
             }
           }
-          console.log("✅ Scroll position verified");
+          // console.log("✅ Scroll position verified");
         }, 50);
       });
     });
 
-    console.log("✅ Modal closed, scroll restored to:", savedPosition);
+    // console.log("✅ Modal closed, scroll restored to:", savedPosition);
   }
 
   async function submitToGoogleSheets(formData, sheetType) {
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
           sheetType: sheetType,
         }),
       });
-      console.log("✅ Data sent to Google Sheets");
+      // console.log("✅ Data sent to Google Sheets");
       return true;
     } catch (error) {
       console.error("❌ Google Sheets submission error:", error);
@@ -201,10 +201,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      console.log("✅ Email sent successfully");
+      // console.log("✅ Email sent successfully");
       return true;
     } catch (error) {
-      console.error("❌ Email sending error:", error);
+      console.error(" Email sending error:", error);
       return false;
     }
   }
