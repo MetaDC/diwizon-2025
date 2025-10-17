@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function sendEmail(name, email, phone, subject, type) {
     const data = {
-      emails: ["aadil18122001@gmail.com"],
+      emails: ["info@diwizon.com"],
       subject: subject,
       message: `
         <h2>${type}</h2>
