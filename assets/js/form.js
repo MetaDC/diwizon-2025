@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function validateCaptcha(userInput, actualCode) {
-    return userInput.trim() === actualCode;
+    return userInput.trim().toLowerCase() === actualCode.toLowerCase();
   }
 
   // Initialize ScrollSmoother and Sticky Header
@@ -386,7 +386,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const fullPhone = countryCode + phone;
       const captchaInput = document
         .getElementById("portfolioCaptchaInput")
-        .value.trim();
+        .value.trim()
+        .toLowerCase();
 
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const phonePattern = /^\d{10,15}$/;
@@ -549,7 +550,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const fullPhone = countryCode + phone;
       const captchaInput = document
         .getElementById("quoteCaptchaInput")
-        .value.trim();
+        .value.trim()
+        .toLowerCase();
 
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const phonePattern = /^\d{10,15}$/;
