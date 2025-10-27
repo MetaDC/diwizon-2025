@@ -358,12 +358,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Replace the Portfolio form submission section in your existing code
+
   if (userForm && portfolioSubmitBtn) {
     userForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const btnText = portfolioSubmitBtn.querySelector(".btn-text");
       const loader = portfolioSubmitBtn.querySelector(".loader");
+      const errorDiv = document.getElementById("portfolioCaptchaError");
+
+      // Hide error message initially
+      if (errorDiv) {
+        errorDiv.style.display = "none";
+      }
 
       const name = userForm
         .querySelector('input[placeholder="Your Name"]')
@@ -385,9 +393,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Validate CAPTCHA first
       if (!validateCaptcha(captchaInput, portfolioCaptchaCode)) {
-        alert("❌ Incorrect verification code. Please try again.");
+        // Show error message within the dialog
+        if (errorDiv) {
+          errorDiv.style.display = "block";
+          // Add shake animation
+          errorDiv.style.animation = "shake 0.5s";
+          setTimeout(() => {
+            errorDiv.style.animation = "";
+          }, 500);
+        }
+
+        // Refresh CAPTCHA and clear input
         initPortfolioCaptcha();
         document.getElementById("portfolioCaptchaInput").value = "";
+
+        // Focus on the input field
+        document.getElementById("portfolioCaptchaInput").focus();
         return;
       }
 
@@ -432,6 +453,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // Optional: Add CSS for shake animation (add this to your stylesheet or in a <style> tag)
+  const style = document.createElement("style");
+  style.textContent = `
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+  }
+`;
+  document.head.appendChild(style);
 
   // === GET QUOTE FORM ===
   const quoteBtns = document.querySelectorAll(".getQuoteBtn");
@@ -491,12 +523,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Replace the Get Quote form submission section in your existing code
+
   if (getQuoteUserForm && quoteSubmitBtn) {
     getQuoteUserForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const btnText = quoteSubmitBtn.querySelector(".btn-text");
       const loader = quoteSubmitBtn.querySelector(".loader");
+      const errorDiv = document.getElementById("quoteCaptchaError");
+
+      // Hide error message initially
+      if (errorDiv) {
+        errorDiv.style.display = "none";
+      }
 
       const name = getQuoteUserForm
         .querySelector('input[placeholder="Your Name"]')
@@ -516,9 +556,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Validate CAPTCHA first
       if (!validateCaptcha(captchaInput, quoteCaptchaCode)) {
-        alert("❌ Incorrect verification code. Please try again.");
+        // Show error message within the dialog
+        if (errorDiv) {
+          errorDiv.style.display = "block";
+          // Add shake animation
+          errorDiv.style.animation = "shake 0.5s";
+          setTimeout(() => {
+            errorDiv.style.animation = "";
+          }, 500);
+        }
+
+        // Refresh CAPTCHA and clear input
         initQuoteCaptcha();
         document.getElementById("quoteCaptchaInput").value = "";
+
+        // Focus on the input field
+        document.getElementById("quoteCaptchaInput").focus();
         return;
       }
 

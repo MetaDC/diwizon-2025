@@ -3340,6 +3340,7 @@
       </div>
     </div>
     <!-- Portfolio Form -->
+
     <div id="popupForm" class="popup-form hidden">
       <div class="popup-content">
         <span
@@ -3376,6 +3377,125 @@
           <input type="email" placeholder="Email ID" required />
 
           <!-- Custom Character CAPTCHA -->
+          <div style="margin: 15px 0">
+            <label
+              style="
+                display: block;
+                margin-bottom: 8px;
+                font-weight: 500;
+                color: #333;
+              "
+              >Verification Code</label
+            >
+            <div style="display: flex; gap: 10px; align-items: center">
+              <canvas
+                id="portfolioCaptchaCanvas"
+                width="200"
+                height="60"
+                style="
+                  border: 2px solid #ddd;
+                  border-radius: 4px;
+                  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                  cursor: pointer;
+                "
+                title="Click to refresh"
+              ></canvas>
+              <button
+                type="button"
+                id="portfolioRefreshCaptcha"
+                style="
+                  padding: 10px 15px;
+                  background: #4caf50;
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  font-size: 18px;
+                  font-weight: bold;
+                  transition: background 0.3s ease;
+                "
+                title="Refresh Captcha"
+              >
+                ↻
+              </button>
+            </div>
+            <input
+              type="text"
+              id="portfolioCaptchaInput"
+              placeholder="Enter the code shown above"
+              required
+              style="
+                margin-top: 10px;
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+              "
+              autocomplete="off"
+            />
+            <!-- Error message container -->
+            <div
+              id="portfolioCaptchaError"
+              style="
+                display: none;
+                margin-top: 8px;
+                padding: 10px;
+                background-color: #fee;
+                border: 1px solid #fcc;
+                border-radius: 4px;
+                color: #c33;
+                font-size: 14px;
+                font-weight: 500;
+              "
+            >
+              ❌ Incorrect verification code. Please try again.
+            </div>
+          </div>
+
+          <button type="submit" id="portfolioSubmitBtn">
+            <span class="btn-text">Get Portfolio</span>
+            <span class="loader hidden"></span>
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- form with captcha -->
+    <!-- <div id="popupForm" class="popup-form hidden">
+      <div class="popup-content">
+        <span
+          class="closeBtn portfolio-close"
+          style="
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+          "
+          >&times;</span
+        >
+        <h4>Download Our Portfolio</h4>
+        <p style="margin: 20px 0">
+          Enter your details to download our portfolio.
+        </p>
+        <form id="userForm">
+          <input type="text" placeholder="Your Name" required />
+          <div style="display: flex; gap: 10px">
+            <select id="portfolioCountryCode" required>
+              <option value="+91" selected>🇮🇳 +91 (India)</option>
+              <option value="+1">🇺🇸 +1 (USA)</option>
+              <option value="+44">🇬🇧 +44 (UK)</option>
+              <option value="+971">🇦🇪 +971 (UAE)</option>
+            </select>
+            <input
+              type="tel"
+              id="portfolioPhoneNumber"
+              placeholder="Phone Number"
+              required
+            />
+          </div>
+          <input type="email" placeholder="Email ID" required />
+
+       
           <div style="margin: 15px 0">
             <label
               style="
@@ -3440,7 +3560,9 @@
           </button>
         </form>
       </div>
-    </div>
+    </div> -->
+
+    <!-- Form Without Captcha -->
     <!-- <div id="popupForm" class="popup-form hidden">
       <div class="popup-content">
         <span
@@ -3534,7 +3656,7 @@
               <canvas
                 id="quoteCaptchaCanvas"
                 width="200"
-                height="40"
+                height="60"
                 style="
                   border: 2px solid #ddd;
                   border-radius: 4px;
@@ -3576,6 +3698,23 @@
               "
               autocomplete="off"
             />
+            <!-- Error message container -->
+            <div
+              id="quoteCaptchaError"
+              style="
+                display: none;
+                margin-top: 8px;
+                padding: 10px;
+                background-color: #fee;
+                border: 1px solid #fcc;
+                border-radius: 4px;
+                color: #c33;
+                font-size: 14px;
+                font-weight: 500;
+              "
+            >
+              ❌ Incorrect verification code. Please try again.
+            </div>
           </div>
 
           <button type="submit" id="quoteSubmitBtn">
@@ -3585,6 +3724,7 @@
         </form>
       </div>
     </div>
+
     <!-- <div id="getQuotepopupForm" class="popup-form hidden">
       <div class="popup-content">
         <span
